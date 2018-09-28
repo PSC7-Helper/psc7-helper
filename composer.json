@@ -1,0 +1,15 @@
+{
+    "name": "michael/psc7-helper",
+    "description": "Plentymarkets Shopware Connector 7 Helper Tool",
+    "authors": [
+        {
+            "name": "Michael Rusch",
+            "email": "michael.rusch@amuar.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+		"components/jquery": "3.2.1",
+        "components/jqueryui": "1.12.1"
+	}
+}

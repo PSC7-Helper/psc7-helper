@@ -1,0 +1,36 @@
+.center{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-connector{
+    margin-bottom: 10px;
+}
+
+.btn-connector-red{
+    background-color: #a32b2c;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-connector-blue{
+    background-color: #2b73a2;
+    color: #fff;
+    width: 100%;
+}
+.navbar-dark .navbar-nav .nav-link{
+    color: #f8f9fa;
+}
+
+.footer{
+    background-color: #e9ecef;
+    padding: 1.6rem;
+}
+
+#main--container{
+    min-height: 700px;
+}
+
+.dropdown-menu.open { 
+	max-width: 200px; 
+}
