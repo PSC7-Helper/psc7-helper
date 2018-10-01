@@ -356,19 +356,6 @@ $timestamp = time();
 /****************************************************************/
         ?>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <?php
-            echo "<pre>SESSION:<br/>";
-            var_export($_SESSION);
-            echo "</pre>";
-            echo "<pre>Logged in?:<br/>";
-            var_export(LoginHelper::check_logged_in());
-            echo "</pre>";
-          ?>
-        </div>
-      </div>
-
 
     </div>
 </div>
