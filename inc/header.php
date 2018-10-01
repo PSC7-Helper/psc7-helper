@@ -8,9 +8,6 @@ if(!LoginHelper::check_logged_in()) {
 
 
 require_once("./classes/ShopwareHelper.php");
-require_once("./classes/PlentyHelper.php");
-require_once('classes/PlentyApi/AbstractClient.php');
-require_once('classes/PlentyApi/Client.php');
 require_once("./classes/CliHelper.php");
 require_once("./classes/Database.php");
 require_once("./config.php");
