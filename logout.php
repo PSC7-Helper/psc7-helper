@@ -1,13 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: f.wehrhausen
- * Date: 14.06.2018
- * Time: 15:06
- */
+  session_start();
+  require_once("./classes/ShopwareHelper.php");
+  require_once("./classes/PlentyHelper.php");
+  require_once("./classes/LoginHelper.php");
 
-session_start();
-session_destroy();
-unset($_SESSION['userID']);
+  LoginHelper::set_logged_out_status();
 
-header('Location: ./?msg=logout');
+  header('Location: ./login.php');

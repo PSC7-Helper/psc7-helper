@@ -93,19 +93,12 @@ class ShopwareHelper{
         $allProducts = self::getAllProductObjectIdentifier();
         $html = "<div class=\"form-group\">
                   <label for=\"sel1\">Plenty ArtikelID und alle VariantenNr.</label>
-                  <select class='form-control' id='sel1' name='uuid'>";
-
-
+                  <select class=\"form-control selectpicker\" id=\"sel1\" name=\"uuid\" data-show-subtext=\"true\" data-live-search=\"true\">";
 
 
         foreach ($allProducts as $product){
-
             $uuid = $product['objectIdentifier'];
-            $str = $product['adapterIdentifier'];
-            $search = self::getAllOrdernummberOfArticleByObjectIdentifier($uuid);
-
-
-            $html.= "<option value='$uuid'>$str</option>";
+            $html.= "<option data-subtext=\"". self::getAllOrdernummberOfArticleByObjectIdentifier($uuid) ."\" value=".$uuid.">".$product['adapterIdentifier']."</option>";
         }
 
         $html .= "</select></div>";
@@ -194,13 +187,12 @@ class ShopwareHelper{
             $supplierName = $supplier['name'];
 
             if ($countArticles <= 0){
-                $rowHTMLClass = "table-warning";
-            }elseif ($supplierLogo =="nicht vorhanden"){
                 $rowHTMLClass = "table-danger";
-            }else{
+            } elseif ($supplierLogo == "nicht vorhanden"){
+                $rowHTMLClass = "table-warning";
+            } else {
                 $rowHTMLClass = "table-success";
             }
-
 
             $html .=
                 "<tr class='".$rowHTMLClass."'><form action=\"\" method='post' class='form-inline'>

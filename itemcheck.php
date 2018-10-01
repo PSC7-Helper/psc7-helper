@@ -7,7 +7,7 @@
  */
 include_once('./inc/header.php');
 
-
+error_reporting(E_ALL);
 
 if (isset($_POST["uuid"])){
     $uuid = $_POST["uuid"];
@@ -36,7 +36,7 @@ if (isset($_POST["backlog"])) {
         <div class="col-sm-12">
             <form class="form-connector" method="POST">
                 <?php
-                echo ShopwareHelper::getArticleSelectionHTML();
+                  echo ShopwareHelper::getArticleSelectionHTML();
                 ?>
                 <div class="form-check-inline">
                     <label class="form-check-label">
