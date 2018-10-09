@@ -1,17 +1,33 @@
 # PSC7-Helper
+
 Plentymarkets Shopware Connector 7 Helper Tool
 
 ### Installation:
-```sh
-cd /var/www/shopwareVerzeichnis/
-git clone https://github.com/michael-rusch/psc7-helper.git
-```
 
-### Nach der Installation:
+* Download the latest Version available in [tags on this repository](https://github.com/PSC7-Helper/psc7-helper/tags)
+* Extract the Files on your Webserver to `/var/www/shopwareVerzeichnis/psc7-helper` (Your path is maybe different)
+* Open the Interface via your Shop-URL: _www.IhreShopwareShopDomain.de_/psc7-helper/dashboard.php
+* There you go
 
-Öffnen Sie einafach in Ihrem Browser folgende URL: 
-www.IhreShopwareShopDomain.de/psc7-helper/dashboard.php
+**We highly recommend to integrate an .htaccess protection for this Folder.**
 
-Wir empfehlen jedoch, da aktuell noch kein Login in dem Projekt integriert ist, ein Verzeichnisschutz via .htaccess anzulegen.
+### Example for .htaccess Folder Protection
+You can find Instructions and Examples on the [htaccesstools.com](http://www.htaccesstools.com/articles/password-protection/) Website for Apache Server.
 
-Und schon kann es losgehen.
+If you use Nginx Server please contact your Hoster/Technical Department for configuration. 
+
+### Changelog
+
+For the upcomming Changes, see the [CHANGELOG.md](CHANGELOG.md)
+
+### Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/PSC7-Helper/psc7-helper/tags).
+
+### Todo
+- [ ] Autoinstaller integration for easy use
+- [ ] Login integration
+
+### License
+
+This project is licensed under the Apache License - see the [LICENSE.md](LICENSE.md) file for details
