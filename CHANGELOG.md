@@ -6,15 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- added [Changelog](CHANGELOG.md) file for Versioning
+- added ignores to gitignore
 
 ### Changed
 - Added basic [gitignore](.gitignore) Templates
+- Added infos to README + renamed LICENSE file
 
 ### Deprecated
 
 ### Removed
+- deleted files not needed for developer purpose  
 
 ### Fixed
+- fixed lineending to LF (more general)
 
 ### Security
 
