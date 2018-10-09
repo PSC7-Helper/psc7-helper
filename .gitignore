@@ -3,6 +3,8 @@ _.htaccess
 _.htpasswd
 .htpasswd
 test.php
+composer.lock
+vendor
 
 ### Windows template
 # Windows thumbnail cache files
