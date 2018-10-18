@@ -60,7 +60,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./dashboard.php"><img src="./inc/img/psc7-helper.png" style="height: 100%;">PSC7Helper</a>
+            <a class="navbar-brand" href="./dashboard.php"><img src="./inc/img/psc7-helper.png" style="height: 100%; margin-bottom: 5px;">PSC7Helper</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -75,11 +75,15 @@
                   <ul class="dropdown-menu">
                     <li <?php if ($filename == "ordercheck")    { echo ' class="active"'; } ?>><a href="./ordercheck.php">Bestellungen</a></li>
                     <li <?php if ($filename == "itemcheck")     { echo ' class="active"'; } ?>><a href="./itemcheck.php">Artikel</a></li>
+                      <li <?php if ($filename == "itemchecker")     { echo ' class="active"'; } ?>><a href="./itemchecker.php">Artikel (ohne JS)</a></li>
                     <li <?php if ($filename == "suppliercheck") { echo ' class="active"'; } ?>><a href="./suppliercheck.php">Hersteller</a></li>
                   </ul>
                 </li>
                 <li <?php if ($filename == "settings") { echo ' class="active"'; } ?>><a href="./settings.php">Einstellungen</a></li>
                 <li <?php if ($filename == "logout") { echo ' class="active"'; } ?>><a href="./logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+
+
               <?php } else { ?>
                 <!-- nicht eingeloggt -->
                 <li <?php if ($filename == "dashboard") { echo ' class="active"'; } ?>>

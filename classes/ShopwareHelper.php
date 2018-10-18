@@ -75,12 +75,12 @@ class ShopwareHelper{
         $allShopwareCatgories = self::getAllCategoriesShopware();
         $html = "<div class=\"form-group\">
                   <label for=\"sel1\">Artikel dieser Kategorie abgleichen:</label>
-                  <select class=\"form-control\" id=\"sel1\" name=\"s_categoryID\">";
+                  <select class=\"form-control selectpicker\" id=\"sel1\" name=\"s_categoryID\" data-show-subtext=\"true\" data-live-search=\"true\">";
 
 
         foreach ($allShopwareCatgories as $catgory){
 
-            $html.= "<option value=".$catgory['id'].">".$catgory['description']."</option>";
+            $html.= "<option value=".$catgory['id']."data-subtext=\"".$catgory['id'].">".$catgory['description']."</option>";
         }
 
         $html .= "</select></div>";
@@ -94,6 +94,24 @@ class ShopwareHelper{
         $html = "<div class=\"form-group\">
                   <label for=\"sel1\">Plenty ArtikelID und alle VariantenNr.</label>
                   <select class=\"form-control selectpicker\" id=\"sel1\" name=\"uuid\" data-show-subtext=\"true\" data-live-search=\"true\">";
+
+
+        foreach ($allProducts as $product){
+            $uuid = $product['objectIdentifier'];
+            $html.= "<option data-subtext=\"". self::getAllOrdernummberOfArticleByObjectIdentifier($uuid) ."\" value=".$uuid.">".$product['adapterIdentifier']."</option>";
+        }
+
+        $html .= "</select></div>";
+
+        return $html;
+
+    }
+
+    public static function getArticleSelectionHTMLNoJs(){
+        $allProducts = self::getAllProductObjectIdentifier();
+        $html = "<div class=\"form-group\">
+                  <label for=\"sel1\">Plenty ArtikelID und alle VariantenNr.</label>
+                  <select class=\"form-control\" id=\"sel1\" name=\"uuid\" data-show-subtext=\"true\">";
 
 
         foreach ($allProducts as $product){

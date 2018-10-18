@@ -2,6 +2,9 @@
     margin-right: auto;
     margin-left: auto;
 }
+.container{
+    min-height: 710px;
+}
 
 .form-connector{
     margin-bottom: 10px;

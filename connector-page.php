@@ -231,6 +231,7 @@ if (isset($_POST["backlog"])) {
             }
             if (!empty($action)) {
                 $cmd = CliHelper::prepareCommand($action);
+                echo $cmd."<br>";
                 CliHelper::liveExecuteCommand($cmd);
             }else{
                 echo "warte auf Befehl ...";

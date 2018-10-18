@@ -115,6 +115,18 @@ if (isset($_POST["backlog"])) {
                 ?>
             </div>
         </div>
+        <!--
+        <div class="row">
+            <div class="col-sm-24">
+                <pre>
+                    <?php
+                        //var_dump(ShopwareHelper::allArticleWithoutShopwareOrderNumber);
+                    ?>
+                </pre>
+            </div>
+
+        </div>
+        -->
 
 
     </div> <!-- /container -->
