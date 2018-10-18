@@ -24,7 +24,6 @@ if (isset($_POST["backlog"])) {
     $backlog = ($_POST["backlog"] == "on") ? true : false;
 }
 
-
 ?>
     <div class="container">
         <div class="row">
