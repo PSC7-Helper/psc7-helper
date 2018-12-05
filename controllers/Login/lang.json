@@ -1,0 +1,13 @@
+{
+    "de": {
+        "meta_title_index": "Anmeldung",
+        "meta_description_index": "Melden Sie sich ganz bequem mit Ihren Shopware-Zugangsdaten an dem PSC7 Helper an",
+        "message_loginhandler_invalid": "Anmeldung fehlgeschlagen",
+        "message_logout": "Erfolgreich abgemeldet",
+        "index_h1": "PSC7-Helper Login",
+        "index_input_username": "Benutzername",
+        "index_input_password": "Kennwort",
+        "index_info": "Für die Anmeldung kannst du ganz bequem deine Anmeldedaten aus Shopware nutzen.",
+        "index_button_submit": "Anmelden"
+    }
+}

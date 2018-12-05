@@ -1,0 +1,13 @@
+{
+    "de":
+    {
+        "meta_title_index": "Dashboard",
+        "meta_description_index": "Dashboard",
+        "meta_title_systeminfo": "System-Info",
+        "meta_description_systeminfo": "System-Info",
+        "meta_title_phpinfo": "phpinfo()",
+        "meta_description_phpinfo": "phpinfo()",
+        "meta_title_help": "Hilfe",
+        "meta_description_help": "Hilfe"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "de":
+    {
+        "cronjob_cardtitle": "Cronjobs",
+        "cronjob_table_cronjob": "Cronjob",
+        "cronjob_table_end": "Letzte Ausführung",
+        "cronjob_table_runtime": "Dauer",
+        "cronjob_table_status": "Status",
+        "cronjob_table_interval": "Interval",
+        "cronjob_table_next": "Interval Ausführung",
+        "cronjob_status_inactive": "inaktiv",
+        "cronjob_status_active": "aktiv",
+        "cronjob_status_notrunning": "überfällig",
+        "cronjob_status_null": "Fehler beheben: Cronjob bearbeiten und speichern",
+        "cronjob_link_title": "Bearbeiten"
+    }
+}

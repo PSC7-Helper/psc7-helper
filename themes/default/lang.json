@@ -1,0 +1,23 @@
+{
+    "de":
+    {
+        "dashboard": "Dashboard",
+        "systeminfo": "System-Info",
+        "phpinfo": "phpinfo()",
+        "help": "Hilfe",
+        "connector": "Connector",
+        "connectorcommands": "Connector-Befehle",
+        "connectoridentitys": "Connector Identitys",
+        "connectorlogfiles": "Connector Logfiles",
+        "connectorcronjobs": "Cronjobs verwalten",
+        "support": "Support",
+        "psc7ongithub": "PSC7-Helper auf Github",
+        "reportissues": "Probleme melden",
+        "connectordoc": "Connector-Doku",
+        "plentyforum": "Plenty-Forum",
+        "tools": "Tools",
+        "missingimages": "Fehlende Artikel-Bilder",
+        "owntools": "Eigene Tools programmieren",
+        "logout": "Abmelden"
+    }
+}

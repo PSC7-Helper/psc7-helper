@@ -1,0 +1,40 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>
+            {{cardtitle}}
+        </h5>
+    </div>
+    <div class="card-body">
+        <form action="{{formaction}}" method="post">
+            <input type="hidden" name="formname" value="identitys">
+            <input type="hidden" name="formkey" value="{{formkey}}">
+            <input type="hidden" name="formsecret" value="">
+            <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="search">{{search_label}}</label>
+                        <input class="form-control" type="text" name="search" value="" placeholder="{{search_label}}">
+                        <small id="search_help" class="form-text text-muted">{{search_help}}</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="column">{{column_label}}</label>
+                        <select class="form-control" id="column" name="column">
+                            <option value="objectIdentifier">objectIdentifier</option>
+                            <option value="adapterIdentifier">adapterIdentifier</option>
+                        </select>
+                        <small id="column_help" class="form-text text-muted">{{column_help}}</small>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-psc7" type="submit">{{btn_text}}</button>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body console-stream">
+        {{output}}
+    </div>
+</div>

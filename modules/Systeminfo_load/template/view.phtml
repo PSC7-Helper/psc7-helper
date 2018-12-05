@@ -1,0 +1,15 @@
+<div class="card h-100">
+    <div class="card-header">
+        <h5>
+            {{cardtitle}}
+        </h5>
+    </div>
+    <div class="card-body text-center">
+        <i class="fas fa-heartbeat fa-beat"></i> <span id="systeminfo-load">{{load}}</span>
+        <script>
+            $(document).ready (function(){
+                setInterval(systeminfoLoad, 5000);
+            });
+        </script>
+    </div>
+</div>

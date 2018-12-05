@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{meta_lang}}" class="{{html_class}} {{mobile_detect}}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="{{meta_viewport}}">
+        <title>500 Internal Server Error - {{meta_websitename}}</title>
+        <meta name="description" content="500 Internal Server Error">
+        <link rel="canonical" href="{{meta_canonical}}">
+        <meta name="robots" content="{{meta_robots}}">
+        <link rel="shortcut icon" href="{{meta_shortcuticon}}">
+        <link rel="apple-touch-icon" href="{{meta_appletouchicon}}">
+        <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/components/font-awesome/css/fontawesome-all.min.css">
+        {{meta_css}}
+        <script src="vendor/components/jquery/jquery.min.js"></script>
+        {{head_js}}
+    </head>
+    <body class="error-body {{body_class}}">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <main class="error-main">
+                        <div class="error-window">
+                            <h1>
+                                500
+                            </h1>
+                            <span class="error-info">
+                                Internal Server Error
+                            </span>
+                            <div class="error-logo">
+                                <a href="https://github.com/psc7-helper/psc7-helper" title="{{meta_websitename}}">
+                                    <img src="{{theme_path}}/images/logo-navbar.png" alt="{{meta_websitename}}">
+                                </a>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <footer class="login-footer mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mt-4">
+                        &copy; Copyright {{date_Y}} 
+                        <a href="https://github.com/michael-rusch" title="Michael Rusch @ GitHub">
+                            Michael Rusch
+                        </a>, 
+                        <a href="https://github.com/fwehrhausen" title="Florian Wehrhausen @ GitHub">
+                            Florian Wehrhausen
+                        </a>, 
+                        <a href="https://github.com/alea123" title="Waldemar Fraer @ GitHub">
+                            Waldemar Fraer
+                        </a>
+                    </div>
+                    <div class="col-12 text-center mt-2">
+                        <a href="https://github.com/psc7-helper/psc7-helper" title="PSC7-Helper @ GitHub">
+                            <img class="logo-copyright" src="{{theme_path}}/images/logo-copyright.png" alt="{{meta_websitename}}"> 
+                            PSC7-Helper @ GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        {{body_js}}
+    </body>
+</html>

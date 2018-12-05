@@ -1,0 +1,21 @@
+{
+    "de":
+    {
+        "buttons_cardtitle": "Kurzwahl-Befehle",
+        "buttons_backlog_empty": "Der Backlog ist leer",
+        "buttons_backlog_text": "Objekte im Backlog",
+        "buttons_backlog_info": "Backlog:",
+        "buttons_btn_backlog_info": "backlog:info",
+        "buttons_btn_backlog_process": "backlog:process",
+        "buttons_btn_process_product": "process Product",
+        "buttons_btn_process_stock": "process Stock",
+        "buttons_btn_process_order": "process Order",
+        "buttons_btn_process_category": "process Category",
+        "buttons_btn_mapping": "mapping",
+        "buttons_btn_sw_cache_clear": "sw:cache:clear",
+        "buttons_btn_sw_cron_list": "sw:cron:list",
+        "buttons_btn_sw_cron_run": "sw:cron:run",
+        "buttons_btn_sw_media_cleanup": "sw:media:cleanup",
+        "buttons_btn_sw_thumbnail_cleanup": "sw:thumb:cleanup"
+    }
+}

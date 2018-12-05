@@ -1,0 +1,44 @@
+@media(max-width:575px) {
+
+    .copyright-right {
+        margin-top: 1rem !important;
+    }
+
+}
+
+@media(min-width:576px) {
+
+    .copyright-right {
+        margin-top: 1rem !important;
+    }
+
+}
+
+@media(min-width:768px) {
+
+    .copyright-right {
+        margin-top: 1rem !important;
+    }
+
+}
+
+@media(min-width:992px) {
+    
+    .copyright-right {
+        margin-top: 0rem !important;
+    }
+
+}
+
+@media(min-width:1200px){
+
+    .copyright-left {
+        text-align: left !important;
+    }
+    
+    .copyright-right {
+        text-align: right !important;
+        margin-top: 0 !important;
+    }
+
+}

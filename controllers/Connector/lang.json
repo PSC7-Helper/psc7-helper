@@ -1,0 +1,15 @@
+{
+    "de":
+    {
+        "meta_title_index": "Connector-Befehle",
+        "meta_description_index": "Connector-Befehle",
+        "meta_title_identitys": "Connector Identitys",
+        "meta_description_identitys": "Connector Identitys",
+        "meta_title_logfiles": "Connector Logfiles",
+        "meta_description_logfiles": "Connector Logfiles",
+        "meta_title_cronjobs": "Cronjobs verwalten",
+        "meta_description_cronjobs": "Cronjobs verwalten",
+        "meta_title_cronjobsedit": "CronJobs verwalten",
+        "meta_description_cronjobsedit": "CronJobs verwalten"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "de":
+    {
+        "logfiles_cardtitle": "Logfiles",
+        "logfiles_logfile_label": "Datei",
+        "logfiles_logfile_help": "Auflistung der letzten Logs unter /var/log/.",
+        "logfiles_logfile_empty": "Keine Logfiles vorhanden",
+        "logfiles_filter_label": "Filter",
+        "logfiles_filter_help": "Es werden nur Einträge aufgelistet die dem Filter entsprechen.",
+        "logfiles_btn_text": "Anzeigen",
+        "logfiles_file_stream": "Wait for command...",
+        "logfiles_file_nostream": "No entries available for"
+    }
+}

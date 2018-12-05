@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="{{meta_lang}}" class="{{html_class}} {{mobile_detect}}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="{{meta_viewport}}">
+        <title>{{meta_title}} - {{meta_websitename}}</title>
+        <meta name="description" content="{{meta_description}}">
+        <link rel="canonical" href="{{meta_canonical}}">
+        <meta name="robots" content="{{meta_robots}}">
+        <link rel="shortcut icon" href="{{meta_shortcuticon}}">
+        <link rel="apple-touch-icon" href="{{meta_appletouchicon}}">
+        <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/components/font-awesome/css/fontawesome-all.min.css">
+        {{meta_css}}
+        <script src="vendor/components/jquery/jquery.min.js"></script>
+        {{head_js}}
+    </head>
+    <body class="{{body_class}}">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container mt-2 mb-2">
+                    <a class="navbar-brand" href="index.php?controller=dashboard" title="{{meta_websitename}}">
+                        <img src="{{theme_path}}/images/logo-navbar.png" alt="{{meta_websitename}}">
+                    </a>
+                    
+                    <a class="navbar-toggler float-right" href="#nav">
+                        <span class="navbar-toggler-icon"></span>
+                    </a>
+                    
+                    <div class="collapse navbar-collapse" id="navbarToggler">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>
+                                        {{dashboard}}
+                                    </strong>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="index.php?controller=dashboard&amp;action=index" title="{{dashboard}}">
+                                        {{dashboard}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=dashboard&amp;action=systeminfo" title="{{systeminfo}}">
+                                        {{systeminfo}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=dashboard&amp;action=phpinfo" title="{{phpinfo}}">
+                                        {{phpinfo}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=dashboard&amp;action=help" title="{{help}}">
+                                        {{help}}
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>
+                                        {{connector}}
+                                    </strong>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="index.php?controller=connector&amp;action=index" title="{{connectorcommands}}">
+                                        {{connectorcommands}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=connector&amp;action=identitys" title="{{connectoridentitys}}">
+                                        {{connectoridentitys}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=connector&amp;action=logfiles" title="{{connectorlogfiles}}">
+                                        {{connectorlogfiles}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=connector&amp;action=cronjobs" title="{{connectorcronjobs}}">
+                                        {{connectorcronjobs}}
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>
+                                        {{support}}
+                                    </strong>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="https://github.com/psc7-helper/psc7-helper" target="_blank" title="{{psc7ongithub}}">
+                                        {{psc7ongithub}}
+                                    </a>
+                                    <a class="dropdown-item" href="https://github.com/psc7-helper/psc7-helper/issues/" target="_blank" title="{{reportissues}}">
+                                        {{reportissues}}
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="https://docs.google.com/document/d/10mPeV3xqx4We71dYQdPmJK2qvb21Rpym6FG_tKwHKfc/edit" target="_blank" title="{{connectordoc}}">
+                                        {{connectordoc}}
+                                    </a>
+                                    <a class="dropdown-item" href="https://forum.plentymarkets.com/t/community-projekt-psc7-helper/" target="_blank" title="{{plentyforum}}">
+                                        {{plentyforum}}
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>
+                                        {{tools}}
+                                    </strong>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="index.php?controller=tools&amp;action=corruptimages" title="{{missingimages}}">
+                                        {{missingimages}}
+                                    </a>
+                                    <a class="dropdown-item" href="index.php?controller=tools&amp;action=info" title="{{owntools}}">
+                                        {{owntools}}
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ml-auto d-none d-lg-inline-block">
+                        <a href="index.php?controller=logout" title="{{logout}}">
+                            <i class="fas fa-sign-out-alt"></i> {{logout}}
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <hr class="hr-after-header">
+        <main class="main">
+            <div class="container">
+                {{CONTROLLERACTION}}
+            </div>
+        </main>
+        <hr class="hr-befor-footer">
+        <footer id="nav" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mt-4 mb-4 footer-logo">
+                        <a href="https://github.com/psc7-helper/psc7-helper" target="_blank" title="{{meta_websitename}}">
+                            <img src="{{theme_path}}/images/logo-footer.png" alt="{{meta_websitename}}">
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-6 text-center text-sm-left">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <strong>
+                            {{dashboard}}
+                        </strong>
+                        <hr class="hr-befor-ul">
+                        <ul>
+                            <li>
+                                <a class="d-inline d-lg-none" href="index.php?controller=dashboard&amp;action=phpinfo" title="{{logout}}">
+                                    <strong>
+                                        {{logout}}
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=dashboard&amp;action=index" title="{{dashboard}}">
+                                    {{dashboard}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=dashboard&amp;action=systeminfo" title="{{systeminfo}}">
+                                    {{systeminfo}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=dashboard&amp;action=phpinfo" title="{{phpinfo}}">
+                                    {{phpinfo}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=dashboard&amp;action=help" title="{{help}}">
+                                    {{help}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-sm-0">
+                        <strong>
+                            {{connector}}
+                        </strong>
+                        <hr class="hr-befor-ul">
+                        <ul>
+                            <li>
+                                <a href="index.php?controller=connector&amp;action=index" title="{{connectorcommands}}">
+                                    {{connectorcommands}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=connector&amp;action=identitys" title="{{connectoridentitys}}">
+                                    {{connectoridentitys}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=connector&amp;action=logfiles" title="{{connectorlogfiles}}">
+                                    {{connectorlogfiles}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=connector&amp;action=cronjobs" title="{{connectorcronjobs}}">
+                                    {{connectorcronjobs}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
+                        <strong>
+                            {{support}}
+                        </strong>
+                        <hr class="hr-befor-ul">
+                        <ul>
+                            <li>
+                                <a href="https://github.com/psc7-helper/psc7-helper" target="_blank" title="{{psc7ongithub}}">
+                                    {{psc7ongithub}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/psc7-helper/psc7-helper/issues/" target="_blank" title="{{reportissues}}">
+                                    {{reportissues}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.google.com/document/d/10mPeV3xqx4We71dYQdPmJK2qvb21Rpym6FG_tKwHKfc/edit" target="_blank" title="{{connectordoc}}">
+                                    {{connectordoc}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://forum.plentymarkets.com/t/community-projekt-psc7-helper/" target="_blank" title="{{plentyforum}}">
+                                    {{plentyforum}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mt-4 mt-lg-0">
+                        <strong>
+                            {{tools}}
+                        </strong>
+                        <hr class="hr-befor-ul">
+                        <ul>
+                            <li>
+                                <a href="index.php?controller=tools&amp;action=corruptimages" title="{{missingimages}}">
+                                    {{missingimages}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?controller=tools&amp;action=info" title="{{owntools}}">
+                                    {{owntools}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="hr-befor-copyright">
+                <div class="row">
+                    <div class="col-12 col-lg-8 copyright-left">
+                        &copy; Copyright {{date_Y}} 
+                        <a href="https://github.com/michael-rusch" target="_blank" title="Michael Rusch @ GitHub">
+                            Michael Rusch
+                        </a>, 
+                        <a href="https://github.com/fwehrhausen" target="_blank" title="Florian Wehrhausen @ GitHub">
+                            Florian Wehrhausen
+                        </a>, 
+                        <a href="https://github.com/alea123" target="_blank" title="Waldemar Fraer @ GitHub">
+                            Waldemar Fraer
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-4 copyright-right">
+                        {{version}}
+                        <a href="https://github.com/psc7-helper/psc7-helper" target="_blank" title="PSC7-Helper @ GitHub">
+                            <img class="logo-copyright" src="{{theme_path}}/images/logo-copyright.png" alt="{{meta_websitename}}"> 
+                            PSC7-Helper @ GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        {{body_js}}
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <main class="login-main">
+                        <div class="login-window">
+                            <div class="login-logo">
+                                <a href="https://github.com/psc7-helper/psc7-helper" title="{{meta_websitename}}">
+                                    <img src="{{theme_path}}/images/logo-login.png" alt="{{meta_websitename}}">
+                                </a>
+                            </div>
+                            <h1>{{index_h1}}</h1>
+                            <div id="alert">{{message}}</div>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="formname" value="login">
+                                <input type="hidden" name="formkey" value="{{formkey}}">
+                                <input type="hidden" name="formsecret" value="">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="username" value="" placeholder="{{index_input_username}}" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="password" value="" placeholder="{{index_input_password}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <span class="login-info">
+                                        {{index_info}}
+                                    </span>
+                                </div>
+                                <button class="btn btn-psc7" type="submit">{{index_button_submit}}</button>
+                            </form>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>        

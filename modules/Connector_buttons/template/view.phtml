@@ -1,0 +1,145 @@
+<div class="card h-100">
+    <div class="card-header">
+        <div class="float-right">
+            <span class="d-none d-sm-inline">
+                {{backlogcount}}
+            </span>
+        </div>
+        <h5>
+            {{cardtitle}}
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="backlog_info">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="0">
+                    <input type="hidden" name="option_backlog" value="0">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_backlog_info_title}}">{{btn_backlog_info}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="backlog_process">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="1">
+                    <input type="hidden" name="option_backlog" value="0">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_backlog_process_title}}">{{btn_backlog_process}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="process_product">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="1">
+                    <input type="hidden" name="option_backlog" value="1">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_process_product_title}}">{{btn_process_product}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="process_stock">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="1">
+                    <input type="hidden" name="option_backlog" value="1">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_process_stock_title}}">{{btn_process_stock}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="process_order">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="1">
+                    <input type="hidden" name="option_backlog" value="1">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_process_order_title}}">{{btn_process_order}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="process_category">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="1">
+                    <input type="hidden" name="option_backlog" value="1">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_process_category_title}}">{{btn_process_category}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="mapping">
+                    <input type="hidden" name="option_all" value="0">
+                    <input type="hidden" name="option_vvv" value="0">
+                    <input type="hidden" name="option_backlog" value="0">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_mapping_title}}">{{btn_mapping}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swcacheclear">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swcacheclear_title}}">{{btn_swcacheclear}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swcronlist">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swcronlist_title}}">{{btn_swcronlist}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-4 mt-sm-0">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swcronrun">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swcronrun_title}}">{{btn_swcronrun}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-4 mt-lg-0">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swmediacleanup">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swmediacleanup_title}}">{{btn_swmediacleanup}}</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-4 mt-lg-0">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swthumbnailcleanup">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swthumbnailcleanup_title}}">{{btn_swthumbnailcleanup}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

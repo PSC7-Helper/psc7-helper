@@ -1,15 +1,37 @@
 {
-    "name": "michael/psc7-helper",
-    "description": "Plentymarkets Shopware Connector 7 Helper Tool",
+    "name": "PSC7-Helper/psc7-helper",
     "authors": [
         {
             "name": "Michael Rusch",
-            "email": "michael.rusch@amuar.de"
+            "email": "michael@rusch.sh"
+        },
+        {
+            "name": "Florian Wherhausen",
+            "email": "fw-98@web.de"
+        },
+        {
+            "name": "Waldemar Fraer",
+            "email": "waldemar@lumizil.de"
         }
     ],
-    "minimum-stability": "stable",
+    "support": {
+        "source": "https://github.com/PSC7-Helper/psc7-helper",
+        "issues": "https://github.com/PSC7-Helper/psc7-helper/issues",
+        "forum": "https://forum.plentymarkets.com/t/community-projekt-psc7-helper/"
+    },
+    "license": "Apache License 2.0",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "psc7helper\\App\\": "app/",
+            "psc7helper\\Controller\\": "controllers/",
+            "psc7helper\\Module\\": "modules/"
+        }
+    },
     "require": {
-		"components/jquery": "3.2.1",
-        "components/jqueryui": "1.12.1"
-	}
+        "components/jquery": "3.*",
+        "twbs/bootstrap": "4.*",
+        "components/font-awesome": "5.*",
+        "mobiledetect/mobiledetectlib": "2.*"
+    }
 }

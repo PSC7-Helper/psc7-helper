@@ -1,0 +1,142 @@
+#
+# This file is part of the psc7-helper/psc7-helper
+# 
+# PSC7-Helper
+# Copyright (c) 2018 Michael Rusch, Florian Wehrhausen, Waldemar Fraer
+# 
+# @link https://github.com/PSC7-Helper/psc7-helper
+# @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
+# 
+# @author Michael Rusch <michael@rusch.sh>
+# @author Florian Wehrhausen <fw-98@web.de>
+# @author Waldemar Fraer <waldemar@lumizil.de>
+#
+
+<IfModule mod_headers.c>
+    ServerSignature Off
+    Header set Connection keep-alive
+    Header set X-Frame-Options DENY
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Security-Policy "allow 'self';"
+    Header set X-Content-Type-Options "nosniff"
+    Header append Vary Accept-Encoding
+    <FilesMatch "\.(php|html|css|js|ico|png|jpg|gif|svg)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 month"
+    ExpiresByType text/xml "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/js "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"    
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+<IfModule mod_gzip.c>
+    mod_gzip_on Yes
+    mod_gzip_dechunk Yes
+    mod_gzip_item_include file \.(php|html|css|js)$
+    mod_gzip_item_include handler ^cgi-script$
+    mod_gzip_item_include mime ^application/x-javascript.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE image/png
+    AddOutputFilterByType DEFLATE image/jpg
+    AddOutputFilterByType DEFLATE image/gif
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /psc7-helper/
+    Options +FollowSymLinks
+
+    #Force www befor domain.
+    #This is not necessary. The Helper is also not a public part of the shop.
+    #RewriteCond %{HTTP_HOST} !^www\. [NC]    
+    #RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+    #Force SSL
+    #This is necessary.
+    #RewriteCond %{SERVER_PORT} !=443
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+    RewriteCond %{REQUEST_URI} !(\/(app|config|controllers|modules|themes|var|vendor)\/)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?controller=$1&action=$2&param=$3 [L]
+</IfModule>
+
+<files app>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files config>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files controllers>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files modules>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files themes>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files var>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files vendor>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files composer.json>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files composer.lock>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files README.md>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files VERSION>
+    Order allow,deny
+    Deny from all
+</files>

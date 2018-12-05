@@ -1,0 +1,63 @@
+<div id="alert">
+    {{message}}
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="float-right">
+            <a href="{{abort_link}}" title="{{abort_text}}">
+                <i class="far fa-arrow-alt-circle-left"></i> {{abort_text}}
+            </a>
+        </div>
+        <h5>
+            {{cardtitle}} {{name}} {{status}}
+        </h5>
+    </div>
+    <div class="card-body">
+        <form style="display: inline;" action="{{formaction}}" method="post">
+            <input type="hidden" name="formname" value="cronjobedit">
+            <input type="hidden" name="formkey" value="{{formkey}}">
+            <input type="hidden" name="cronjobid" value="{{id}}">
+            <input type="hidden" name="formsecret" value="">
+            <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="next">{{next_label}}</label>
+                        <input class="form-control" id="datepicker" type="text" name="next" value="{{next}}" placeholder="{{next}}">
+                        <small id="next_help" class="form-text text-muted">{{next_help}}</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="interval">{{interval_label}}</label>
+                        <input class="form-control" type="number" name="interval" value="{{interval}}" min="1" max="86400" placeholder="{{interval}}">
+                        <small id="interval_help" class="form-text text-muted">{{interval_help}}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="disable_on_error">{{disable_on_error_label}}</label>
+                        <input class="form-control" type="number" name="disable_on_error" value="{{disable_on_error}}" min="0" max="1" placeholder="{{disable_on_error}}">
+                        <small id="disable_on_error_help" class="form-text text-muted">{{disable_on_error_help}}</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="inform_mail">{{inform_mail_label}}</label>
+                        <input class="form-control" type="email" name="inform_mail" value="{{inform_mail}}" placeholder="{{inform_mail}}">
+                        <small id="inform_mail_help" class="form-text text-muted">{{inform_mail_help}}</small>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-psc7" type="submit">{{submit_text}}</button>
+        </form>
+        <form style="display: inline;" action="{{formaction}}" method="post">
+            <input type="hidden" name="formname" value="cronjobdeactivation">
+            <input type="hidden" name="formkey" value="{{formkey}}">
+            <input type="hidden" name="cronjobid" value="{{id}}">
+            <input type="hidden" name="formsecret" value="">
+            <button class="btn btn-psc7-red" type="submit">{{deactivate_btn_text}}</button>
+        </form>
+    </div>
+</div>

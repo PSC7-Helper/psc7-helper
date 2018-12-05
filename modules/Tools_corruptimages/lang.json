@@ -1,0 +1,12 @@
+{
+    "de":
+    {
+        "corruptimages_cardtitle": "Fehlende Artikel-Bilder",
+        "corruptimages_info_text": "Die Liste enthält Bilder, die zwar in der Datenbank einem Artikel zugeordnet sind, aber das Bild nicht auf dem Server zu finden ist.<br>Das Bild kann repariert werden, indem der Artikel anhand der plentyID im Bereich Connector-Befehle neu synchonisiert wird.",
+        "corruptimages_imageid": "ID",
+        "corruptimages_image": "Fehlendes Bild",
+        "corruptimages_shopwareid": "ArtikelID",
+        "corruptimages_ordernumber": "Artikelnummer",
+        "corruptimages_plentyid": "plentyID"
+    }
+}

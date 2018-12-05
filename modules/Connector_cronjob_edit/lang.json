@@ -1,0 +1,29 @@
+{
+    "de":
+    {
+        "cronjob_edit_cardtitle": "Cronjob",
+        "cronjob_edit_message_update_succsess": "Cronjob erfolgreich aktualisiert",
+        "cronjob_edit_message_update_error": "Es ist ein Fehler aufgetreten",
+        "cronjob_edit_message_deactivation_succsess": "Cronjob wurde erfolgreich deaktiviert",
+        "cronjob_edit_message_deactivation_error": "Es ist ein Fehler aufgetreten",
+        "cronjob_edit_message_activation_succsess": "Cronjob wurde erfolgreich aktiviert",
+        "cronjob_edit_message_activation_error": "Es ist ein Fehler aufgetreten",
+        "cronjob_edit_status_inactive": "inaktiv",
+        "cronjob_edit_status_active": "aktiv",
+        "cronjob_edit_status_notrunning": "überfällig",
+        "cronjob_edit_abort_href": "index.php?controller=connector&amp;action=cronjobs",
+        "cronjob_edit_abort_text": "Übersicht",
+        "cronjob_edit_next_label": "Nächste Ausführung",
+        "cronjob_edit_next_help": "Format: Y-m-d H:i:s. Die Ausführung kann mit dieser Angabe erzwungen (Datum in der Vergangenheit) oder verschoben (Datum in der Zukunft) werden.",
+        "cronjob_edit_interval_label": "Interval",
+        "cronjob_edit_interval_help": "Die Angabe erfolgt in Sekunden. Hinweis: Hat der Shopware-Cronjob bereits einen hohen Interval (10 min. = 600 sec.) wird auch dieser Cronjob nicht früher ausgeführt.",
+        "cronjob_edit_disable_on_error_label": "Bei Fehlern deaktivieren",
+        "cronjob_edit_disable_on_error_help": "0 = Nicht deaktivieren, 1 = Bei Fehlern deaktivieren. Andere Werte sind nicht möglich. Solle bei der Ausführung ein Fehler auftreten wird dieser Cronjob von Shopware deaktiviert.",
+        "cronjob_edit_inform_mail_label": "E-Mail-Adresse bei Fehlern",
+        "cronjob_edit_inform_mail_help": "Hier sollte immer eine E-Mail-Adresse eingetragen werden. Bei Fehlern wird eine Nachticht an diese E-Mail-Adresse versendet. Aktives E-Mail-Konto verwenden!",
+        "cronjob_edit_btn_submit_text": "Speichern",
+        "cronjob_edit_btn_deactivate_text": "Deaktivieren",
+        "cronjob_edit_inactive_text": "Dieser Cronjob ist nicht aktiv. Prüfen Sie vor dem Aktivieren ob Ihr Administrator dies so beabsichtigt hat, oder ob hier ein Connector-Fehler vorliegt.",
+        "cronjob_edit_btn_inactive_text": "Aktivieren"
+    }
+}

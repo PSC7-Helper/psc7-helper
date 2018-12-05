@@ -1,0 +1,9 @@
+{
+    "de":
+    {
+        "singlesync_cardtitle": "Artikel Sync",
+        "singlesync_poduct_label": "Artikel-ID / Varianten-ID",
+        "singlesync_poduct_placeholder": "plenty Artikel-ID oder Varianten-ID",
+        "singlesync_btn_text": "Synchonisieren"
+    }
+}

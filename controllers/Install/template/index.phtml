@@ -1,0 +1,31 @@
+<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <main class="login-main">
+                        <div class="login-window">
+                            <div class="login-logo">
+                                <a href="https://github.com/psc7-helper/psc7-helper" title="{{meta_websitename}}">
+                                    <img src="{{theme_path}}/images/logo-login.png" alt="{{meta_websitename}}">
+                                </a>
+                            </div>
+                            <h1>{{index_h1}}</h1>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="formname" value="install">
+                                <input type="hidden" name="formkey" value="{{formkey}}">
+                                <input type="hidden" name="formsecret" value="">
+                                <div class="form-group">
+                                    <label for="phppath">{{index_label_phppath}}</label>
+                                    <input class="form-control" type="text" name="phppath" value="{{index_input_value}}" placeholder="{{index_input_phppath}}" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <span class="login-info">
+                                        {{index_info}}
+                                    </span>
+                                </div>
+                                <button class="btn btn-psc7" type="submit">{{index_button_submit}}</button>
+                            </form>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>        

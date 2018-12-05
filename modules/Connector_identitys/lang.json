@@ -1,0 +1,13 @@
+{
+    "de":
+    {
+        "identitys_cardtitle": "Identitys",
+        "identitys_search_label": "Suchbegriff",
+        "identitys_search_help": "Beispiel adapterIdentifier: Artikelnummer, plenty-ID, Artikel-ID, oder andere ID´s.<br>Beispiel objectIdentifier: fedcba09-abcd-1234-5678-01234567890a",
+        "identitys_column_label": "Datenbank-Spalte",
+        "identitys_column_help": "Auswahl der Datenbank-Spalte in der gesucht werden soll. Der im Log angegebene payload befindet sich in der Spalte objectIdentifier.",
+        "identitys_btn_text": "Suchen",
+        "identitys_output": "Wait for command...",
+        "identitys_output_empty": "No result for"
+    }
+}

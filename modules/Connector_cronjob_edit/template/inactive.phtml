@@ -1,0 +1,26 @@
+<div id="alert">
+    {{message}}
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="float-right">
+            <a href="{{abort_link}}" title="{{abort_text}}"><i class="far fa-arrow-alt-circle-left"></i> {{abort_text}}
+            </a>
+        </div>
+        <h5>
+            {{cardtitle}} {{name}} {{status}}
+        </h5>
+    </div>
+    <div class="card-body">
+        <form action="{{formaction}}" method="post">
+            <input type="hidden" name="formname" value="cronjobactivation">
+            <input type="hidden" name="formkey" value="{{formkey}}">
+            <input type="hidden" name="cronjobid" value="{{id}}">
+            <input type="hidden" name="formsecret" value="">
+            <p>
+                {{inactive_text}}
+            </p>
+            <button class="btn btn-psc7" type="submit">{{inactive_btn_text}}</button>
+        </form>
+    </div>
+</div>

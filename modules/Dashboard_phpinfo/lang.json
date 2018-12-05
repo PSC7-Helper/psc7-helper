@@ -1,0 +1,9 @@
+{
+    "de":
+    {
+        "phpinfo_cardtitle": "phpinfo()",
+        "phpinfo_noiframe": "Die Sicherheitseinstellungen des Servers erlauben das Laden externer Inhalte nicht.",
+        "phpinfo_noiframe_link": "info.php",
+        "phpinfo_noiframe_text": "In neuem Fenster öffnen"
+    }
+}

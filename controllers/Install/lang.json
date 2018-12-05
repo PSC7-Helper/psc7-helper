@@ -1,0 +1,11 @@
+{
+    "de": {
+        "meta_title_index": "Installation",
+        "meta_description_index": "Installation",
+        "index_h1": "Installation",
+        "index_label_phppath": "Pfad zu php",
+        "index_input_phppath": "Konsolen-Pfad zu php",
+        "index_info": "Der Pfad zu php über die Konsole muss korrekt angegeben werden damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad 'php'. Bei Web-Hosting-Paketen kann der Pfad abweichen. Typisch sind '/usr/bin/php', '/usr/bin/php70' oder ähnlich. Folgender Befehl gibt eine Liste mit möglichen Pfaden zurück:<br>find /usr/bin -name php* -print",
+        "index_button_submit": "Speichern"
+    }
+}

@@ -1,0 +1,4 @@
+# robots.txt for PSC7-Helper
+
+User-agent: *
+Disallow: /

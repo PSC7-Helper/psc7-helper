@@ -1,0 +1,23 @@
+{
+    "de":
+    {
+        "help_1_header": "Dashboard",
+        "help_1_text": "Auf dem Dashbord landest du immer nach der Anmeldung. Hier hast du einige wichtige Informationen auf den ersten Blick zusammengefasst. Der Backlog wird live berechnet und ist nach jedem Klick aktuell. Die Übersicht der Cronjobs zeigt dir ob alle Prozesse korrekt laufen. Sollten nicht alle Cronjobs aktiv sein kann das unter Umständen von dem Administrator deines Systems so gewollt sein. Sprich mit deinem Administrator bevor du Änderungen an den Cronjobs vornimmst.",
+        "help_2_header": "System-Info",
+        "help_2_text": "In diesem Bereich erhälst du eine Übersicht zu relevanten Informationen zu deinem Server, Shopware und dem Connector. Die Anzeige - Server-Auslastung - aktualisiet sich alle 5 Sekunden automatisch. Bei einigen Anbietern wird diese Anzeige nicht unterstützt. Auch die Anzeige - Webserver - wird aus Sicherheitsgründen nicht von allen Anbietern unterstützt. Alle Informationen können dir bei der Suche nach Problemen helfen. Gebe aber diese Informationen nicht unachtsam weiter, da diese Sicherheitsrelevant sind.",
+        "help_3_header": "phpinfo()",
+        "help_3_text": "Die PHP-Funktion phpinfo() wird aufgerufen und zeigt alle Informationen zu PHP an. Der Aufruf funktioniert nur nach dem Anmelden an den Helper. Ohne Anmeldung kann aus Sicherheitsgründen darauf nicht zugegriffen werden.",
+        "help_4_header": "Connector-Befehle",
+        "help_4_text": "Das Herzstück des Helpers ist der Bereich Connector-Befehle. Die hier in einfache Buttons gepackte Kurzwahl-Befehle helfen dir ohne Verwendung der Konsole die Standard-Befehle des Connectors mit einem Klick auszuführen.<br><br>Mit den Artikel Sync kannst du einen einzelnen Artikel oder Variante synchonisieren.",
+        "help_5_header": "Connector Identitys",
+        "help_5_text": "In den Logfiles findet sich immer wieder der Begriff payload. In diesem Bereich kannst du danach suchen. Zusammen mit dem Filter objectIdentifier bekommst du eine Liste mit Informationen zu dem payload angezeigt.<br><br>Mit dem Filter adapterIdentifier kannst du z. B. nach ID´s zu Artikeln, Varianten, Bestellungen, usw. suchen.",
+        "help_6_header": "Connector Logfiles",
+        "help_6_text": "Logfiles auswählen und Suchfilter-Filter setzten, einfacher geht es kaum. Du kannst die Logfiles des Connector im Helper ohne herunterladen direkt einsehen und dabei ganz bequem zwischen 3 Such-Filtern wählen.",
+        "help_7_header": "Cronjobs verwalten",
+        "help_7_text": "Die Cronjobs sind ein wichtiger Teil des Connectors. Ohne die Cronjobs funktioniert nichts automatisch. Die Übersicht der Cronjobs zeigt dir ob alle Prozesse korrekt laufen. Sollten nicht alle Cronjobs aktiv sein kann das unter Umständen von dem Administrator deines Systems so gewollt sein. Sprich mit deinem Administrator bevor du Änderungen an den Cronjobs vornimmst.<br><br>Sollte bei einem Cronjob der Wert NULL zu sehen sein gab es ein Problem bei der Ausführung. In diesem Fall kannst du den Fehler beheben indem du den Cronjob zur Bearbeitung öffnest und einfach ohne Änderungen speicherst.",
+        "help_8_header": "Support",
+        "help_8_text": "<strong>PSC7-Helper auf Github</strong><br>Der PSC7-Helper ist ein Open-Source-Projekt auf GitHub. Du kannst gerne mitmachen.<br><br><strong>Probleme melden</strong><br>Melde bitte alle Fehler auf <a href=\"https://github.com/psc7-helper/psc7-helper/issues/\" target=\"_new\">GitHub</a>. Nur so können wir den Helper verbessern.<br><br><strong>Connector-Doku</strong><br>Hier kommst du zu der externen Seite mit der offiziellen <a href=\"https://docs.google.com/document/d/10mPeV3xqx4We71dYQdPmJK2qvb21Rpym6FG_tKwHKfc/edit\" target=\"_new\">Dokumentation des PSC7 Connectors</a> von <a href=\"https://www.arvatis.com\" target=\"_new\">Avatis</a>.<br><br><strong>Plenty-Forum</strong><br>Das Plenty-Forum ist das offizielle Forum von plentyMarkets. Neben GitHub kannst du auch hier mit uns über den Helper diskutieren. In dem Forum haben wir für den Helper <a href=\"https://forum.plentymarkets.com/t/community-projekt-psc7-helper/496013\" target=\"_new\">ein eigenes Thema</a> angelegt.",
+        "help_9_header": "Fehlende Artikel-Bilder",
+        "help_9_text": "Dieses Tool ist bereits die erste Erweiterung des Helpers. Das Tool listet Bilder auf die zwar in der Datenbank einem Artikel zugeordnet sind, aber das Bild nicht auf dem Server zu finden ist. Die Liste enthält die plentyID. Mit dieser ID kann der Artikel einfach über den Helper synchonisiert werden."
+    }
+}
