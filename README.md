@@ -7,11 +7,11 @@
 
 ### Über den PSC7-Helper
 
-Wir gehen mal davon aus, dass du plentymarkets und zusätzlich Shopware als externes Shop-System verwendest. Das Shopware-Plugin "[plentymarkets Shopware Connector](https://store.shopware.com/plenty00735f/plentymarkets-shopware-connector.html)" von [arvatis](https://www.arvatis.com/) hast du auch schon installiert.
+Wir gehen mal davon aus, dass du plentymarkets und zusätzlich Shopware als externes Shop-System verwendest. Das Shopware-Plugin "[plentymarkets Shopware Connector](https://store.shopware.com/plenty00735f/plentymarkets-shopware-connector.html)" von [arvatis](https://www.arvatis.com/) hast du auch dann auch schon installiert.
 
 Bei dieser Konstellation musst du dich leider auch mit Linux, der Secure Shell (SSH) und der Eingabe von SSH Commands beschäftigen. Hört sich spannend an? Nein? Dann nutze einfach unseren Helper.
 
-In dem Helper kannst du viele Befehle einfach auf Knopfdruck auslösen. Und weil wir richtig Langeweile hatten, gibt es auch eine Reihe weiterer netter Funktionen, die dir den Alltag mit dem Connector entspannter machen.
+In dem Helper kannst du viele Befehle einfach per Knopfdruck auslösen. Und weil wir richtig Langeweile hatten, gibt es auch eine Reihe weiterer netter Funktionen, die dir den Alltag mit dem Connector entspannter gestalten sollen.
 
 ##
 
@@ -21,7 +21,9 @@ Wir setzen voraus, dass das Konstrukt aus plentymarkets, eigener Mandant für Sh
 
 Du hast einen FTP- und einen SSH-Zugang zu deinem Server.
 
-Bei der Installation des Helpers muss du den Pfad zu php auf deinem Server angeben. Der Pfad zu php über die Konsole muss korrekt angegeben werden, damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad `php`. Bei Web-Hosting-Paketen kann der Pfad abweichen. Typisch dort sind `/usr/bin/php`, `/usr/bin/php70` oder ähnlich. Folgender Befehl gibt eine Liste mit möglichen Pfaden zurück: `find /usr/bin -name php* -print`.
+**Bei der Installation des Helpers muss du den Pfad zu php auf deinem Server angeben.**
+
+Der Pfad zu php über die Konsole muss korrekt angegeben werden, damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad `php`. Bei Web-Hosting-Paketen kann der Pfad abweichen. Typisch dort sind `/usr/bin/php`, `/usr/bin/php70` oder ähnlich. Folgender Befehl gibt eine Liste mit möglichen Pfaden zurück: `find /usr/bin -name php* -print`.
 
 Der Helper muss später zwingend in einem Unterordner deiner Shopware-Installation liegen. Der Helper muss also über `https://www.deincoolershop.de/psc7-helper/` erreichbar sein. Den Namen des Ordners kannst du später ändern.
 
