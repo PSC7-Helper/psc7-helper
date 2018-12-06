@@ -17,9 +17,9 @@ In dem Helper kannst du viele Befehle einfach auf Knopfdruck auslösen. Und weil
 
 ### Voraussetzung
 
-Wir setzen voraus, dass das Konstrukt aus plentymarkets, eigener Mandant für Shopware, Shopware und Connector bereits funktionieren.
+Wir setzen voraus, dass das Konstrukt aus plentymarkets, eigener Mandant für Shopware, Shopware und Connector bereits funktioniert.
 
-Du benötigst einen FTP- und einen SSH-Zugang zu deinem Server.
+Du hast einen FTP- und einen SSH-Zugang zu deinem Server.
 
 Bei der Installation des Helpers muss du den Pfad zu php auf deinem Server angeben. Der Pfad zu php über die Konsole muss korrekt angegeben werden, damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad `php`. Bei Web-Hosting-Paketen kann der Pfad abweichen. Typisch dort sind `/usr/bin/php`, `/usr/bin/php70` oder ähnlich. Folgender Befehl gibt eine Liste mit möglichen Pfaden zurück: `find /usr/bin -name php* -print`.
 
