@@ -35,7 +35,7 @@ Der Helper muss später zwingend in einem Unterordner deiner Shopware-Installati
 
 Du kannst den Download der ZIP-Datei über den grünen Button `Clone or download` oben rechts auf dieser Seite starten.
 
-Entpacke die ZIP-Datei auf deinem Computer und lade den Inhalt via FTP auf deinen Server. Achte darauf, dass du den Helper in einem Unterordner deiner Shopware-Installation hochlädst. Beispiel: `https://www.deincoolershop.de/psc7-helper/`
+Entpacke die ZIP-Datei auf deinem Computer. Wenn du diese entpackst hast du einen Ordner namens `psc7-helper-master`. Lade den gesamten Ordner via FTP auf deinen Server. Achte darauf, dass du den Helper in einem Unterordner deiner Shopware-Installation hochlädst. Beispiel: `https://www.deincoolershop.de/psc7-helper/`
 
 Prüfe jetzt, ob der Ordner und alle Dateien darin korrekte Benutzerrechte besitzen. Der Ordner sollte die Rechte (Chmod) `755` und die Dateien `644` besitzen.
 
