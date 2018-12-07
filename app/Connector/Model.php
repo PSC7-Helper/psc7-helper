@@ -65,6 +65,22 @@ class Model extends Model_Abstract implements Model_Interface {
         if (!is_string($reference)) {
             return false;
         }
+        $articleID = $this->database->selectVar("
+            SELECT
+                `articleID`
+            FROM
+                `PREFIX_s_articles_details`
+            WHERE
+                `ordernumber` = ?
+            LIMIT
+                1
+            ", array (
+                $reference
+            )
+        );
+        if (!$articleID) {
+            return false;
+        }
         $objectIdentifier = $this->database->selectVar("
             SELECT
                 `objectIdentifier`
@@ -76,7 +92,7 @@ class Model extends Model_Abstract implements Model_Interface {
             LIMIT
                 1
             ", array (
-                $reference
+                $articleID
             )
         );
         if ($objectIdentifier) {
@@ -92,11 +108,9 @@ class Model extends Model_Abstract implements Model_Interface {
     public function getProductlistAsArray() {
         $data = $this->database->selectAssoc("
             SELECT DISTINCT
-                `adapterIdentifier`
+                `ordernumber`
             FROM
-                `PREFIX_plenty_identity`
-            WHERE
-                (`objectType` = 'Product' or `objectType` = 'Variation')
+                `PREFIX_s_articles_details`
         ");
         if ($data) {
             return $data;

@@ -73,7 +73,7 @@ class ConnectorHelper {
         $list = array();
         $productlist = $this->model->getProductlistAsArray();
         foreach ($productlist as $value) {
-            $list[] = $value['adapterIdentifier'];
+            $list[] = $value['ordernumber'];
         }
         return $list;
     }
