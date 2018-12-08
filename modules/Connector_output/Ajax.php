@@ -72,7 +72,7 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
         } else if (function_exists('shell_exec') && is_callable('shell_exec'))  {
             foreach ($cli->preparedCommands as $cliCommand) {
                 if ($product) {
-                    print 'ObjectIdentifier found for id ' . $product . PHP_EOL . PHP_EOL;
+                    print 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
                 }
                 print 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $output = shell_exec("$cliCommand");
