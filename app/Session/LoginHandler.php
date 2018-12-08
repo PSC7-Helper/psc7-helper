@@ -46,6 +46,13 @@ class LoginHandler {
      * @return type
      */
     public function successful($username, $password) {
+        if ($this->failedlogins($username) >= 3) {
+            $this->mesage = '<div class="alert alert-danger">' . __('message_loginhandler_failedlogins') . '</div>';
+            return array(
+                'status' => false,
+                'message' => $this->mesage
+            );
+        }
         if (!$this->validateUsername($username) || !$this->verifyPassword($username, $password)) {
             $this->mesage = '<div class="alert alert-danger">' . __('message_loginhandler_invalid') . '</div>';
             return array(
@@ -86,7 +93,26 @@ class LoginHandler {
             $this->userID = $this->model->getUserID($username, $passwordHash);
             return true;
         }
+        $this->setFailedlogin($username);
         return false;
+    }
+
+    /**
+     * setFailedlogin
+     * @param string $username
+     * @return boolean
+     */
+    private function setFailedlogin($username) {
+        return $this->model->setFailedlogin($username);
+    }
+
+    /**
+     * failedlogins
+     * @param string $username
+     * @return boolean
+     */
+    private function failedlogins($username) {
+        return (int) $this->model->failedlogins($username);
     }
 
 }

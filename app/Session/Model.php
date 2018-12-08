@@ -119,4 +119,40 @@ class Model extends Model_Abstract implements Model_Interface {
         return false;
     }
 
+    /**
+     * setFailedlogin
+     * @param string $username
+     * @return boolean
+     */
+    public function setFailedlogin($username) {
+        $failed = $this->failedlogins($username);
+        $untiltime = time() + (30 * $failed);
+        $untildate = date('Y-m-d H:i:s', $untiltime);
+        $this->database->update('s_core_auth', array('failedlogins' => $failed+1, 'lockeduntil' => $untildate), array('username' => $username));
+        return true;
+    }
+
+    /**
+     * failedlogins
+     * @param string $username
+     * @return boolean
+     */
+    public function failedlogins($username) {
+        $data = $this->database->selectVar("
+            SELECT
+                `failedlogins`
+            FROM
+                `PREFIX_s_core_auth`
+            WHERE
+                `username` = ?
+            ", array(
+                $username
+            )
+        );
+        if ($data) {
+            return $data;
+        }
+        return false;
+    }
+
 }
