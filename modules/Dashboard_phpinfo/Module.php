@@ -20,7 +20,7 @@ class Module extends Module_Abstract implements Module_Interface {
      */
     public function run() {
         $this->setPlaceholder('cardtitle', __('phpinfo_cardtitle'), false);
-        $this->setPlaceholder('noiframe', __('phpinfo_noiframe'), false);
+        header("strict-transport-security: max-age=0");
         $this->setPlaceholder('noiframe_link', __('phpinfo_noiframe_link'), false);
         $this->setPlaceholder('noiframe_text', __('phpinfo_noiframe_text'), false);
         $this->setTemplate('view');
