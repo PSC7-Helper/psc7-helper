@@ -34,14 +34,4 @@ class Controller extends Controller_Abstract implements Controller_Interface {
         return $page;
     }
 
-    /**
-     * info
-     * @return string
-     */
-    public function info() {
-        $this->setTemplate('info');
-        $page = $this->renderPage('index');
-        return $page;
-    }
-
 }
