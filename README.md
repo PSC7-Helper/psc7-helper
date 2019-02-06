@@ -1,8 +1,6 @@
 # PSC7-Helper
 **P**lentymarkets **S**hopware **C**onnector **7** Helper Tool.
 
-> *Der PSC7-Helper befindet sich in der Beta-Phase. Nutzung auf eigene Gefahr!*
-
 ##
 
 ### Über den PSC7-Helper
