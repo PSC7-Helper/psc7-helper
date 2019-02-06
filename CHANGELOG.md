@@ -9,6 +9,7 @@
 - update README.md
 - update CHANGELOG.md
 - delete module tools_info
+- delete module beta_info
 
 
 ## [2.0.1] - 2018-12-05
