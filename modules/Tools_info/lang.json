@@ -1,7 +1,0 @@
-{
-    "de":
-    {
-        "info_cardtitle": "Eigene Tools programmieren",
-        "info_text": "Wenn du z. B. Prozesse in Shopware anders erledigen musst, Exporte aus plenty nicht passend für dein Diensleister sind oder du vieleicht sogar Listen für deinen Steuerberater aufbereiten möchtest kann ein Tool im Helper dir ggf. Arbeitszeit einsparen.<br><br>Bisher haben wir es leider noch nicht geschafft eine Doku zu erstellen, damit du eine Anleitung zur Erstellung eigener Tools hast. Wenn du aber interesse an einem eigenen Tool hast kannst du uns gerne kontaktieren. Wir versuchen dann dein Geschäftsprozess in ein nützliches Tool im Helper umzusetzten.<br><br>Bisher haben wir folgene Tool für andere Entwickelt:<br>- Aufbereiten Export aus plenty für IDS-Logistik Import (Michael Rusch)<br>- Aufbereiten Export aus plenty für GEL Express Logistik Import (Michael Rusch)<br>- Aufbereiten diverser Listen von Drittanbietern (PayPal, Amazon, real,-, usw.) für Steuerberater (Michael Rusch)<br>- Übersicht/Abgleich der Bestellungen aus Shopware mit plenty (Florian Wehrhausen)<br>- Prüfung inaktiver Artikel, die in Einkaufswelten eingebunden sind (Waldemar Fraer)<br>- Übersicht gemappter Bestellungen (Waldemar Fraer)<br><br><i class=\"fas fa-envelope\"></i> <a href=\"mailto:micha@rusch.sh\">Michael Rusch</a><br><i class=\"fas fa-envelope\"></i> <a href=\"mailto:fw-98@web.de\">Florian Wehrhausen</a><br><i class=\"fas fa-envelope\"></i> <a href=\"mailto:waldemar@lumizil.de\">Waldemar Fraer</a>"
-    }
-}
