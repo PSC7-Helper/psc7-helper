@@ -17,7 +17,6 @@ use psc7helper\App\Config\Lang;
 use psc7helper\App\User\User;
 use psc7helper\App\Session\Session;
 use psc7helper\App\Common\Escape;
-use Detection\MobileDetect;
 
 class Placeholder {
 
@@ -90,7 +89,6 @@ class Placeholder {
         $this->placeholder[] = array('date_i' => Date::getDate('s'));
         $this->placeholder[] = array('date_His' => Date::getDate('H:i:s'));
         $this->placeholder[] = array('date_Hi' => Date::getDate('H:i'));
-        $this->placeholder[] = array('mobile_detect' => $this->mobileDetect());
         $this->placeholder[] = array('formaction' => htmlspecialchars($_SERVER['REQUEST_URI']));
         $this->placeholder[] = array('formkey' => Session::get('token'));
         $this->placeholder[] = array('body_js' => '');
@@ -169,26 +167,6 @@ class Placeholder {
         }
         $js = implode(PHP_EOL . "\t\t", $jsList);
         return $js;
-    }
-
-    /**
-     * mobileDetect
-     * @return $this
-     */
-    private function mobileDetect() {
-        $os = 'unknown';
-        $detect = new MobileDetect();
-        $detect->setUserAgent(User::get('agent'));
-        if ($detect->isMobile()) {
-            $os = 'mobile';
-        }
-        if ($detect->isTablet()){
-            $os = 'tablet';
-        }
-        if (!$detect->isMobile() && !$detect->isTablet()){
-            $os = 'desktop';
-        }
-        return $os;
     }
 
     /**
