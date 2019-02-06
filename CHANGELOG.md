@@ -1,9 +1,16 @@
 # Changelog
 
-## [2.0.1] - 2018-12-05
-### Added
-- 
+## [2.0.2] - 2019-02-6
+### Changed
+- update update vendor twbs/bootstap
+- delete vendor mobiledetect/mobiledetectlib
+- delete controller action tools/info
+- update VERSION
+- update README.md
+- update CHANGELOG.md
 
+
+## [2.0.1] - 2018-12-05
 ### Changed
 - changed phpinfo(): send header to disable HSTS, add link to open phpinfo in a new tab
 - change article sync from article-id to variantennummer
@@ -15,7 +22,6 @@
 
 ### Security
 - brute force check added
-
 
 
 ## [2.0.0-beta1] - 2018-12-05
