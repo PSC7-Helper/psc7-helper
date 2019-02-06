@@ -1,5 +1,5 @@
 {
-    "name": "PSC7-Helper/psc7-helper",
+    "name": "psc7-helper/psc7-helper",
     "authors": [
         {
             "name": "Michael Rusch",
@@ -31,7 +31,6 @@
     "require": {
         "components/jquery": "3.*",
         "twbs/bootstrap": "4.*",
-        "components/font-awesome": "5.*",
-        "mobiledetect/mobiledetectlib": "2.*"
+        "components/font-awesome": "5.*"
     }
 }
