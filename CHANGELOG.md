@@ -10,6 +10,7 @@
 - update CHANGELOG.md
 - delete module tools_info
 - delete module beta_info
+- delete prefix sw: from buttons
 
 
 ## [2.0.1] - 2018-12-05
