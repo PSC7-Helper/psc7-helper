@@ -119,14 +119,15 @@ class CommandHandler {
         $whitelist = $helper->commandWhitelist();
         $commandlist = $this->commandlist;
         foreach ($commandlist as $command) {
+            $add = true;
             $prepare = self::SHEBANG . ' ' . self::CONSOLEPATH . ' ' . $this->findCommand($command);
             if ($command == 'singlesync') {
                 $product = $this->product;
-                if ($product) {
-                    $prepare.= ' ' . $this->findObjectIdentifierByReference($product);
+                $objIdent = $this->findObjectIdentifierByReference($product);
+                if ($product && $objIdent) {
+                    $prepare.= ' ' . $objIdent;
                 } else {
-                    $this->preparedCommands = array();
-                    return $this;
+                    $add = false;
                 }
             }
             if (array_key_exists('all', $whitelist[$command]) && $whitelist[$command]['all']) {
@@ -136,7 +137,9 @@ class CommandHandler {
             } if (array_key_exists('backlog', $whitelist[$command]) && $whitelist[$command]['backlog']) {
                 $prepare.= ' ' . self::OPTION_BACKLOG;
             }
-            $this->preparedCommands[] = $prepare;
+            if ($add) {
+                $this->preparedCommands[] = $prepare;
+            }
         }
         return $this;
     }

@@ -57,7 +57,7 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
             while (@ob_end_flush());
             foreach ($cli->preparedCommands as $cliCommand) {
                 if ($product) {
-                    print 'ObjectIdentifier found for id ' . $product . PHP_EOL . PHP_EOL;
+                    print 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
                 }
                 print 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $proc = popen("$cliCommand 2>&1", 'r');
