@@ -15,6 +15,7 @@ use psc7helper\App\Connector\ConnectorHelper;
 use psc7helper\App\Http\Request;
 use psc7helper\App\Form\FormValidator;
 use psc7helper\App\Session\Session;
+use psc7helper\Module\Connector_output\Ajax;
 
 class Module extends Module_Abstract implements Module_Interface {
 
@@ -83,7 +84,10 @@ class Module extends Module_Abstract implements Module_Interface {
             Session::set('cli_option_backlog', $optionBacklog);
         }
         if ($post) {
-            $this->setTemplate('ajax');
+            $ajax = new Ajax(MODULES_PATH . DS . 'connector_output' . DS . 'Ajax.php', 'ajax', false);
+            $output = $ajax->output();
+            $this->setPlaceholder('output', $output, false);
+            $this->setTemplate('static');
         } else {
             $this->setTemplate('view');
         }
