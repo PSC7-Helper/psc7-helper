@@ -33,6 +33,20 @@ function systeminfoLoad() {
 }
 
 /**
+ * overlayoutput
+ */
+function overlayoutput() {
+    $.ajax({
+        type: 'POST',
+        url: 'ajax.php?type=m&n=connector_output&a=output',
+        cache: false,
+        success: function(result) {
+            $('#overlay-output').html(result);
+        }
+    });
+}
+
+/**
  * connectoroutput
  */
 function connectoroutput() {

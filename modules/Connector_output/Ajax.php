@@ -18,10 +18,17 @@ use psc7helper\App\Connector\CommandHandler;
 class Ajax extends Ajax_Abstract implements Ajax_Interface {
 
     /**
+     * output
+     * @var string
+     */
+    private $output;
+    
+    /**
      * ajax
      * @return string
      */
     public function ajax() {
+        $this->output = '';
         $command = Session::get('cli_command');
         $product = Session::get('cli_product');
         $optionAll = Session::get('cli_option_all');
@@ -31,6 +38,7 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
         if (!Session::get('cli_command') || !$helper->checkCommand($command, $optionAll, $optionVVV, $optionBacklog)) {
             $this->removeFromSession();
             print '<pre>Command not allowed</pre>';
+            $this->output.= '<pre>Command not allowed</pre>';
             exit(1);
         }
         $cli = new CommandHandler();
@@ -42,15 +50,18 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
         if (!$cli->preparedCommands && $command != 'singlesync') {
             $this->removeFromSession();
             print '<pre>Command not found</pre>';
+            $this->output.= '<pre>Command not found</pre>';
             exit(1);
         } elseif (!$cli->preparedCommands && $command == 'singlesync') {
             $this->removeFromSession();
             print '<pre>objectIdentifier not found for ' . $product . '</pre>';
+            $this->output.= '<pre>objectIdentifier not found for ' . $product . '</pre>';
             exit(1);
         }
         $os = strtoupper(substr(PHP_OS, 0, 3));
         if ($os == 'WIN') {
             print 'Not supported on windows machine';
+            $this->output.= 'Not supported on windows machine';
             return false;
         }
         if (function_exists('popen') && is_callable('popen')) {
@@ -58,30 +69,39 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
             foreach ($cli->preparedCommands as $cliCommand) {
                 if ($product) {
                     print 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
+                    $this->output.= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
                 }
                 print 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
+                $this->output.= 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $proc = popen("$cliCommand 2>&1", 'r');
                 while (!feof($proc)) {
                     print fread($proc, 4096);
+                    $this->output.= fread($proc, 4096);
                     @flush();
                 }
                 pclose($proc);
             }
             $this->removeFromSession();
             print PHP_EOL . 'done';
+            $this->output.= PHP_EOL . 'done';
         } else if (function_exists('shell_exec') && is_callable('shell_exec'))  {
             foreach ($cli->preparedCommands as $cliCommand) {
                 if ($product) {
                     print 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
+                    $this->output.= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
                 }
                 print 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
+                $this->output.= 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $output = shell_exec("$cliCommand");
                 print $output;
+                $this->output.= $output;
             }
             $this->removeFromSession();
             print PHP_EOL . 'done';
+            $this->output.= PHP_EOL . 'done';
         } else {
             print 'php functions popen() and shell_exec() not allowd on your server';
+            $this->output.= 'php functions popen() and shell_exec() not allowd on your server';
         }
     }
 
@@ -96,6 +116,14 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface {
         Session::remove('cli_option_vvv');
         Session::remove('cli_option_backlog');
         return $this;
+    }
+
+    /**
+     * output
+     * @return string
+     */
+    public function output() {
+       return $this->output; 
     }
 
 }

@@ -212,6 +212,32 @@ nav li {
     text-decoration: none;
 }
 
+.postOverlayContainer {
+    display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,0.25);
+    padding: 25vh;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.postOverlay {
+    width: 320px;
+    padding: 40px;
+    margin: auto auto;
+    z-index: 1000;
+}
+
+.overlayMsg {
+    color: #555;
+    text-align: center;
+    background-color: #fff;
+    border-color: #555;
+}
+
 .font-size-min {
     font-size: .6rem;
 }

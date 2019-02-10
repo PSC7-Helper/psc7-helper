@@ -1,3 +1,16 @@
+<div class="postOverlayContainer">
+    <div class="postOverlay overlayMsg">
+        <img src="themes/default/images/loader.gif" alt="Bitte warten..." title="Bitte warten...">
+        <br><br>
+<pre id="overlay-output">Please wait...</pre>
+        <script>
+            $(document).ready (function(){
+                setInterval(overlayoutput, 300);
+            });
+        </script>
+    </div>
+</div>
+
 {{module::connector_cronjob_status}}
 
 <div class="row mb-4">
