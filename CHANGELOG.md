@@ -7,6 +7,7 @@
 
 ### Fixed
 - fix issue #6 (bvogel) singlesync isn't working
+- bugfix overlay
 
 
 ## [2.0.2] - 2019-02-6
