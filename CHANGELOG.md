@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.3] - 2019-02-10
+### Added
+- added an overlay while connector is executing an command
+- update info added
+
+### Fixed
+- fix issue #6 (bvogel) singlesync isn't working
+
+
 ## [2.0.2] - 2019-02-6
 ### Changed
 - update update vendor twbs/bootstap
