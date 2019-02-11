@@ -67,14 +67,14 @@ class Module extends Module_Abstract implements Module_Interface {
         $this->setPlaceholder('btn_mapping_title', $cli->getCommandAsString('mapping'), false);
         $this->setPlaceholder('btn_swcacheclear', __('buttons_btn_sw_cache_clear'), false);
         $this->setPlaceholder('btn_swcacheclear_title', $cli->getCommandAsString('swcacheclear'), false);
+        $this->setPlaceholder('btn_swthemecachegenerate', __('buttons_btn_sw_theme_cache_generate'), false);
+        $this->setPlaceholder('btn_swthemecachegenerate_title', $cli->getCommandAsString('swthemecachegenerate'), false);
         $this->setPlaceholder('btn_swcronlist', __('buttons_btn_sw_cron_list'), false);
         $this->setPlaceholder('btn_swcronlist_title', $cli->getCommandAsString('swcronlist'), false);
         $this->setPlaceholder('btn_swcronrun', __('buttons_btn_sw_cron_run'), false);
         $this->setPlaceholder('btn_swcronrun_title', $cli->getCommandAsString('swcronrun'), false);
         $this->setPlaceholder('btn_swmediacleanup', __('buttons_btn_sw_media_cleanup'), false);
         $this->setPlaceholder('btn_swmediacleanup_title', $cli->getCommandAsString('swmediacleanup'), false);
-        $this->setPlaceholder('btn_swthumbnailcleanup', __('buttons_btn_sw_thumbnail_cleanup'), false);
-        $this->setPlaceholder('btn_swthumbnailcleanup_title', $cli->getCommandAsString('swthumbnailcleanup'), false);
         $this->setTemplate('view');
         $module = $this->renderModule();
         return $module;

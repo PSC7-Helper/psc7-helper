@@ -111,10 +111,10 @@ class ConnectorHelper {
             'process_category' => array('all' => 0, 'vvv' => 1, 'backlog' => 1),
             'mapping' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swcacheclear' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
+            'swthemecachegenerate' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swcronlist' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swcronrun' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swmediacleanup' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
-            'swthumbnailcleanup' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'singlesync' => array('all' => 0, 'vvv' => 1, 'backlog' => 1)
         );
         return $commands;

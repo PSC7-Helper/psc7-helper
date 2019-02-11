@@ -104,6 +104,15 @@
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swcacheclear_title}}">{{btn_swcacheclear}}</button>
                 </form>
             </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-4 mt-lg-0">
+                <form action="{{formaction}}" method="post">
+                    <input type="hidden" name="formname" value="clicommand">
+                    <input type="hidden" name="formkey" value="{{formkey}}">
+                    <input type="hidden" name="formsecret" value="">
+                    <input type="hidden" name="command" value="swthemecachegenerate">
+                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swthemecachegenerate_title}}">{{btn_swthemecachegenerate}}</button>
+                </form>
+            </div>
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                 <form action="{{formaction}}" method="post">
                     <input type="hidden" name="formname" value="clicommand">
@@ -129,15 +138,6 @@
                     <input type="hidden" name="formsecret" value="">
                     <input type="hidden" name="command" value="swmediacleanup">
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swmediacleanup_title}}">{{btn_swmediacleanup}}</button>
-                </form>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-4 mt-lg-0">
-                <form action="{{formaction}}" method="post">
-                    <input type="hidden" name="formname" value="clicommand">
-                    <input type="hidden" name="formkey" value="{{formkey}}">
-                    <input type="hidden" name="formsecret" value="">
-                    <input type="hidden" name="command" value="swthumbnailcleanup">
-                    <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swthumbnailcleanup_title}}">{{btn_swthumbnailcleanup}}</button>
                 </form>
             </div>
         </div>

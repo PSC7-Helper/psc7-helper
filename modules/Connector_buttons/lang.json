@@ -13,9 +13,9 @@
         "buttons_btn_process_category": "process Category",
         "buttons_btn_mapping": "mapping",
         "buttons_btn_sw_cache_clear": "cache:clear",
+        "buttons_btn_sw_theme_cache_generate": "theme:cache:gen",
         "buttons_btn_sw_cron_list": "cron:list",
         "buttons_btn_sw_cron_run": "cron:run",
-        "buttons_btn_sw_media_cleanup": "media:cleanup",
-        "buttons_btn_sw_thumbnail_cleanup": "thumb:cleanup"
+        "buttons_btn_sw_media_cleanup": "media:cleanup"
     }
 }

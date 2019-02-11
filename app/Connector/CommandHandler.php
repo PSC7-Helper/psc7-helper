@@ -176,6 +176,9 @@ class CommandHandler {
             case 'swcacheclear':
                 $command = 'sw:cache:clear';
                 break;
+            case 'swthemecachegenerate':
+                $command = 'sw:theme:cache:generate';
+                break;
             case 'swcronlist':
                 $command = 'sw:cron:list';
                 break;
@@ -184,9 +187,6 @@ class CommandHandler {
                 break;
             case 'swmediacleanup':
                 $command = 'sw:media:cleanup';
-                break;
-            case 'swthumbnailcleanup':
-                $command = 'sw:thumbnail:cleanup';
                 break;
             case 'singlesync':
                 $command = 'plentyconnector:process Product';
