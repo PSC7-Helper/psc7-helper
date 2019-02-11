@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.4] - 2019-02-11
+### Changed
+- connector button thumbnail: cleanup removed. button theme: cache: generate added
+
+
 ## [2.0.3] - 2019-02-10
 ### Added
 - added an overlay while connector is executing an command
