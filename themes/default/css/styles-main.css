@@ -236,6 +236,7 @@ nav li {
     text-align: center;
     background-color: #fff;
     border-color: #555;
+    opacity: 0.95;
 }
 
 .font-size-min {

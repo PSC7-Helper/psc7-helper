@@ -82,6 +82,7 @@ class Module extends Module_Abstract implements Module_Interface {
             Session::set('cli_option_all', $optionAll);
             Session::set('cli_option_vvv', $optionVVV);
             Session::set('cli_option_backlog', $optionBacklog);
+            sleep(1);
         }
         if ($post) {
             $ajax = new Ajax(MODULES_PATH . DS . 'connector_output' . DS . 'Ajax.php', 'ajax', false);
