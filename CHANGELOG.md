@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.5] - 2019-02-15
+### Changed
+- update overlayer ux
+
+
 ## [2.0.4] - 2019-02-11
 ### Changed
 - connector button thumbnail: cleanup removed. button theme: cache: generate added
