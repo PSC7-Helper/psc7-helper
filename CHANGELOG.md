@@ -6,6 +6,7 @@
 
 ### Changed
 - dropdown menue expanded by hover
+- update bootstrap
 
 
 ## [2.0.5] - 2019-02-15
