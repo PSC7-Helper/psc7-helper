@@ -30,27 +30,11 @@ class ComposerStaticInitb072abc2a91fb753200061416f68d346
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'D' => 
-        array (
-            'Detection' => 
-            array (
-                0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/namespaced',
-            ),
-        ),
-    );
-
-    public static $classMap = array (
-        'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb072abc2a91fb753200061416f68d346::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb072abc2a91fb753200061416f68d346::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitb072abc2a91fb753200061416f68d346::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitb072abc2a91fb753200061416f68d346::$classMap;
 
         }, null, ClassLoader::class);
     }
