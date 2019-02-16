@@ -193,6 +193,14 @@ nav li {
     color: #555 !important;
 }
 
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    pointer-events: none;
+}
+
 .hr-after-header {
     margin: 0 0 2rem 0;
     border-top: 1px solid rgba(0,0,0,.1);
