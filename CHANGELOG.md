@@ -4,6 +4,9 @@
 ### Added
 - tool order sync added
 
+### Changed
+- dropdown menue expanded by hover
+
 
 ## [2.0.5] - 2019-02-15
 ### Changed
