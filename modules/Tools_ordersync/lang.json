@@ -1,0 +1,11 @@
+{
+    "de":
+    {
+        "ordersync_cardtitle": "Bestellungen abgleichen",
+        "ordersync_sordernumber": "Bestellung",
+        "ordersync_sordertime": "Datum, Uhrzeit",
+        "ordersync_sorderinfo": "Kunde",
+        "ordersync_porderid": "plenty Auftrags-ID",
+        "ordersync_sync": "Synchonisieren"
+    }
+}

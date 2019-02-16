@@ -97,8 +97,11 @@ class CommandHandler {
      * @param string $command
      * @return string
      */
-    public function getCommandAsString($command) {
+    public function getCommandAsString($command, $product = false) {
         $result = '';
+        if ($product) {
+            $this->product = $product;
+        }
         $this->commandlist = array();
         $this->preparedCommands = array();
         $this->commandlist[] = $command;
@@ -126,6 +129,14 @@ class CommandHandler {
                 $objIdent = $this->findObjectIdentifierByReference($product);
                 if ($product && $objIdent) {
                     $prepare.= ' ' . $objIdent;
+                } else {
+                    $add = false;
+                }
+            }
+            if ($command == 'singlesync_order') {
+                $product = $this->product;
+                if ($product) {
+                    $prepare.= ' ' . $product;
                 } else {
                     $add = false;
                 }
@@ -190,6 +201,9 @@ class CommandHandler {
                 break;
             case 'singlesync':
                 $command = 'plentyconnector:process Product';
+                break;
+            case 'singlesync_order':
+                $command = 'plentyconnector:process Order';
                 break;
         }
         return $command;

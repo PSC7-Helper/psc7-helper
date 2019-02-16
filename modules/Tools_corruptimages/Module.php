@@ -11,17 +11,9 @@ namespace psc7helper\Module\Tools_corruptimages;
 
 use psc7helper\App\Modules\Module_Abstract;
 use psc7helper\App\Modules\Module_Interface;
-use psc7helper\App\Http\Request;
-use psc7helper\App\Header\Header;
 use psc7helper\Module\Tools_corruptimages\Model;
 
 class Module extends Module_Abstract implements Module_Interface {
-
-    /**
-     * requests
-     * @var array 
-     */
-    private $requests;
 
     /**
      * model
@@ -46,8 +38,9 @@ class Module extends Module_Abstract implements Module_Interface {
      * @return $this
      */
     private function setProperties() {
-        $this->requests = Request::getArguments();
         $this->model = new Model();
+        $this->setFilesDatabase();
+        $this->prepareList();
         return $this;
     }
 
@@ -58,9 +51,6 @@ class Module extends Module_Abstract implements Module_Interface {
     public function run() {
         $this->setProperties();
         $this->setPlaceholder('cardtitle', __('corruptimages_cardtitle'), false);
-        $requests = $this->requests;
-        $this->setFilesDatabase();
-        $this->prepareList();
         $list = $this->list;
         $table = '<table class="table table-striped">' . PHP_EOL;
         $table.= '    <thead>' . PHP_EOL;

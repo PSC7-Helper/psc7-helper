@@ -34,4 +34,14 @@ class Controller extends Controller_Abstract implements Controller_Interface {
         return $page;
     }
 
+    /**
+     * ordersync
+     * @return string
+     */
+    public function ordersync() {
+        $this->setTemplate('ordersync');
+        $page = $this->renderPage('index');
+        return $page;
+    }
+
 }

@@ -70,7 +70,7 @@ class Model extends Model_Abstract implements Model_Interface {
         }
         return false;
     }
-    
+
     /**
      * getArticleIDFromImage
      * @param string $image

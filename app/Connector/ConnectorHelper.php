@@ -115,7 +115,8 @@ class ConnectorHelper {
             'swcronlist' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swcronrun' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
             'swmediacleanup' => array('all' => 0, 'vvv' => 0, 'backlog' => 0),
-            'singlesync' => array('all' => 0, 'vvv' => 1, 'backlog' => 1)
+            'singlesync' => array('all' => 0, 'vvv' => 1, 'backlog' => 1),
+            'singlesync_order' => array('all' => 0, 'vvv' => 1, 'backlog' => 1)
         );
         return $commands;
     }
