@@ -132,4 +132,21 @@ class ExceptionHandler {
         return false;
     }
 
+    /**
+     * isFileReachedMaxsize
+     * @param string $file
+     * @return int
+     */
+    public static function isFileReachedMaxsize($file) {
+        if (!file_exists($file)) {
+            return false;
+        }
+        $size = filesize($file);
+        print $size;
+        if ($size > 10000) {
+            return true;
+        }
+        return false;
+    }
+
 }

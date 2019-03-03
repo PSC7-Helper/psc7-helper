@@ -66,20 +66,20 @@ class Error {
      * @return boolean
      */
     public static function process($errno, $errstr, $errfile, $errline) {
-        if (strpos($errstr, 'ob_end_flush') !== false) {
-            return true;
-        }
+        date_default_timezone_set('Europe/Berlin');
+        $file = self::$dir . DS . self::$file;
         $errnoToString = ExceptionHandler::errnoToText($errno);
         if (!is_dir(self::$dir)) {
             mkdir(self::$dir);
         }
-        $fh = fopen(self::$dir . DS . self::$file, "a+");
-        date_default_timezone_set('Europe/Berlin');
         $input = '[' . date('c') . '] ';
         $input.= $errnoToString . ': ' . $errstr . ' in ' . $errfile . ' on line ' . $errline;
         $input.= "\r\n";
-        fwrite($fh, $input);
-        fclose($fh);
+        if (!ExceptionHandler::isFileReachedMaxsize($file)) {
+            $fh = fopen($file, "a+");
+            fwrite($fh, $input);
+            fclose($fh);
+        }
         if ($errnoToString == 'Unknown error') {
             ExceptionHandler::checkExit(E_ERROR);
         } else {

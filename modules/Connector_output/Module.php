@@ -93,7 +93,7 @@ class Module extends Module_Abstract implements Module_Interface {
         }
         if ($post) {
             $handler = $this->handler;
-            $handler->handleCommand();
+            $handler->handleCommand(;
             $output = $handler->output();
             $this->setPlaceholder('output', $output, false);
         }

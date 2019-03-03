@@ -41,19 +41,22 @@ class Exception_Abstract implements Exception_Interface {
      * @return boolean
      */
     public static function handle($ex, $catch = '') {
+        $file = self::$dir . DS . self::$file;
         $errnoToString = ExceptionHandler::errnoToText($ex->getCode());
         if (!is_dir(self::$dir)) {
             mkdir(self::$dir);
         }
-        $fh = fopen(self::$dir . DS . self::$file, "a+");
         $input = '[' . date('c') . '] ';
         if ($catch != '') {
             $input.= '[' . $catch . '] ';
         }
         $input.= $errnoToString . ': ' . $ex->getMessage() . ' in ' . $ex->getFile() . ' on line ' . $ex->getLine();
         $input.= "\r\n";
-        fwrite($fh, $input);
-        fclose($fh);
+        if (!ExceptionHandler::isFileReachedMaxsize($file)) {
+            $fh = fopen($file, "a+");
+            fwrite($fh, $input);
+            fclose($fh);
+        }
         if ($errnoToString == 'Unknown error') {
             ExceptionHandler::checkExit(E_ERROR);
         } else {

@@ -64,16 +64,19 @@ class FatalError {
     public static function process() {
         $error = error_get_last();
         if ($error['type'] === E_ERROR) {
+            $file = self::$dir . DS . self::$file;
             $errnoToString = ExceptionHandler::errnoToText($error['type']);
             if (!is_dir(self::$dir)) {
                 mkdir(self::$dir);
             }
-            $fh = fopen(self::$dir . DS . self::$file, "a+");
             $input = '[' . date('c') . '] ';
             $input.= $errnoToString . ': ' . $error['message'] . ' in ' . $error['file'] . ' on line ' . $error['line'];
             $input.= "\r\n";
-            fwrite($fh, $input);
-            fclose($fh);
+            if (!ExceptionHandler::isFileReachedMaxsize($file)) {
+                $fh = fopen($file, "a+");
+                fwrite($fh, $input);
+                fclose($fh);
+            }
             if ($errnoToString == 'Unknown error') {
                 ExceptionHandler::checkExit(E_ERROR);
             } else {
