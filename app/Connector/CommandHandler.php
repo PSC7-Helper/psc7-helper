@@ -10,8 +10,9 @@
 
 namespace psc7helper\App\Connector;
 
-use psc7helper\App\Connector\ConnectorHelper;
 use psc7helper\App\Connector\Model;
+use psc7helper\App\Connector\ConnectorHelper;
+use psc7helper\App\Session\Session;
 
 class CommandHandler {
 
@@ -39,6 +40,12 @@ class CommandHandler {
      * OPTION_BACKLOG
      */
     const OPTION_BACKLOG = '--disableBacklog';
+
+    /**
+     * output
+     * @var string
+     */
+    private $output;
 
     /**
      * model
@@ -221,6 +228,105 @@ class CommandHandler {
             return false;
         }
         return $objectIdentifier;
+    }
+
+    /**
+     * handleCommand
+     * @return bool
+     */
+    public function handleCommand() {
+        $this->output = '';
+        $os = strtoupper(substr(PHP_OS, 0, 3));
+        if ($os == 'WIN') {
+            $this->removeFromSession();
+            $this->output.= 'Not supported on windows machine';
+            return false;
+        }
+        $command = Session::get('cli_command');
+        $product = Session::get('cli_product');
+        $optionAll = Session::get('cli_option_all');
+        $optionVVV = Session::get('cli_option_vvv');
+        $optionBacklog = Session::get('cli_option_backlog');
+        $helper = $this->helper;
+        if (!Session::get('cli_command') || !$helper->checkCommand($command, $optionAll, $optionVVV, $optionBacklog)) {
+            $this->removeFromSession();
+            $this->output.= '<pre>Command not allowed</pre>';
+            return false;
+        }
+        if ($product) {
+            $this->addCommand($command, $product)->prepareCommands();
+        } else {
+            $this->addCommand($command)->prepareCommands();
+        }
+        if (!$this->preparedCommands && $command != 'singlesync') {
+            $this->removeFromSession();
+            $this->output.= '<pre>Command not found</pre>';
+            return false;
+        } elseif (!$this->preparedCommands && $command == 'singlesync') {
+            $this->removeFromSession();
+            $this->output.= '<pre>objectIdentifier not found for ' . $product . '</pre>';
+            return false;
+        }
+        if ($this->isEnabled('shell_exec')) {
+            foreach ($this->preparedCommands as $cliCommand) {
+                if ($product) {
+                    $this->output.= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
+                }
+                $this->output.= 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
+                $output = shell_exec("$cliCommand");
+                $this->output.= $output;
+            }
+            $this->removeFromSession();
+            $this->output.= PHP_EOL . 'done';
+        } else {
+            $this->output.= 'php function shell_exec() not allowd';
+        }
+        return true;
+    }
+
+    /**
+     * isEnabled
+     * @param string $function
+     * @return boolean
+     */
+    private function isEnabled($function) {
+        $list = array();
+        $count = 0;
+        $disableFunctions = ini_get('disable_functions');
+        if (strlen($disableFunctions) > 0) {
+            $disableFunctions = str_replace(array(' ,', ', ', ' , '), ',', $disableFunctions);
+            $expl = explode(',', $disableFunctions);
+            foreach ($expl as $value) {
+                $list[] = trim($value);
+                $count++;
+            }
+        } else {
+            return true;
+        }
+        if ($count > 0) {
+            return !in_array($function, $list);
+        }
+    }
+
+    /**
+     * removeFromSession
+     * @return $this
+     */
+    private function removeFromSession() {
+        Session::remove('cli_command');
+        Session::remove('cli_product');
+        Session::remove('cli_option_all');
+        Session::remove('cli_option_vvv');
+        Session::remove('cli_option_backlog');
+        return $this;
+    }
+
+    /**
+     * output
+     * @return string
+     */
+    public function output() {
+       return $this->output; 
     }
 
 }

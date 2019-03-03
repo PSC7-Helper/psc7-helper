@@ -12,10 +12,10 @@ namespace psc7helper\Module\Connector_output;
 use psc7helper\App\Modules\Module_Abstract;
 use psc7helper\App\Modules\Module_Interface;
 use psc7helper\App\Connector\ConnectorHelper;
+use psc7helper\App\Connector\CommandHandler;
 use psc7helper\App\Http\Request;
 use psc7helper\App\Form\FormValidator;
 use psc7helper\App\Session\Session;
-use psc7helper\Module\Connector_output\Ajax;
 
 class Module extends Module_Abstract implements Module_Interface {
 
@@ -24,6 +24,12 @@ class Module extends Module_Abstract implements Module_Interface {
      * @var ojbect 
      */
     private $helper;
+    
+    /**
+     * handler
+     * @var ojbect 
+     */
+    private $handler;
 
     /**
      * requests
@@ -43,6 +49,7 @@ class Module extends Module_Abstract implements Module_Interface {
      */
     private function setProperties() {
         $this->helper = new ConnectorHelper();
+        $this->handler = new CommandHandler();
         $this->requests = Request::getArguments();
         $requests = $this->requests;
         $this->formValidator = new FormValidator($requests);
@@ -85,13 +92,12 @@ class Module extends Module_Abstract implements Module_Interface {
             sleep(1);
         }
         if ($post) {
-            $ajax = new Ajax(MODULES_PATH . DS . 'connector_output' . DS . 'Ajax.php', 'ajax', false);
-            $output = $ajax->output();
+            $handler = $this->handler;
+            $handler->handleCommand();
+            $output = $handler->output();
             $this->setPlaceholder('output', $output, false);
-            $this->setTemplate('static');
-        } else {
-            $this->setTemplate('view');
         }
+        $this->setTemplate('view');
         $module = $this->renderModule();
         return $module;
     }
