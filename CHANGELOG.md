@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0] - 2019-03-03
+### Changed
+- counted backlog now loading via ajax
+
+### Fixed
+- counted backlog over 3500 was not displayed
+- error while execute cli command with function popen
+- log overflow (max. filesize ~100KB)
+
+
+
 ## [2.0.6] - 2019-02-16
 ### Added
 - tool order sync added
@@ -9,14 +20,17 @@
 - update bootstrap
 
 
+
 ## [2.0.5] - 2019-02-15
 ### Changed
 - update overlayer ux
 
 
+
 ## [2.0.4] - 2019-02-11
 ### Changed
 - connector button thumbnail: cleanup removed. button theme: cache: generate added
+
 
 
 ## [2.0.3] - 2019-02-10
@@ -27,6 +41,7 @@
 ### Fixed
 - fix issue #6 (bvogel) singlesync isn't working
 - bugfix overlay
+
 
 
 ## [2.0.2] - 2019-02-6
@@ -42,6 +57,7 @@
 - delete prefix sw: from buttons
 
 
+
 ## [2.0.1] - 2018-12-05
 ### Changed
 - changed phpinfo(): send header to disable HSTS, add link to open phpinfo in a new tab
@@ -54,6 +70,7 @@
 
 ### Security
 - brute force check added
+
 
 
 ## [2.0.0-beta1] - 2018-12-05
