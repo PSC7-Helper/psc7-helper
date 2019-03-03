@@ -7,6 +7,20 @@ $(document).ready (function(){
 });
 
 /**
+ * connectoroutput
+ */
+function backlogcount() {
+    $.ajax({
+        type: 'POST',
+        url: 'ajax.php?type=m&n=dashboard_connector&a=count',
+        cache: false,
+        success: function(result) {
+            $('#backlogcount').html(result);
+        }
+    });
+}
+
+/**
  * systeminfoTime
  */
 function systeminfoTime() {

@@ -1,8 +1,13 @@
 <div class="card h-100">
     <div class="card-header">
         <div class="float-right">
-            <span class="d-none d-sm-inline">
+            <i class="fas fa-database fa-beat"></i> <span class="pl-1 d-none d-sm-inline">
                 {{backlogcount}}
+                <script>
+                    $(document).ready (function(){
+                        setInterval(backlogcount, 10000);
+                    });
+                </script>
             </span>
         </div>
         <h5>
