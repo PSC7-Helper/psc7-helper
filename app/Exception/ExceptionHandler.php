@@ -142,7 +142,6 @@ class ExceptionHandler {
             return false;
         }
         $size = filesize($file);
-        print $size;
         if ($size > 10000) {
             return true;
         }
