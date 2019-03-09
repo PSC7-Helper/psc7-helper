@@ -1,87 +1,102 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Connector;
 
-use psc7helper\App\Connector\Model;
-
-class CronjobHelper {
-
+class CronjobHelper
+{
     /**
-     * SYNCHRONIZE_MAX
+     * SYNCHRONIZE_MAX.
      */
     const SYNCHRONIZE_MAX = 3600;
 
     /**
-     * BACKLOG_MAX
+     * BACKLOG_MAX.
      */
     const BACKLOG_MAX = 1800;
 
     /**
-     * CLEANUP_MAX
+     * CLEANUP_MAX.
      */
     const CLEANUP_MAX = 90000;
 
     /**
-     * model
-     * @var object 
+     * model.
+     *
+     * @var object
      */
     private $model;
 
     /**
-     * __construct
+     * __construct.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Model();
     }
 
     /**
-     * getCronjobList
+     * getCronjobList.
+     *
      * @return array
      */
-    public function getCronjobList() {
+    public function getCronjobList()
+    {
         $cronjobs = $this->model->getCronjobList();
+
         return $cronjobs;
     }
 
     /**
-     * getCronjobByName
+     * getCronjobByName.
+     *
      * @param string $name
+     *
      * @return array
      */
-    public function getCronjobByName($name) {
+    public function getCronjobByName($name)
+    {
         $cronjob = $this->model->getCronjobByName($name);
+
         return $cronjob;
     }
 
     /**
-     * getCronjobById
-     * @param integer $id
+     * getCronjobById.
+     *
+     * @param int $id
+     *
      * @return array
      */
-    public function getCronjobById($id) {
+    public function getCronjobById($id)
+    {
         $cronjob = $this->model->getCronjobById((int) $id);
+
         return $cronjob;
     }
 
     /**
-     * getStatus
+     * getStatus.
+     *
      * @param string $name
-     * @param integer $active
-     * @param integer $nextTs
-     * @return integer
+     * @param int    $active
+     * @param int    $nextTs
+     *
+     * @return int
      */
-    public function getStatus($name, $active, $nextTs) {
+    public function getStatus($name, $active, $nextTs)
+    {
         $status = 1;
-        if (!$active) {
+        if (! $active) {
             $status = 0;
+
             return $status;
         }
         $now = time();
@@ -89,78 +104,98 @@ class CronjobHelper {
         $backlogMax = self::BACKLOG_MAX;
         $cleanupMax = self::CLEANUP_MAX;
         $difference = ($now - $nextTs);
-        if ($name == 'Synchronize' && $difference > $synchronizeMax) {
+        if ('Synchronize' == $name && $difference > $synchronizeMax) {
             $status = 2;
+
             return $status;
         }
-        if ($name == 'ProcessBacklog' && $difference > $backlogMax) {
+        if ('ProcessBacklog' == $name && $difference > $backlogMax) {
             $status = 2;
+
             return $status;
         }
-        if ($name == 'Cleanup' && $difference > $cleanupMax) {
+        if ('Cleanup' == $name && $difference > $cleanupMax) {
             $status = 2;
+
             return $status;
         }
+
         return $status;
     }
 
     /**
-     * getTimeDeviation
+     * getTimeDeviation.
+     *
      * @param string $dateTime
+     *
      * @return type
      */
-    public function getTimeDeviation($dateTime) {
+    public function getTimeDeviation($dateTime)
+    {
         $now = time();
         $timestamp = strtotime($dateTime);
         $difference = ($now - $timestamp);
+
         return $difference;
     }
 
     /**
-     * updateCronjob
-     * @param integer $id
-     * @param integer $next
-     * @param integer $interval
-     * @param integer $disable_on_error
+     * updateCronjob.
+     *
+     * @param int    $id
+     * @param int    $next
+     * @param int    $interval
+     * @param int    $disable_on_error
      * @param string $inform_mail
+     *
      * @return type
      */
-    public function updateCronjob($id, $next, $interval, $disable_on_error, $inform_mail) {
+    public function updateCronjob($id, $next, $interval, $disable_on_error, $inform_mail)
+    {
         return $this->model->updateCronjob($id, $next, $interval, $disable_on_error, $inform_mail);
     }
 
     /**
-     * deactivateCronjob
-     * @param integer $id
+     * deactivateCronjob.
+     *
+     * @param int $id
+     *
      * @return bool
      */
-    public function deactivateCronjob($id) {
+    public function deactivateCronjob($id)
+    {
         return $this->model->deactivateCronjob($id);
     }
 
     /**
-     * deactivateAllCronjobs
+     * deactivateAllCronjobs.
+     *
      * @return bool
      */
-    public function deactivateAllCronjobs() {
+    public function deactivateAllCronjobs()
+    {
         return $this->model->deactivateAllCronjobs();
     }
 
     /**
-     * activateCronjob
-     * @param integer $id
+     * activateCronjob.
+     *
+     * @param int $id
+     *
      * @return bool
      */
-    public function activateCronjob($id) {
+    public function activateCronjob($id)
+    {
         return $this->model->activateCronjob($id);
     }
 
     /**
-     * reactivateAllCronjobs
+     * reactivateAllCronjobs.
+     *
      * @return bool
      */
-    public function reactivateAllCronjobs() {
+    public function reactivateAllCronjobs()
+    {
         return $this->model->reactivateAllCronjobs();
     }
-
 }

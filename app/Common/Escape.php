@@ -1,66 +1,77 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Common;
 
-class Escape {
-
+class Escape
+{
     /**
-     * instance
+     * instance.
+     *
      * @var self
      */
     private static $instance;
 
     /**
-     * __construct
+     * __construct.
+     *
      * @param string $mode
      */
-    private function __construct() {
-        
+    private function __construct()
+    {
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * key
+     * key.
+     *
      * @param string $key
+     *
      * @return string
      */
-    public static function key($key) {
+    public static function key($key)
+    {
         return (string) htmlspecialchars(trim($key));
     }
 
     /**
-     * value
+     * value.
+     *
      * @param $value
-     * @param int $length
+     * @param int  $length
      * @param bool $html
+     *
      * @return mixed
      */
-    public static function value($value, $length = 255, $html = false) {
+    public static function value($value, $length = 255, $html = false)
+    {
         if (is_bool($value)) {
             return boolval($value);
         }
@@ -70,7 +81,7 @@ class Escape {
         if (is_float($value)) {
             return floatval(substr($value, 0, $length));
         }
-        if (strpos($value, '?') !== false && strpos($value, '&amp;') !== false && strpos($value, '=') !== false) {
+        if (false !== strpos($value, '?') && false !== strpos($value, '&amp;') && false !== strpos($value, '=')) {
             return urldecode($value);
         }
         if (is_string($value)) {
@@ -80,26 +91,32 @@ class Escape {
                 if ($length > 255) {
                     return strval(substr(trim(strip_tags($value, self::allowableTags()))), 0, $length);
                 }
+
                 return strval(trim(strip_tags($value, self::allowableTags())));
             }
         }
     }
 
     /**
-     * html
+     * html.
+     *
      * @param string $value
+     *
      * @return string
      */
-    public function html($value) {
+    public function html($value)
+    {
         return (string) strip_tags($value, self::allowableTags());
     }
 
     /**
-     * allowableTags
+     * allowableTags.
+     *
      * @return string
      */
-    public static function allowableTags() {
-        $tags = array(
+    public static function allowableTags()
+    {
+        $tags = [
             '<a>', '<abbr>', '<adress>', '<area>', '<article>', '<aside>',
             '<audio>', '<b>', '<blockquote>', '<br>', '<button>', '<canvas>',
             '<caption>', '<code>', '<data>', '<datalist>', '<details>', '<dialog>',
@@ -113,19 +130,23 @@ class Escape {
             '<small>', '<source>', '<span>', '<strong>', '<sub>', '<summary>',
             '<sup>', '<svg>', '<table>', '<tbody>', '<td>', '<template>', '<textarea>',
             '<tfoot>', '<th>', '<thead>', '<time>', '<tr>', '<track>', '<u>', '<ul>',
-            '<var>', '<video>', '<wbr>', '(' , ')'
-        );
+            '<var>', '<video>', '<wbr>', '(', ')',
+        ];
+
         return (string) implode('.', $tags);
     }
 
     /**
-     * input
+     * input.
+     *
      * @param string $key
-     * @param string $type (GET, POST, COOKIE, SERVER, ENV)
+     * @param string $type   (GET, POST, COOKIE, SERVER, ENV)
      * @param string $filter (email, encoded, float, int, special_chars, full_special_chars, string, url)
+     *
      * @return mixed
      */
-    public static function input($key, $type = 'GET', $filter = 'string') {
+    public static function input($key, $type = 'GET', $filter = 'string')
+    {
         switch (strtoupper($type)) {
             case 'GET':
                 $type = INPUT_GET;
@@ -182,23 +203,27 @@ class Escape {
                 $filter = FILTER_DEFAULT;
                 break;
         }
+
         return filter_input($type, self::key($key), $filter);
     }
 
     /**
-     * route
+     * route.
+     *
      * @param string $value
-     * @param int $lenght
+     * @param int    $lenght
+     *
      * @return string
      */
-    public static function route($value, $lenght = 0) {
+    public static function route($value, $lenght = 0)
+    {
         $buffer = $value;
         $buffer = trim($buffer);
-        if ($lenght != 0) {
+        if (0 != $lenght) {
             $buffer = substr($buffer, 0, $lenght);
         }
         $buffer = preg_replace('/[^a-zA-Z0-9-]/', '', $buffer);
+
         return $buffer;
     }
-
 }

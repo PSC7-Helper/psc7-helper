@@ -1,62 +1,69 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Routing;
 
 use psc7helper\App\Common\Escape;
 
-class Route {
-
+class Route
+{
     /**
-     * CONTROLLERKEX
+     * CONTROLLERKEX.
      */
     const CONTROLLERKEY = 'controller';
 
     /**
-     * ACTIONKEY
+     * ACTIONKEY.
      */
     const ACTIONKEY = 'action';
 
     /**
-     * PARAMKEY
+     * PARAMKEY.
      */
     const PARAMKEY = 'param';
 
     /**
-     * controller
-     * @var string 
+     * controller.
+     *
+     * @var string
      */
     private $controller;
 
     /**
-     * action
-     * @var string 
+     * action.
+     *
+     * @var string
      */
     private $action;
 
     /**
-     * param
+     * param.
+     *
      * @var string
      */
     private $param;
 
     /**
-     * requests
+     * requests.
+     *
      * @var array
      */
     private $requests;
 
     /**
-     * __construct
+     * __construct.
+     *
+     * @param mixed $requests
      */
-    public function __construct($requests = array()) {
+    public function __construct($requests = [])
+    {
         $this->requests = $requests;
         $this->setController()
              ->setAction()
@@ -64,82 +71,100 @@ class Route {
     }
 
     /**
-     * setController
+     * setController.
+     *
      * @return $this
      */
-    private function setController() {
+    private function setController()
+    {
         $controller = $this->find(self::CONTROLLERKEY);
         if ($controller) {
             $this->controller = $controller;
         } else {
             $this->controller = 'dashboard';
         }
+
         return $this;
     }
 
     /**
-     * setAction
+     * setAction.
+     *
      * @return $this
      */
-    private function setAction() {
+    private function setAction()
+    {
         $action = $this->find(self::ACTIONKEY);
         if ($action) {
             $this->action = $action;
         } else {
             $this->action = 'index';
         }
+
         return $this;
     }
 
     /**
-     * setParms
+     * setParms.
+     *
      * @return $this
      */
-    private function setParam() {
+    private function setParam()
+    {
         $param = $this->find(self::PARAMKEY);
         if ($param) {
             $this->param = $param;
         } else {
             $this->param = '';
         }
+
         return $this;
     }
 
     /**
-     * find
+     * find.
+     *
      * @param string $key
+     *
      * @return string
      */
-    private function find($key) {
+    private function find($key)
+    {
         $requests = $this->requests;
         if (array_key_exists($key, $requests)) {
             return Escape::route($requests[$key], 40);
         }
+
         return false;
     }
 
     /**
-     * getController
+     * getController.
+     *
      * @return string
      */
-    public function getController() {
+    public function getController()
+    {
         return $this->controller;
     }
 
     /**
-     * getAction
+     * getAction.
+     *
      * @return string
      */
-    public function getAction() {
+    public function getAction()
+    {
         return $this->action;
     }
 
     /**
-     * getParms
+     * getParms.
+     *
      * @return array
      */
-    public function getParam() {
+    public function getParam()
+    {
         return $this->param;
     }
-
 }

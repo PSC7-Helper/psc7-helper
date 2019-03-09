@@ -1,89 +1,95 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Exception;
 
-use psc7helper\App\Exception\ExceptionHandler;
-
-class FatalError {
-
+class FatalError
+{
     /**
-     * file
+     * file.
+     *
      * @var string
      */
     private static $file = 'exception.log';
 
     /**
-     * dir
+     * dir.
+     *
      * @var string
      */
     private static $dir = ROOT_PATH . DS . 'var' . DS . 'log';
 
     /**
-     * instance
+     * instance.
+     *
      * @var self
      */
     private static $instance;
 
     /**
-     * __construct
+     * __construct.
      */
-    private function __construct() {
-        
+    private function __construct()
+    {
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * process
-     * @return boolean
+     * process.
+     *
+     * @return bool
      */
-    public static function process() {
+    public static function process()
+    {
         $error = error_get_last();
-        if ($error['type'] === E_ERROR) {
+        if (E_ERROR === $error['type']) {
             $file = self::$dir . DS . self::$file;
             $errnoToString = ExceptionHandler::errnoToText($error['type']);
-            if (!is_dir(self::$dir)) {
+            if (! is_dir(self::$dir)) {
                 mkdir(self::$dir);
             }
             $input = '[' . date('c') . '] ';
-            $input.= $errnoToString . ': ' . $error['message'] . ' in ' . $error['file'] . ' on line ' . $error['line'];
-            $input.= "\r\n";
-            if (!ExceptionHandler::isFileReachedMaxsize($file)) {
-                $fh = fopen($file, "a+");
+            $input .= $errnoToString . ': ' . $error['message'] . ' in ' . $error['file'] . ' on line ' . $error['line'];
+            $input .= "\r\n";
+            if (! ExceptionHandler::isFileReachedMaxsize($file)) {
+                $fh = fopen($file, 'a+');
                 fwrite($fh, $input);
                 fclose($fh);
             }
-            if ($errnoToString == 'Unknown error') {
+            if ('Unknown error' == $errnoToString) {
                 ExceptionHandler::checkExit(E_ERROR);
             } else {
                 ExceptionHandler::checkExit($error['type']);
             }
         }
+
         return true;
     }
-
 }

@@ -1,82 +1,92 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App;
 
-use psc7helper\App\Bootstrap_Interface;
-use psc7helper\App\Routing\Route;
-use psc7helper\App\User\User;
-use psc7helper\App\Session\Session;
 use psc7helper\App\Config\Config;
+use psc7helper\App\Routing\Route;
+use psc7helper\App\Session\Session;
 use psc7helper\App\Template\Placeholder;
 use psc7helper\App\Template\TemplateSystem;
+use psc7helper\App\User\User;
 
-class Bootstrap implements Bootstrap_Interface {
-
+class Bootstrap implements Bootstrap_Interface
+{
     /**
-     * CONTROLLERNAMESPACE
+     * CONTROLLERNAMESPACE.
      */
     const CONTROLLERNAMESPACE = '\\psc7helper\\Controller\\';
 
     /**
-     * requests
-     * @var array 
+     * requests.
+     *
+     * @var array
      */
     protected $requests;
 
     /**
-     * controller
-     * @var string 
+     * controller.
+     *
+     * @var string
      */
     protected $controller;
 
     /**
-     * action
-     * @var string 
+     * action.
+     *
+     * @var string
      */
     protected $action = false;
 
     /**
-     * param
+     * param.
+     *
      * @var string
      */
     protected $param;
 
     /**
-     * security
-     * @var boolean 
+     * security.
+     *
+     * @var bool
      */
     protected $security = false;
 
     /**
-     * login
-     * @var boolean 
+     * login.
+     *
+     * @var bool
      */
     protected $login = false;
 
     /**
-     * install
-     * @var boolean 
+     * install.
+     *
+     * @var bool
      */
     protected $install = false;
 
     /**
-     * theme
+     * theme.
+     *
      * @var string
      */
     protected $theme = false;
 
     /**
-     * __construct
+     * __construct.
+     *
+     * @param mixed $requests
      */
-    public function __construct($requests) {
+    public function __construct($requests)
+    {
         $this->requests = $requests;
         System::initialize();
         $this->setRoute()
@@ -88,118 +98,158 @@ class Bootstrap implements Bootstrap_Interface {
     }
 
     /**
-     * setRoute
+     * setRoute.
+     *
      * @return $this
      */
-    private function setRoute() {
+    private function setRoute()
+    {
         $requests = $this->requests;
         $route = new Route($requests);
         $this->controller = $route->getController();
         $this->action = $route->getAction();
         $this->param = $route->getParam();
         $this->param;
+
         return $this;
     }
 
     /**
-     * securityCheck
+     * securityCheck.
+     *
      * @return $this
      */
-    private function securityCheck() {
-        if (!User::get('identifier') || !User::get('token')) {
+    private function securityCheck()
+    {
+        if (! User::get('identifier') || ! User::get('token')) {
             $this->security = false;
+
             return $this;
-        } if (!Session::get('init') || !Session::get('identifier') || !Session::get('token')) {
+        }
+        if (! Session::get('init') || ! Session::get('identifier') || ! Session::get('token')) {
             $this->security = false;
             Session::destroy();
+
             return $this;
-        } if (User::get('identifier') != Session::get('identifier')) {
+        }
+        if (User::get('identifier') != Session::get('identifier')) {
             $this->security = false;
             Session::destroy();
+
             return $this;
-        } if (User::get('token') != Session::get('token')) {
+        }
+        if (User::get('token') != Session::get('token')) {
             $this->security = false;
             Session::destroy();
+
             return $this;
-        } if (User::get('userid') != Session::get('userid')) {
+        }
+        if (User::get('userid') != Session::get('userid')) {
             $this->security = false;
             Session::destroy();
+
             return $this;
         }
         $this->security = true;
+
         return $this;
     }
 
     /**
-     * loginCheck
+     * loginCheck.
+     *
      * @return $this
      */
-    private function loginCheck() {
-        if (!$this->security) {
+    private function loginCheck()
+    {
+        if (! $this->security) {
             $this->login = false;
+
             return $this;
-        } if (!User::get('userid')) {
+        }
+        if (! User::get('userid')) {
             $this->login = false;
+
             return $this;
-        } if (!Session::get('userid')) {
+        }
+        if (! Session::get('userid')) {
             $this->login = false;
+
             return $this;
-        } if (User::get('userid') != Session::get('userid')) {
+        }
+        if (User::get('userid') != Session::get('userid')) {
             $this->login = false;
+
             return $this;
-        } if (!Session::validateLogin()) {
+        }
+        if (! Session::validateLogin()) {
             $this->login = false;
+
             return $this;
         }
         $this->login = true;
+
         return $this;
     }
 
     /**
-     * installCheck
+     * installCheck.
+     *
      * @return $this
      */
-    private function installCheck() {
+    private function installCheck()
+    {
         $file = ROOT_PATH . DS . 'var' . DS . 'install.lock';
-        if (!file_exists($file)) {
+        if (! file_exists($file)) {
             $this->install = false;
+
             return $this;
         }
         $this->install = true;
+
         return $this;
     }
 
     /**
-     * checkRoute
+     * checkRoute.
+     *
      * @return $this
      */
-    private function checkRoute() {
-        if (!$this->login) {
+    private function checkRoute()
+    {
+        if (! $this->login) {
             $this->controller = 'login';
             $this->action = 'index';
         }
-        if (!$this->login && !$this->install) {
+        if (! $this->login && ! $this->install) {
             $this->controller = 'install';
             $this->action = 'index';
         }
+
         return $this;
     }
 
     /**
-     * setTheme
+     * setTheme.
+     *
      * @return $this
      */
-    private function setTheme() {
+    private function setTheme()
+    {
         $this->theme = THEMES_PATH . DS . Config::get('theme');
+
         return $this;
     }
 
     /**
-     * displayError
+     * displayError.
+     *
      * @param int $code
-     * @return boolean
+     *
+     * @return bool
      */
-    private function displayError($code) {
+    private function displayError($code)
+    {
         $ph = new Placeholder();
         $placeholder = $ph->get();
         $templateSystem = new TemplateSystem();
@@ -207,30 +257,33 @@ class Bootstrap implements Bootstrap_Interface {
         $templateSystem->readTemplate($template)->setPlaceholder($placeholder);
         $errorTemplate = $templateSystem->renderTemplate();
         exit($errorTemplate);
+
         return true;
     }
 
     /**
-     * run
+     * run.
      */
-    public function run() {
+    public function run()
+    {
         $requests = $this->requests;
         $controller = ROOT_PATH . DS . 'controllers' . DS . ucfirst($this->controller) . DS . 'Controller.php';
         $templatePath = 'controllers' . DS . ucfirst($this->controller) . DS . 'template';
-        if (!file_exists($controller)) {
+        if (! file_exists($controller)) {
             $this->displayError(404);
+
             return false;
         }
         $controllerName = $this->controller;
-        $action = $this->action;        
+        $action = $this->action;
         $param = $this->param;
         $login = $this->login;
         $theme = $this->theme;
         $class = self::CONTROLLERNAMESPACE . ucfirst($this->controller) . '\\Controller';
         $reflectionClass = new \ReflectionClass($class);
-        $args = array($requests, $templatePath, $controllerName, $action, $param, $login, $theme);
+        $args = [$requests, $templatePath, $controllerName, $action, $param, $login, $theme];
         $instance = $reflectionClass->newInstanceArgs($args);
+
         return $instance;
     }
-
 }

@@ -1,46 +1,51 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
 namespace psc7helper\App\Ajax;
 
-use psc7helper\App\Ajax\Ajax_Interface;
 use psc7helper\App\Config\Lang;
-use psc7helper\App\System;
 use psc7helper\App\Header\Header;
+use psc7helper\App\System;
 
-abstract class Ajax_Abstract implements Ajax_Interface {
-
+abstract class Ajax_Abstract implements Ajax_Interface
+{
     /**
-     * path
+     * path.
+     *
      * @var string
      */
     protected $path;
 
     /**
-     * action
+     * action.
+     *
      * @var string
      */
     protected $action;
 
     /**
-     * param
+     * param.
+     *
      * @var string
      */
     protected $param;
 
     /**
-     * __construct
+     * __construct.
+     *
      * @param string $path
      * @param string $action
      * @param string $param
      */
-    public function __construct($path, $action, $param = false) {
+    public function __construct($path, $action, $param = false)
+    {
         $this->path = $path;
         $this->action = $action;
         $this->param = ($param) ? $param : false;
@@ -49,28 +54,36 @@ abstract class Ajax_Abstract implements Ajax_Interface {
             $this->$action();
         } else {
             $this->error(404);
+
             return false;
         }
     }
 
     /**
-     * isActionExists
+     * isActionExists.
+     *
      * @param string $action
-     * @return boolean
+     *
+     * @return bool
      */
-    public function isActionExists($action) {
-        if (!method_exists($this, $action)) {
+    public function isActionExists($action)
+    {
+        if (! method_exists($this, $action)) {
             $this->error();
+
             return false;
         }
+
         return true;
     }
 
     /**
-     * setLang
+     * setLang.
+     *
      * @return $this
      */
-    private function setLang() {
+    private function setLang()
+    {
         $lang = Lang::get('lang');
         $path = $this->path;
         if (file_exists($path . DS . 'lang.json')) {
@@ -82,17 +95,19 @@ abstract class Ajax_Abstract implements Ajax_Interface {
                 }
             }
         }
+
         return $this;
     }
 
     /**
-     * error
-     * @return boolean
+     * error.
+     *
+     * @return bool
      */
-    public function error() {
+    public function error()
+    {
         Header::send(404);
         System::log('error: action not found in ' . __FILE__ . ' on line ' . __LINE__, false);
         exit('Request not found');
     }
-
 }

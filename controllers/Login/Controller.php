@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
@@ -11,19 +12,21 @@ namespace psc7helper\Controller\Login;
 
 use psc7helper\App\Controllers\Controller_Abstract;
 use psc7helper\App\Controllers\Controller_Interface;
-use psc7helper\App\Header\Header;
-use psc7helper\App\Session\Session;
 use psc7helper\App\Form\FormValidator;
+use psc7helper\App\Header\Header;
 use psc7helper\App\Session\LoginHandler;
+use psc7helper\App\Session\Session;
 
-class Controller extends Controller_Abstract implements Controller_Interface {
-
+class Controller extends Controller_Abstract implements Controller_Interface
+{
     /**
-     * index
+     * index.
+     *
      * @return string
      */
-    public function index() {
-        if ($this->login === true) {
+    public function index()
+    {
+        if (true === $this->login) {
             Header::send(301, 'index.php?controller=dashboard');
         }
         $this->setPlaceholder('message', ' ', false);
@@ -33,7 +36,7 @@ class Controller extends Controller_Abstract implements Controller_Interface {
         }
         $requests = $this->requests;
         $form = new FormValidator($requests);
-        if ($form->isValid() && array_key_exists('formname', $requests) && $requests['formname'] == 'login') {
+        if ($form->isValid() && array_key_exists('formname', $requests) && 'login' == $requests['formname']) {
             $login = new LoginHandler();
             $username = (array_key_exists('username', $requests)) ? $requests['username'] : false;
             $password = (array_key_exists('password', $requests)) ? $requests['password'] : false;
@@ -52,7 +55,7 @@ class Controller extends Controller_Abstract implements Controller_Interface {
         $this->setPlaceholder('index_button_submit', __('index_button_submit'), false);
         $this->setTemplate('index');
         $page = $this->renderPage('index-full');
+
         return $page;
     }
-
 }

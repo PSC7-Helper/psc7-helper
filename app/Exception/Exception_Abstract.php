@@ -1,68 +1,70 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Exception;
 
-use psc7helper\App\Exception\Exception_Interface;
-use psc7helper\App\Exception\ExceptionHandler;
-
-class Exception_Abstract implements Exception_Interface {
-
+class Exception_Abstract implements Exception_Interface
+{
     /**
-     * file
+     * file.
+     *
      * @var string
      */
     protected static $file = 'exception.log';
 
     /**
-     * dir
+     * dir.
+     *
      * @var string
      */
     protected static $dir = ROOT_PATH . DS . 'var' . DS . 'log';
 
     /**
-     * __construct
+     * __construct.
      */
-    public function __construct() {
-        
+    public function __construct()
+    {
     }
 
     /**
-     * handle
+     * handle.
+     *
      * @param object $ex
      * @param string $catch
-     * @return boolean
+     *
+     * @return bool
      */
-    public static function handle($ex, $catch = '') {
+    public static function handle($ex, $catch = '')
+    {
         $file = self::$dir . DS . self::$file;
         $errnoToString = ExceptionHandler::errnoToText($ex->getCode());
-        if (!is_dir(self::$dir)) {
+        if (! is_dir(self::$dir)) {
             mkdir(self::$dir);
         }
         $input = '[' . date('c') . '] ';
-        if ($catch != '') {
-            $input.= '[' . $catch . '] ';
+        if ('' != $catch) {
+            $input .= '[' . $catch . '] ';
         }
-        $input.= $errnoToString . ': ' . $ex->getMessage() . ' in ' . $ex->getFile() . ' on line ' . $ex->getLine();
-        $input.= "\r\n";
-        if (!ExceptionHandler::isFileReachedMaxsize($file)) {
-            $fh = fopen($file, "a+");
+        $input .= $errnoToString . ': ' . $ex->getMessage() . ' in ' . $ex->getFile() . ' on line ' . $ex->getLine();
+        $input .= "\r\n";
+        if (! ExceptionHandler::isFileReachedMaxsize($file)) {
+            $fh = fopen($file, 'a+');
             fwrite($fh, $input);
             fclose($fh);
         }
-        if ($errnoToString == 'Unknown error') {
+        if ('Unknown error' == $errnoToString) {
             ExceptionHandler::checkExit(E_ERROR);
         } else {
             ExceptionHandler::checkExit($ex->getCode());
         }
+
         return true;
     }
-
 }

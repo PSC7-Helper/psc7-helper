@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
@@ -12,56 +13,70 @@ namespace psc7helper\Controller\Connector;
 use psc7helper\App\Controllers\Controller_Abstract;
 use psc7helper\App\Controllers\Controller_Interface;
 
-class Controller extends Controller_Abstract implements Controller_Interface {
-
+class Controller extends Controller_Abstract implements Controller_Interface
+{
     /**
-     * index
+     * index.
+     *
      * @return string
      */
-    public function index() {
+    public function index()
+    {
         $this->setTemplate('index');
         $page = $this->renderPage('index');
+
         return $page;
     }
 
     /**
-     * identitys
+     * identitys.
+     *
      * @return string
      */
-    public function identitys() {
+    public function identitys()
+    {
         $this->setTemplate('identitys');
         $page = $this->renderPage('index');
+
         return $page;
     }
 
     /**
-     * logfiles
+     * logfiles.
+     *
      * @return string
      */
-    public function logfiles() {
+    public function logfiles()
+    {
         $this->setTemplate('logfiles');
         $page = $this->renderPage('index');
+
         return $page;
     }
 
     /**
-     * cronjobs
+     * cronjobs.
+     *
      * @return string
      */
-    public function cronjobs() {
+    public function cronjobs()
+    {
         $this->setTemplate('cronjobs');
         $page = $this->renderPage('index');
+
         return $page;
     }
 
     /**
-     * cronjobsedit
+     * cronjobsedit.
+     *
      * @return string
      */
-    public function cronjobsedit() {
+    public function cronjobsedit()
+    {
         $this->setTemplate('cronjobsedit');
         $page = $this->renderPage('index');
+
         return $page;
     }
-
 }

@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
@@ -14,70 +15,82 @@ use PDOException;
 use psc7helper\App\Config\Config;
 use psc7helper\App\Exception\DatabaseException;
 
-class Database {
-
+class Database
+{
     /**
-     * pdo
+     * pdo.
+     *
      * @var PDO
      */
     protected $pdo;
 
     /**
-     * last
+     * last.
+     *
      * @var PDOStatment
      */
     protected $last;
 
     /**
-     * counter
+     * counter.
+     *
      * @var int
      */
     protected $counter;
 
     /**
-     * __construct
+     * __construct.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->setConnection();
     }
 
     /**
-     * setConnection
+     * setConnection.
+     *
      * @return $this
      */
-    private function setConnection() {
+    private function setConnection()
+    {
         if ($this->pdo) {
             return $this;
         }
         try {
             $this->pdo = new PDO(
-                'mysql:host=' . Config::get('dbHost') . ';port=' . Config::get('dbPort') . ';dbname=' . Config::get('dbName'), Config::get('dbUser'), Config::get('dbPass'),
-                array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-                )
+                'mysql:host=' . Config::get('dbHost') . ';port=' . Config::get('dbPort') . ';dbname=' . Config::get('dbName'),
+                Config::get('dbUser'),
+                Config::get('dbPass'),
+                [
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+                ]
             );
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return $this;
     }
 
     /**
-     * insert
+     * insert.
+     *
      * @param string $databaseTable
-     * @param array $fieldArray (fieldNameAsKey => Value)
+     * @param array  $fieldArray    (fieldNameAsKey => Value)
+     *
      * @return $this
      */
-    public function insert($databaseTable, $fieldArray = array()) {
-        $keyArray = array();
-        $valueArray = array();
+    public function insert($databaseTable, $fieldArray = [])
+    {
+        $keyArray = [];
+        $valueArray = [];
         foreach (array_keys($fieldArray) as $key) {
             $keyArray[] = '`' . $key . '`';
             $valueArray[] = '?';
         }
-        $query = array();
+        $query = [];
         $query[] = 'INSERT INTO `' . Config::get('dbPrefix') . $databaseTable . '` (';
         $query[] = implode(', ', $keyArray);
         $query[] = ') VALUES (';
@@ -85,23 +98,27 @@ class Database {
         $query[] = ')';
         $stmtQuery = implode(' ', $query);
         $this->executeQuery($stmtQuery, $fieldArray);
+
         return $this;
     }
 
     /**
-     * insertIgnore
+     * insertIgnore.
+     *
      * @param string $databaseTable
-     * @param array $fieldArray (fieldNameAsKey => Value)
+     * @param array  $fieldArray    (fieldNameAsKey => Value)
+     *
      * @return $this
      */
-    public function insertIgnore($databaseTable, $fieldArray = array()) {
-        $keyArray = array();
-        $valueArray = array();
+    public function insertIgnore($databaseTable, $fieldArray = [])
+    {
+        $keyArray = [];
+        $valueArray = [];
         foreach (array_keys($fieldArray) as $key) {
             $keyArray[] = '`' . $key . '`';
             $valueArray[] = '?';
         }
-        $query = array();
+        $query = [];
         $query[] = 'INSERT IGNORE INTO `' . Config::get('dbPrefix') . $databaseTable . '` (';
         $query[] = implode(', ', $keyArray);
         $query[] = ') VALUES (';
@@ -109,38 +126,42 @@ class Database {
         $query[] = ')';
         $stmtQuery = implode(' ', $query);
         $this->executeQuery($stmtQuery, $fieldArray);
+
         return $this;
     }
 
     /**
-     * update
+     * update.
+     *
      * @param string $databaseTable
-     * @param array $fieldArray (fieldNameAsKey => Value)
-     * @param array $conditionArray
+     * @param array  $fieldArray     (fieldNameAsKey => Value)
+     * @param array  $conditionArray
+     *
      * @return $this
      */
-    public function update($databaseTable, $fieldArray = array(), $conditionArray = array()) {
-        $mergeArray = array();
+    public function update($databaseTable, $fieldArray = [], $conditionArray = [])
+    {
+        $mergeArray = [];
         $i = 0;
-        $setArray = array();
+        $setArray = [];
         foreach ($fieldArray as $key => $value) {
-            if (!strpos($value, '+')) {
+            if (! strpos($value, '+')) {
                 $setArray[] = '`' . $key . '` = ?';
                 $mergeArray[$i] = $value;
-                $i++;
+                ++$i;
             } else {
                 $setArray[] = '`' . $key . '` = ' . '`' . $value . '`';
             }
         }
         if (count($conditionArray) > 0) {
-            $whereArray = array();
+            $whereArray = [];
             foreach ($conditionArray as $key => $value) {
                 $whereArray[] = '`' . $key . '` = ?';
                 $mergeArray[$i] = $value;
-                $i++;
+                ++$i;
             }
         }
-        $query = array();
+        $query = [];
         $query[] = 'UPDATE `' . Config::get('dbPrefix') . $databaseTable . '` SET ';
         $query[] = implode(', ', $setArray);
         if (count($conditionArray) > 0) {
@@ -153,21 +174,25 @@ class Database {
         }
         $stmtQuery = implode(' ', $query);
         $this->executeQuery($stmtQuery, $mergeArray);
+
         return $this;
     }
 
     /**
-     * delete
+     * delete.
+     *
      * @param string $databaseTable
-     * @param array $conditionArray
+     * @param array  $conditionArray
+     *
      * @return $this
      */
-    public function delete($databaseTable, $conditionArray = array()) {
-        $whereArray = array();
+    public function delete($databaseTable, $conditionArray = [])
+    {
+        $whereArray = [];
         foreach (array_keys($conditionArray) as $key) {
             $whereArray[] = '`' . $key . '` = ?';
         }
-        $query = array();
+        $query = [];
         $query[] = 'DELETE FROM `' . Config::get('dbPrefix') . $databaseTable . '` ';
         $query[] = 'WHERE ';
         if (count($conditionArray) > 1) {
@@ -177,16 +202,20 @@ class Database {
         }
         $stmtQuery = implode(' ', $query);
         $this->executeQuery($stmtQuery, $conditionArray);
+
         return $this;
     }
 
     /**
-     * selectVar
+     * selectVar.
+     *
      * @param string $query
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return $this
      */
-    public function selectVar($query, $arguments = array()) {
+    public function selectVar($query, $arguments = [])
+    {
         try {
             if (count($arguments) > 0) {
                 $this->executeSelectQuery($query, $arguments);
@@ -199,16 +228,20 @@ class Database {
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return $this;
     }
 
     /**
-     * selectAssoc
+     * selectAssoc.
+     *
      * @param string $query
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return $this
      */
-    public function selectAssoc($query, $arguments = false) {
+    public function selectAssoc($query, $arguments = false)
+    {
         try {
             if (is_array($arguments) && count($arguments) > 0) {
                 $this->executeSelectQuery($query, $arguments);
@@ -221,16 +254,20 @@ class Database {
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return $this;
     }
 
     /**
-     * selectNum
+     * selectNum.
+     *
      * @param string $query
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return $this
      */
-    public function selectNum($query, $arguments = false) {
+    public function selectNum($query, $arguments = false)
+    {
         try {
             if (is_array($arguments) && count($arguments) > 0) {
                 $this->executeSelectQuery($query, $arguments);
@@ -243,16 +280,20 @@ class Database {
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return $this;
     }
 
     /**
-     * executeQuery
+     * executeQuery.
+     *
      * @param string $prepare
-     * @param array $autobind
-     * @return boolean
+     * @param array  $autobind
+     *
+     * @return bool
      */
-    private function executeQuery($prepare, $autobind = array()) {
+    private function executeQuery($prepare, $autobind = [])
+    {
         try {
             $this->setLast();
             $stmt = $this->prepare($prepare);
@@ -262,18 +303,21 @@ class Database {
             if (Config::get('dbLog')) {
                 $this->logQuery($prepare);
             }
-            $this->counter++;
+            ++$this->counter;
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return true;
     }
 
     /**
-     * executeSelectQuery
-     * @return boolean
+     * executeSelectQuery.
+     *
+     * @return bool
      */
-    private function executeSelectQuery() {
+    private function executeSelectQuery()
+    {
         $arguments = func_get_args();
         $query = $arguments[0];
         $stmtQuery = str_replace('PREFIX_', Config::get('dbPrefix'), $query);
@@ -281,7 +325,7 @@ class Database {
             $this->setLast();
             $stmt = $this->prepare($stmtQuery);
             if (count($arguments) > 1) {
-                if (!is_array($arguments[1])) {
+                if (! is_array($arguments[1])) {
                     array_shift($arguments);
                     $this->autobind($stmt, $arguments);
                 } else {
@@ -293,30 +337,36 @@ class Database {
             if (Config::get('dbLog')) {
                 $this->logQuery($stmtQuery);
             }
-            $this->counter++;
+            ++$this->counter;
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
         }
+
         return true;
     }
 
     /**
-     * setLast
+     * setLast.
+     *
      * @return $this
      */
-    private function setLast() {
+    private function setLast()
+    {
         if (is_object($this->last)) {
             $this->last->closeCursor();
             $this->last = null;
         }
+
         return $this;
     }
 
     /**
-     * prepare
+     * prepare.
+     *
      * @return PDOStatment
      */
-    private function prepare() {
+    private function prepare()
+    {
         $arguments = func_get_args();
         try {
             $query = $arguments[0];
@@ -325,6 +375,7 @@ class Database {
                 array_shift($arguments);
                 $this->autobind($stmt, $arguments);
             }
+
             return $stmt;
         } catch (PDOException $ex) {
             DatabaseException::handle($ex, 'PDOException');
@@ -332,15 +383,18 @@ class Database {
     }
 
     /**
-     * autobind
+     * autobind.
+     *
      * @param PDOStatment $stmt
-     * @param array $arguments
-     * @return boolean
+     * @param array       $arguments
+     *
+     * @return bool
      */
-    private function autobind($stmt, $arguments = array()) {
+    private function autobind($stmt, $arguments = [])
+    {
         $i = 0;
         foreach ($arguments as $value) {
-            $i++;
+            ++$i;
             if (is_string($value) && strlen($value) < 4000) {
                 $typ = PDO::PARAM_STR;
             } elseif (is_string($value) && strlen($value) >= 4000) {
@@ -357,7 +411,7 @@ class Database {
                 $value = sprintf('%f', $value);
             } elseif (is_bool($value)) {
                 $typ = PDO::PARAM_STR;
-                $value = ($value === true) ? '1' : '0';
+                $value = (true === $value) ? '1' : '0';
             } elseif (is_object($value) && is_a($value, 'DateTime')) {
                 $typ = PDO::PARAM_STR;
                 $value = $value->format('Y-m-d H:i:s');
@@ -371,45 +425,53 @@ class Database {
             }
             $stmt->bindValue($i, $value, $typ);
         }
+
         return true;
     }
 
     /**
-     * getConnection
+     * getConnection.
+     *
      * @return array
      */
-    public function getConnection() {
-        $attributes = array(
-            'ATTR_AUTOCOMMIT' => $this->pdo->getAttribute(\PDO::ATTR_AUTOCOMMIT),
-            'ATTR_CASE' => $this->pdo->getAttribute(\PDO::ATTR_CASE),
-            'ATTR_CLIENT_VERSION' => $this->pdo->getAttribute(\PDO::ATTR_CLIENT_VERSION),
+    public function getConnection()
+    {
+        $attributes = [
+            'ATTR_AUTOCOMMIT'        => $this->pdo->getAttribute(\PDO::ATTR_AUTOCOMMIT),
+            'ATTR_CASE'              => $this->pdo->getAttribute(\PDO::ATTR_CASE),
+            'ATTR_CLIENT_VERSION'    => $this->pdo->getAttribute(\PDO::ATTR_CLIENT_VERSION),
             'ATTR_CONNECTION_STATUS' => $this->pdo->getAttribute(\PDO::ATTR_CONNECTION_STATUS),
-            'ATTR_DRIVER_NAME' => $this->pdo->getAttribute(\PDO::ATTR_DRIVER_NAME),
-            'ATTR_ERRMODE' => $this->pdo->getAttribute(\PDO::ATTR_ERRMODE),
-            'ATTR_PERSISTENT' => $this->pdo->getAttribute(\PDO::ATTR_PERSISTENT),
-            'ATTR_SERVER_INFO' => $this->pdo->getAttribute(\PDO::ATTR_SERVER_INFO),
-            'ATTR_SERVER_VERSION' => $this->pdo->getAttribute(\PDO::ATTR_SERVER_VERSION)
-        );
+            'ATTR_DRIVER_NAME'       => $this->pdo->getAttribute(\PDO::ATTR_DRIVER_NAME),
+            'ATTR_ERRMODE'           => $this->pdo->getAttribute(\PDO::ATTR_ERRMODE),
+            'ATTR_PERSISTENT'        => $this->pdo->getAttribute(\PDO::ATTR_PERSISTENT),
+            'ATTR_SERVER_INFO'       => $this->pdo->getAttribute(\PDO::ATTR_SERVER_INFO),
+            'ATTR_SERVER_VERSION'    => $this->pdo->getAttribute(\PDO::ATTR_SERVER_VERSION),
+        ];
+
         return $attributes;
     }
 
     /**
-     * getCounter
+     * getCounter.
+     *
      * @return int
      */
-    public function getCounter() {
+    public function getCounter()
+    {
         return $this->counter;
     }
 
     /**
-     * getLastID
+     * getLastID.
+     *
      * @return int
      */
-    public function getLastID() {
+    public function getLastID()
+    {
         if ($this->pdo) {
             return $this->pdo->lastInsertId();
         }
+
         return 0;
     }
-
 }

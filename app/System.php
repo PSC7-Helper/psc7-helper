@@ -1,103 +1,116 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App;
 
-use psc7helper\App\Date\Date;
 use psc7helper\App\Config\Config;
 use psc7helper\App\Config\Lang;
+use psc7helper\App\Date\Date;
+use psc7helper\App\Header\Header;
 use psc7helper\App\Session\Session;
 use psc7helper\App\User\User;
-use psc7helper\App\Header\Header;
 
-final class System {
-
+final class System
+{
     /**
-     * file
+     * file.
+     *
      * @var string
      */
     private static $file = 'system.log';
 
     /**
-     * dir
+     * dir.
+     *
      * @var string
      */
     private static $dir = ROOT_PATH . DS . 'var' . DS . 'log';
 
     /**
-     * instance
+     * instance.
+     *
      * @var self
      */
-    protected static $instance;
+    private static $instance;
 
     /**
-     * __construct
+     * __construct.
+     *
      * @param mixed $level
      */
-    private function __construct() {
-        
+    private function __construct()
+    {
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * initialize
-     * @return boolean
+     * initialize.
+     *
+     * @return bool
      */
-    public static function initialize() {
+    public static function initialize()
+    {
         Date::init();
         Config::init();
         Lang::init();
         Session::init();
         User::init();
+
         return true;
     }
 
     /**
-     * log
+     * log.
+     *
      * @param string $message
-     * @param bool $exit
-     * @return boolean
+     * @param bool   $exit
+     *
+     * @return bool
      */
-    public static function log($message, $exit = false) {
-        if (!is_dir(self::$dir)) {
+    public static function log($message, $exit = false)
+    {
+        if (! is_dir(self::$dir)) {
             mkdir(self::$dir);
         }
-        $fh = fopen(self::$dir . DS . self::$file, "a+");
+        $fh = fopen(self::$dir . DS . self::$file, 'a+');
         $input = '[' . date('c') . '] ';
-        $input.= $message;
-        $input.= "\r\n";
+        $input .= $message;
+        $input .= "\r\n";
         fwrite($fh, $input);
         fclose($fh);
         if ($exit) {
             Header::send(500);
-            print 'An error has occurred. Please try again later. Thank you.';
+            echo 'An error has occurred. Please try again later. Thank you.';
             exit(1);
         }
+
         return true;
     }
-
 }

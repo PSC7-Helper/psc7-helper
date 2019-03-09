@@ -1,89 +1,105 @@
 <?php
 
 /**
- * This file is part of the michael-rusch/proclaim
- * 
+ * This file is part of the michael-rusch/proclaim.
+ *
  * This software is proprietary
  * Unauthorized copying of this file is strictly prohibited
- * 
+ *
  * For the full copyright and license information, please view the LICENSE file
- * 
+ *
  * @author Michael Rusch <michael@rusch.sh>
  * @copyright Copyright (c) 2018 Michael Rusch
- * @link https://www.rusch.sh
+ *
+ * @see https://www.rusch.sh
  */
 
 namespace psc7helper\App\Date;
 
 use psc7helper\App\Config\Config;
 
-class Date {
-
+class Date
+{
     /**
-     * instance
+     * instance.
+     *
      * @var object
      */
     private static $instance;
 
     /**
-     * __construct
+     * __construct.
      */
-    private function __construct() {
+    private function __construct()
+    {
         ini_set('date.timezone', Config::get('dateTimezone'));
         date_default_timezone_set(Config::get('dateTimezone'));
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * init
+     * init.
+     *
      * @return self
      */
-    public static function init() {
+    public static function init()
+    {
         return self::getInstance();
     }
 
     /**
-     * getTime
-     * @return integer
+     * getTime.
+     *
+     * @return int
      */
-    public static function getTime() {
+    public static function getTime()
+    {
         return time();
     }
 
     /**
-     * datetimeToTimestamp
+     * datetimeToTimestamp.
+     *
      * @param string $datetime
-     * @return integer
+     *
+     * @return int
      */
-    public static function datetimeToTimestamp($datetime) {
+    public static function datetimeToTimestamp($datetime)
+    {
         return strtotime($datetime);
     }
 
     /**
-     * getDate
+     * getDate.
+     *
      * @param string $format
-     * @param int $timestamp
+     * @param int    $timestamp
+     *
      * @return string
      */
-    public static function getDate($format = 'd-m-Y H:i:s', $timestamp = 0) {
-        if (!$format || !is_string($format)) {
+    public static function getDate($format = 'd-m-Y H:i:s', $timestamp = 0)
+    {
+        if (! $format || ! is_string($format)) {
             $format = Config::get('dateFormat');
         }
         if ($timestamp > 0) {
@@ -94,12 +110,15 @@ class Date {
     }
 
     /**
-     * getDayName
-     * @param int $day
+     * getDayName.
+     *
+     * @param int  $day
      * @param bool $short
+     *
      * @return string
      */
-    public static function getDayName($day, $short = false) {
+    public static function getDayName($day, $short = false)
+    {
         if ($short) {
             $short = true;
         } else {
@@ -108,16 +127,20 @@ class Date {
         if ($day) {
             return self::dayName($day, $short);
         }
+
         return self::dayName(date('w'), $short);
     }
 
     /**
-     * dayName
-     * @param int $num
+     * dayName.
+     *
+     * @param int  $num
      * @param bool $short
+     *
      * @return string
      */
-    private static function dayName($num, $short = false) {
+    private static function dayName($num, $short = false)
+    {
         $day = false;
         switch ($num) {
             case 0:
@@ -148,16 +171,20 @@ class Date {
         if ($short) {
             $day = substr($day, 0, 2) . '.';
         }
+
         return $day;
     }
 
     /**
-     * getMonthName
-     * @param int $month
+     * getMonthName.
+     *
+     * @param int  $month
      * @param bool $short
+     *
      * @return string
      */
-    public static function getMonth($month, $short = false) {
+    public static function getMonth($month, $short = false)
+    {
         if ($short) {
             $short = true;
         } else {
@@ -166,16 +193,20 @@ class Date {
         if ($month) {
             return self::monthName($month, $short);
         }
+
         return self::monthName(date('n'), $short);
     }
 
     /**
-     * monthName
-     * @param int $num
+     * monthName.
+     *
+     * @param int  $num
      * @param bool $short
+     *
      * @return string
      */
-    private static function monthName($num, $short = false) {
+    private static function monthName($num, $short = false)
+    {
         $month = false;
         switch ($num) {
             case 1:
@@ -218,7 +249,7 @@ class Date {
         if ($short) {
             $month = substr($month, 0, 3) . '.';
         }
+
         return $month;
     }
-
 }

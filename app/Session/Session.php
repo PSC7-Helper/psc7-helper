@@ -1,32 +1,33 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\Session;
 
+use psc7helper\App\Common\Escape;
 use psc7helper\App\Config\Config;
 use psc7helper\App\User\User;
-use psc7helper\App\Session\Model;
-use psc7helper\App\Common\Escape;
 
-class Session {
-
+class Session
+{
     /**
-     * instance
+     * instance.
+     *
      * @var object
      */
     protected static $instance;
 
     /**
-     * __construct
+     * __construct.
      */
-    private function __construct() {
+    private function __construct()
+    {
         ini_set('session.name', Config::get('sessionName'));
         ini_set('session.use_cookies', Config::get('sessionUseCookies'));
         ini_set('session.use_only_cookies', Config::get('sessionUseOnlyCookies'));
@@ -37,118 +38,147 @@ class Session {
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * init
+     * init.
+     *
      * @return self
      */
-    public static function init() {
+    public static function init()
+    {
         return self::getInstance();
     }
 
     /**
-     * start
+     * start.
+     *
      * @return $this
      */
-    private function start() {
-        if (!isset($_SESSION['init'])) {
+    private function start()
+    {
+        if (! isset($_SESSION['init'])) {
             session_start();
             self::set('init', time());
         }
+
         return $this;
     }
 
     /**
-     * login
+     * login.
+     *
      * @param int $userID
-     * @return boolean
+     *
+     * @return bool
      */
-    public static function login($userID) {
+    public static function login($userID)
+    {
         self::set('userid', $userID);
         self::regenerate();
+
         return true;
     }
 
     /**
-     * isStarted
-     * @return boolean
+     * isStarted.
+     *
+     * @return bool
      */
-    public static function isStarted() {
-        if (session_status() === PHP_SESSION_ACTIVE) {
+    public static function isStarted()
+    {
+        if (PHP_SESSION_ACTIVE === session_status()) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * isInit
-     * @return boolean
+     * isInit.
+     *
+     * @return bool
      */
-    public static function isInit() {
-        if (self::get('init') !== false) {
+    public static function isInit()
+    {
+        if (false !== self::get('init')) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * validateLogin
-     * @return boolean
+     * validateLogin.
+     *
+     * @return bool
      */
-    public static function validateLogin() {
-        if (!self::isStarted() || !self::isInit()) {
+    public static function validateLogin()
+    {
+        if (! self::isStarted() || ! self::isInit()) {
             return false;
         }
         $userID = User::get('userid');
-        if (!$userID || !is_int($userID)) {
+        if (! $userID || ! is_int($userID)) {
             self::destroy();
+
             return false;
         }
         $userIDsess = self::get('userid');
-        if (!$userIDsess || !is_int($userIDsess)) {
+        if (! $userIDsess || ! is_int($userIDsess)) {
             self::destroy();
+
             return false;
         }
         $model = new Model();
-        if (!$model->validateUserID($userID)) {
+        if (! $model->validateUserID($userID)) {
             self::destroy();
+
             return false;
         }
+
         return true;
     }
 
     /**
-     * regenerate
-     * @return boolean
+     * regenerate.
+     *
+     * @return bool
      */
-    public static function regenerate() {
+    public static function regenerate()
+    {
         if (Config::get('sessionRegenerate')) {
             session_regenerate_id(true);
         }
+
         return true;
     }
 
     /**
-     * destroy
-     * @return boolean
+     * destroy.
+     *
+     * @return bool
      */
-    public static function destroy() {
+    public static function destroy()
+    {
         $_SESSION = null;
         session_destroy();
         session_start();
@@ -156,63 +186,79 @@ class Session {
         if (Config::get('sessionRegenerate')) {
             session_regenerate_id(true);
         }
+
         return true;
     }
 
     /**
-     * set
+     * set.
+     *
      * @param string $key
-     * @param mixed $value
-     * @return boolean
+     * @param mixed  $value
+     *
+     * @return bool
      */
-    public static function set($key, $value) {
+    public static function set($key, $value)
+    {
         $ekey = Escape::key($key);
         $evalue = Escape::value($value);
-        if (!isset($_SESSION[$ekey])) {
+        if (! isset($_SESSION[$ekey])) {
             $_SESSION[$ekey] = $evalue;
         }
+
         return true;
     }
 
     /**
-     * get
+     * get.
+     *
      * @param string $key
+     *
      * @return mixed
      */
-    public static function get($key) {
+    public static function get($key)
+    {
         $ekey = Escape::key($key);
         if (isset($_SESSION) && array_key_exists($ekey, $_SESSION)) {
             return $_SESSION[$ekey];
         }
+
         return false;
     }
 
     /**
-     * update
+     * update.
+     *
      * @param string $key
-     * @param mixed $value
-     * @return boolean
+     * @param mixed  $value
+     *
+     * @return bool
      */
-    public static function update($key, $value) {
+    public static function update($key, $value)
+    {
         $ekey = Escape::key($key);
         $evalue = Escape::value($value);
         if (isset($_SESSION[$ekey])) {
             $_SESSION[$ekey] = $evalue;
         }
+
         return true;
     }
 
     /**
-     * remove
+     * remove.
+     *
      * @param string $key
-     * @return boolean
+     *
+     * @return bool
      */
-    public static function remove($key) {
+    public static function remove($key)
+    {
         $ekey = Escape::key($key);
         if (isset($_SESSION[$ekey])) {
             unset($_SESSION[$ekey]);
         }
+
         return true;
     }
-
 }

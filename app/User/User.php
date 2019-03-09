@@ -1,108 +1,122 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * 
  */
 
 namespace psc7helper\App\User;
 
-use psc7helper\App\User\Environment;
 use psc7helper\App\Session\Session;
 
-class User {
-
+class User
+{
     /**
-     * enrironment
-     * @var object 
+     * enrironment.
+     *
+     * @var object
      */
     private $enrironment;
 
     /**
-     * ip
+     * ip.
+     *
      * @var string
      */
     private $ip;
 
     /**
-     * ipv6
+     * ipv6.
+     *
      * @var string
      */
     private $ipv6;
 
     /**
-     * proxyIp
-     * @var string 
+     * proxyIp.
+     *
+     * @var string
      */
     private $proxyIp;
 
     /**
-     * host
+     * host.
+     *
      * @var string
      */
     private $host;
 
     /**
-     * agent
-     * @var string 
+     * agent.
+     *
+     * @var string
      */
     private $agent;
 
     /**
-     * referer
-     * @var string 
+     * referer.
+     *
+     * @var string
      */
     private $referer;
 
     /**
-     * uri
-     * @var string 
+     * uri.
+     *
+     * @var string
      */
     private $uri;
 
     /**
-     * identifierClass
-     * @var object 
+     * identifierClass.
+     *
+     * @var object
      */
     private $identifierClass;
 
     /**
-     * identifier
+     * identifier.
+     *
      * @var string
      */
     private $identifier;
 
     /**
-     * crsfToken
-     * @var object 
+     * crsfToken.
+     *
+     * @var object
      */
     private $crsfToken;
 
     /**
-     * token
-     * @var string 
+     * token.
+     *
+     * @var string
      */
     private $token;
 
     /**
-     * userId
-     * @var integer 
+     * userId.
+     *
+     * @var int
      */
     private $userId;
 
     /**
-     * instance
+     * instance.
+     *
      * @var object
      */
     private static $instance;
 
     /**
-     * __construct
+     * __construct.
      */
-    private function __construct() {
+    private function __construct()
+    {
         $this->enrironment = new Environment();
         $this->setIp()
              ->setHost()
@@ -117,109 +131,137 @@ class User {
     }
 
     /**
-     * __clone
+     * __clone.
      */
-    final private function __clone() {
-        
+    private function __clone()
+    {
     }
 
     /**
-     * getInstance
+     * getInstance.
+     *
      * @return self
      */
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new self;
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     /**
-     * init
+     * init.
+     *
      * @return self
      */
-    public static function init() {
+    public static function init()
+    {
         return self::getInstance();
     }
 
     /**
-     * setIp
+     * setIp.
+     *
      * @return $this
      */
-    private function setIp() {
+    private function setIp()
+    {
         $this->ip = $this->enrironment->getIp();
         $this->ipv6 = $this->enrironment->getIpv6();
         $this->proxyIp = $this->enrironment->getProxyIp();
+
         return $this;
     }
 
     /**
-     * setHost
+     * setHost.
+     *
      * @return $this
      */
-    private function setHost() {
+    private function setHost()
+    {
         $this->host = $this->enrironment->getHost();
+
         return $this;
     }
 
     /**
-     * setAgent
+     * setAgent.
+     *
      * @return $this
      */
-    private function setAgent() {
+    private function setAgent()
+    {
         $this->agent = $this->enrironment->getAgent();
+
         return $this;
     }
 
     /**
-     * setReferer
+     * setReferer.
+     *
      * @return $this
      */
-    private function setReferer() {
+    private function setReferer()
+    {
         $this->referer = $this->enrironment->getReferer();
+
         return $this;
     }
 
     /**
-     * setUri
+     * setUri.
+     *
      * @return $this
      */
-    private function setUri() {
+    private function setUri()
+    {
         $this->uri = $this->enrironment->getUri(false);
+
         return $this;
     }
 
     /**
-     * setIdentifier
+     * setIdentifier.
+     *
      * @return $this
      */
-    private function setIdentifier() {
-        if (!Session::get('identifier')) {
+    private function setIdentifier()
+    {
+        if (! Session::get('identifier')) {
             $this->identifier = $this->identifierClass->generate(false)->getIdentifier();
             Session::set('identifier', $this->identifier);
         }
         $this->identifier = Session::get('identifier');
+
         return $this;
     }
 
     /**
-     * setToken
+     * setToken.
+     *
      * @return $this
      */
-    private function setToken() {
-        if (!Session::get('token')) {
+    private function setToken()
+    {
+        if (! Session::get('token')) {
             $this->token = $this->crsfToken->generate(true)->getToken();
             Session::set('token', $this->token);
         }
         $this->token = Session::get('token');
+
         return $this;
     }
 
     /**
-     * setUserId
+     * setUserId.
+     *
      * @return $this
      */
-    private function setUserId() {
+    private function setUserId()
+    {
         $userid = false;
         if (Session::get('userid')) {
             $userid = Session::get('userid');
@@ -227,15 +269,19 @@ class User {
             $this->rights = false;
         }
         $this->userId = $userid;
+
         return $this;
     }
 
     /**
-     * get
+     * get.
+     *
      * @param string $key
+     *
      * @return mixed
      */
-    public static function get($key) {
+    public static function get($key)
+    {
         $return = false;
         $user = self::getInstance();
         $key = strtolower($key);
@@ -273,7 +319,7 @@ class User {
             default:
                 $return = '';
         }
+
         return $return;
     }
-
 }

@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
@@ -12,15 +13,19 @@ namespace psc7helper\Module\Tools_ordersync;
 use psc7helper\App\Models\Model_Abstract;
 use psc7helper\App\Models\Model_Interface;
 
-class Model extends Model_Abstract implements Model_Interface {
-
+class Model extends Model_Abstract implements Model_Interface
+{
     /**
-     * getOrders
-     * @param integer $orders
+     * getOrders.
+     *
+     * @param int $orders
+     *
      * @return array
      */
-    public function getOrders($orders) {
-        $data = $this->database->selectAssoc("
+    public function getOrders($orders)
+    {
+        $data = $this->database->selectAssoc(
+            "
             SELECT
                 *
             FROM
@@ -31,23 +36,28 @@ class Model extends Model_Abstract implements Model_Interface {
                 `id` DESC
             LIMIT
                 ?
-            ", array(
-                (int) $orders
-            )
+            ",
+            [
+                (int) $orders,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getObjectIdentifier
+     * getObjectIdentifier.
+     *
      * @param string $adapterIdentifier
      * @param string $adapterName
+     *
      * @return string
      */
-    public function getObjectIdentifier($adapterIdentifier, $adapterName) {
+    public function getObjectIdentifier($adapterIdentifier, $adapterName)
+    {
         $adapter = 'ShopwareAdapter';
         switch ($adapterName) {
             case 'Plenty':
@@ -57,7 +67,8 @@ class Model extends Model_Abstract implements Model_Interface {
                 $adapter = 'ShopwareAdapter';
                 break;
         }
-        $data = $this->database->selectVar("
+        $data = $this->database->selectVar(
+            "
             SELECT
                 `objectIdentifier`
             FROM
@@ -68,24 +79,30 @@ class Model extends Model_Abstract implements Model_Interface {
                 AND `objectType` = 'Order'
             LIMIT
                 1
-            ", array(
+            ",
+            [
                 $adapterIdentifier,
-                $adapter
-            )
+                $adapter,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getOrderinfo
-     * @param integer $orderid
+     * getOrderinfo.
+     *
+     * @param int $orderid
+     *
      * @return string
      */
-    public function getOrderinfo($orderid) {
-        $data = $this->database->selectVar("
+    public function getOrderinfo($orderid)
+    {
+        $data = $this->database->selectVar(
+            "
             SELECT
                 concat(`firstname`, ' ', `lastname`)
             FROM
@@ -94,23 +111,29 @@ class Model extends Model_Abstract implements Model_Interface {
                 `orderID`= ?
             LIMIT
                 1
-            ", array(
-                $orderid
-            )
+            ",
+            [
+                $orderid,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getPlentyOrderid
+     * getPlentyOrderid.
+     *
      * @param string $objectidentifier
+     *
      * @return string
      */
-    public function getPlentyOrderid($objectidentifier) {
-        $data = $this->database->selectVar("
+    public function getPlentyOrderid($objectidentifier)
+    {
+        $data = $this->database->selectVar(
+            "
             SELECT
                 `adapterIdentifier`
             FROM
@@ -121,14 +144,15 @@ class Model extends Model_Abstract implements Model_Interface {
                 AND `objectType` = 'Order'
             LIMIT
                 1
-            ", array(
-                $objectidentifier
-            )
+            ",
+            [
+                $objectidentifier,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
-
 }

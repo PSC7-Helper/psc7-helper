@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the psc7-helper/psc7-helper
- * 
- * @link https://github.com/PSC7-Helper/psc7-helper
+ * This file is part of the psc7-helper/psc7-helper.
+ *
+ * @see https://github.com/PSC7-Helper/psc7-helper
+ *
  * @license https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  */
 
@@ -12,14 +13,17 @@ namespace psc7helper\Module\Tools_corruptimages;
 use psc7helper\App\Models\Model_Abstract;
 use psc7helper\App\Models\Model_Interface;
 
-class Model extends Model_Abstract implements Model_Interface {
-
+class Model extends Model_Abstract implements Model_Interface
+{
     /**
-     * getImageList
+     * getImageList.
+     *
      * @return array
      */
-    public function getImageList() {
-        $data = $this->database->selectAssoc("
+    public function getImageList()
+    {
+        $data = $this->database->selectAssoc(
+            '
             SELECT
                 sai.`img`, sai.`extension`
             FROM
@@ -34,25 +38,30 @@ class Model extends Model_Abstract implements Model_Interface {
                 AND sad.`articleID` IS NOT NULL
             ORDER BY
                 sai.`id` DESC
-            "
+            '
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getIDFromImage
+     * getIDFromImage.
+     *
      * @param string $image
+     *
      * @return string
      */
-    public function getIDFromImage($image) {
+    public function getIDFromImage($image)
+    {
         $img = explode('.', $image);
         if (count($img) > 0) {
             $image = $img[0];
         }
-        $data = $this->database->selectVar("
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `id`
             FROM
@@ -61,27 +70,33 @@ class Model extends Model_Abstract implements Model_Interface {
                 `img`= ?
             LIMIT
                 1
-            ", array(
-                $image
-            )
+            ',
+            [
+                $image,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getArticleIDFromImage
+     * getArticleIDFromImage.
+     *
      * @param string $image
+     *
      * @return string
      */
-    public function getArticleIDFromImage($image) {
+    public function getArticleIDFromImage($image)
+    {
         $img = explode('.', $image);
         if (count($img) > 0) {
             $image = $img[0];
         }
-        $data = $this->database->selectVar("
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `articleID`
             FROM
@@ -90,23 +105,29 @@ class Model extends Model_Abstract implements Model_Interface {
                 `img`= ?
             LIMIT
                 1
-            ", array(
-                $image
-            )
+            ',
+            [
+                $image,
+            ]
         );
         if ($data) {
             return $data;
         }
+
         return false;
     }
 
     /**
-     * getStatusByArticleID
+     * getStatusByArticleID.
+     *
      * @param string $articleID
+     *
      * @return string
      */
-    public function getStatusByArticleID($articleID) {
-        $data = $this->database->selectVar("
+    public function getStatusByArticleID($articleID)
+    {
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `active`
             FROM
@@ -115,23 +136,29 @@ class Model extends Model_Abstract implements Model_Interface {
                 `id`= ?
             LIMIT
                 1
-            ", array(
-                $articleID
-            )
+            ',
+            [
+                $articleID,
+            ]
         );
         if ($data) {
             return (int) $data;
         }
+
         return false;
     }
 
     /**
-     * getOrdnernumberByArticleID
+     * getOrdnernumberByArticleID.
+     *
      * @param string $articleID
+     *
      * @return string
      */
-    public function getOrdnernumberByArticleID($articleID) {
-        $data = $this->database->selectVar("
+    public function getOrdnernumberByArticleID($articleID)
+    {
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `ordernumber`
             FROM
@@ -140,14 +167,16 @@ class Model extends Model_Abstract implements Model_Interface {
                 `articleID`= ?
             LIMIT
                 1
-            ", array(
-                $articleID
-            )
+            ',
+            [
+                $articleID,
+            ]
         );
         if ($data) {
             return $data;
         }
-        $data = $this->database->selectVar("
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `id`
             FROM
@@ -156,23 +185,29 @@ class Model extends Model_Abstract implements Model_Interface {
                 `id`= ?
             LIMIT
                 1
-            ", array(
-                $articleID
-            )
+            ',
+            [
+                $articleID,
+            ]
         );
         if ($data) {
             return 'no article details';
         }
+
         return false;
     }
 
     /**
-     * getPlentyIDByArticleID
+     * getPlentyIDByArticleID.
+     *
      * @param string $articleID
+     *
      * @return string
      */
-    public function getPlentyIDByArticleID($articleID) {
-        $oi = $this->database->selectVar("
+    public function getPlentyIDByArticleID($articleID)
+    {
+        $oi = $this->database->selectVar(
+            "
             SELECT
                 `objectIdentifier`
             FROM
@@ -182,14 +217,16 @@ class Model extends Model_Abstract implements Model_Interface {
                 AND `objectType` = 'Product'
             LIMIT
                 1
-            ", array(
-                $articleID
-            )
+            ",
+            [
+                $articleID,
+            ]
         );
-        if (!$oi) {
+        if (! $oi) {
             return 'not mapped';
         }
-        $data = $this->database->selectVar("
+        $data = $this->database->selectVar(
+            '
             SELECT
                 `adapterIdentifier`
             FROM
@@ -198,16 +235,17 @@ class Model extends Model_Abstract implements Model_Interface {
                 `objectIdentifier`= ?
             LIMIT
                 1
-            ", array(
-                $oi
-            )
+            ',
+            [
+                $oi,
+            ]
         );
         if ($data) {
             return $data;
         } else {
             return 'not mapped';
         }
+
         return false;
     }
-
 }
