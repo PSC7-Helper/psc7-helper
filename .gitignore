@@ -3,3 +3,4 @@
 /var/install.lock
 /var/log/exception.log
 /var/log/system.log
+/.php_cs.cache/
