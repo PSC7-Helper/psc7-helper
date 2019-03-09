@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.2.0] - 2019-03-08
+### Added
+- cli commandlist added
+- plenty commandlist added
+- php_cs added
+
+### Changed
+- optimization code-style via php-cs-fixer
+
+
+
 ## [2.1.0] - 2019-03-03
 ### Changed
 - counted backlog now loading via ajax
