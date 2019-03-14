@@ -10,6 +10,7 @@
 
 namespace psc7helper\Module\Tools_corruptimages;
 
+use psc7helper\App\Connector\CommandHandler;
 use psc7helper\App\Modules\Module_Abstract;
 use psc7helper\App\Modules\Module_Interface;
 
@@ -21,6 +22,13 @@ class Module extends Module_Abstract implements Module_Interface
      * @var object
      */
     private $model;
+
+    /**
+     * cli.
+     *
+     * @var object
+     */
+    private $cli;
 
     /**
      * filesDatabase.
@@ -44,6 +52,7 @@ class Module extends Module_Abstract implements Module_Interface
     private function setProperties()
     {
         $this->model = new Model();
+        $this->cli = new CommandHandler();
         $this->setFilesDatabase();
         $this->prepareList();
 
@@ -59,6 +68,7 @@ class Module extends Module_Abstract implements Module_Interface
     {
         $this->setProperties();
         $this->setPlaceholder('cardtitle', __('corruptimages_cardtitle'), false);
+        $cli = $this->cli;
         $list = $this->list;
         $table = '<table class="table table-striped">' . PHP_EOL;
         $table .= '    <thead>' . PHP_EOL;
@@ -68,6 +78,7 @@ class Module extends Module_Abstract implements Module_Interface
         $table .= '            <th class="text-left" scope="col">' . __('corruptimages_shopwareid') . '</th>' . PHP_EOL;
         $table .= '            <th class="text-left" scope="col">' . __('corruptimages_ordernumber') . '</th>' . PHP_EOL;
         $table .= '            <th class="text-left" scope="col">' . __('corruptimages_plentyid') . '</th>' . PHP_EOL;
+        $table .= '            <th class="text-left" scope="col"></th>' . PHP_EOL;
         $table .= '        </tr>' . PHP_EOL;
         $table .= '    </thead>' . PHP_EOL;
         $table .= '    <tbody>' . PHP_EOL;
@@ -76,8 +87,34 @@ class Module extends Module_Abstract implements Module_Interface
             $table .= '            <td class="text-left">' . $value['imageid'] . '</td>' . PHP_EOL;
             $table .= '            <td class="text-left"><a href="' . $value['path'] . '" target="_new">' . $value['image'] . '</a></td>' . PHP_EOL;
             $table .= '            <td class="text-left">' . $value['shopwareid'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['ordernumber'] . ' ' . $value['active'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left"><a title="" href="../search?sSearch=' . $value['ordernumber'] . '" target="_new">' . $value['ordernumber'] . '</a> ' . $value['active'] . '</td>' . PHP_EOL;
             $table .= '            <td class="text-left">' . $value['plentyid'] . '</td>' . PHP_EOL;
+            if ('not mapped' != $value['plentyid']) {
+                $table .= '            <td class="text-left">' . PHP_EOL;
+                $table .= '                <form action="{{formaction}}" method="post">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formsecret" value="">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="command" value="singlesync">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="option_all" value="0">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="option_vvv" value="1">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="option_backlog" value="1">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="product" value="' . $value['ordernumber'] . '">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="type" value="hide">' . PHP_EOL;
+                $table .= '                    <button class="btn btn-psc7" type="submit" data-toggle="tooltip" data-placement="top" title="' . $cli->getCommandAsString('singlesync', $value['ordernumber']) . '">' . __('ordersync_product') . '</button>' . PHP_EOL;
+                $table .= '                </form>' . PHP_EOL;
+                $table .= '            </td>' . PHP_EOL;
+            } else {
+                $table .= '            <td class="text-left">' . PHP_EOL;
+                $table .= '                <form action="{{formaction}}" method="post">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="formsecret" value="">' . PHP_EOL;
+                $table .= '                    <input type="hidden" name="command" value="swmediacleanup">' . PHP_EOL;
+                $table .= '                    <button class="btn btn-psc7" type="submit" data-toggle="tooltip" data-placement="top" title="' . $cli->getCommandAsString('swmediacleanup') . '">' . __('ordersync_swmediacleanup') . '</button>' . PHP_EOL;
+                $table .= '                </form>' . PHP_EOL;
+                $table .= '            </td>' . PHP_EOL;
+            }
             $table .= '        </tr>' . PHP_EOL;
         }
         $table .= '    </tbody>' . PHP_EOL;
@@ -135,23 +172,27 @@ class Module extends Module_Abstract implements Module_Interface
             $container->get('models');
             $mediaService = $container->get('shopware_media.media_service');
         }
-        foreach ($files as $value) {
-            $image = parse_url($mediaService->getUrl('media/image/' . $value), PHP_URL_PATH);
-            if (! file_exists('../' . $image)) {
-                $id = $this->getIDFromImage($value);
-                $articleID = $this->getArticleIDFromImage($value);
-                $active = (1 === $this->getStatusByArticleID($articleID)) ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
-                $ordernumber = $this->getOrdnernumberByArticleID($articleID);
-                $plentyID = $this->getPlentyIDByArticleID($articleID);
-                $result[] = [
-                    'imageid'     => $id,
-                    'image'       => $value,
-                    'path'        => $mediaService->getUrl('media/image/' . $value),
-                    'shopwareid'  => $articleID,
-                    'active'      => $active,
-                    'ordernumber' => $ordernumber,
-                    'plentyid'    => $plentyID,
-                ];
+        if ($mediaService) {
+            foreach ($files as $value) {
+                $image = parse_url($mediaService->getUrl('media/image/' . $value), PHP_URL_PATH);
+                if (! file_exists('../' . $image)) {
+                    $id = $this->getIDFromImage($value);
+                    $articleID = $this->getArticleIDFromImage($value);
+                    $active = (1 === $this->getStatusByArticleID($articleID)) ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+                    $ordernumber = $this->getOrdnernumberByArticleID($articleID);
+                    $plentyID = $this->getPlentyIDByArticleID($articleID);
+                    $objectidentifier = $this->getObjectIdentifier($articleID, 'Shopware');
+                    $result[] = [
+                        'imageid'             => $id,
+                        'image'               => $value,
+                        'path'                => $mediaService->getUrl('media/image/' . $value),
+                        'shopwareid'          => $articleID,
+                        'active'              => $active,
+                        'ordernumber'         => $ordernumber,
+                        'plentyid'            => $plentyID,
+                        'objectIdentifier'    => $objectidentifier,
+                    ];
+                }
             }
         }
         $this->list = $result;
@@ -247,5 +288,20 @@ class Module extends Module_Abstract implements Module_Interface
         }
 
         return $data;
+    }
+
+    /**
+     * getObjectIdentifier.
+     *
+     * @param string $adapterIdentifier
+     * @param string $adapterName
+     *
+     * @return string
+     */
+    private function getObjectIdentifier($adapterIdentifier, $adapterName)
+    {
+        $model = $this->model;
+
+        return $model->getObjectIdentifier($adapterIdentifier, $adapterName);
     }
 }

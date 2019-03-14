@@ -248,4 +248,48 @@ class Model extends Model_Abstract implements Model_Interface
 
         return false;
     }
+
+    /**
+     * getObjectIdentifier.
+     *
+     * @param string $adapterIdentifier
+     * @param string $adapterName
+     *
+     * @return string
+     */
+    public function getObjectIdentifier($adapterIdentifier, $adapterName)
+    {
+        $adapter = 'ShopwareAdapter';
+        switch ($adapterName) {
+            case 'Plenty':
+                $adapter = 'PlentymarketsAdapter';
+                break;
+            case 'Shopware':
+                $adapter = 'ShopwareAdapter';
+                break;
+        }
+        $data = $this->database->selectVar(
+            "
+            SELECT
+                `objectIdentifier`
+            FROM
+                `PREFIX_plenty_identity`
+            WHERE
+                `adapterIdentifier`= ?
+                AND `adapterName` = ?
+                AND `objectType` = 'Product'
+            LIMIT
+                1
+            ",
+            [
+                $adapterIdentifier,
+                $adapter,
+            ]
+        );
+        if ($data) {
+            return $data;
+        }
+
+        return false;
+    }
 }
