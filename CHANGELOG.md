@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.2.1] - 2019-03-14
+### Added
+- tool missing images has now a sync button
+
+### Changed
+- update help
+- limit for order sync list to 50 changed
+
+### Fixed
+- fix nav dropdown-menue issue
+- code-style fix
+- fix responsive issue on dashboard
+- fix responsive issue on connector button page
+
+
+
 ## [2.2.0] - 2019-03-08
 ### Added
 - cli commandlist added
