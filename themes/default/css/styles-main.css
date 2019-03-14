@@ -193,6 +193,10 @@ nav li {
     color: #555 !important;
 }
 
+.dropdown-menu {
+    margin-top: -1px;
+}
+
 .dropdown:hover > .dropdown-menu {
     display: block;
 }
