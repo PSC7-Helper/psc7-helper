@@ -15,4 +15,7 @@ require_once ROOT_PATH . DS . 'config' . DS . 'lang.php';
  * Config
  * This file overrides the default config.
  */
-require_once ROOT_PATH . DS . 'config.php';
+
+if (file_exists(ROOT_PATH . DS . 'config.php')) {
+    require_once ROOT_PATH . DS . 'config.php';
+}

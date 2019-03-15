@@ -221,7 +221,12 @@ class Bootstrap implements Bootstrap_Interface
             $this->controller = 'login';
             $this->action = 'index';
         }
-        if (! $this->login && ! $this->install) {
+        if (! $this->login || ! $this->install) {
+            $this->controller = 'install';
+            $this->action = 'index';
+        }
+        if (!file_exists(ROOT_PATH . DS . 'config.php')) {
+            @unlink(ROOT_PATH . DS . 'var' . DS . 'install.lock');
             $this->controller = 'install';
             $this->action = 'index';
         }
