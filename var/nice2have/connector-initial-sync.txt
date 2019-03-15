@@ -1,0 +1,12 @@
+#Connector initial sync
+1) Deactivate connector cronjobs
+2) ./bin/console plentyconnector:process MediaCategory --all
+3) ./bin/console plentyconnector:backlog:process (while true; do ./bin/console plentyconnector:backlog:process; done)
+4) ./bin/console plentyconnector:process Manufacturer --all
+5) ./bin/console plentyconnector:backlog:process (while true; do ./bin/console plentyconnector:backlog:process; done)
+6) ./bin/console plentyconnector:process Category --all
+7) ./bin/console plentyconnector:backlog:process (while true; do ./bin/console plentyconnector:backlog:process; done)
+8) ./bin/console plentyconnector:process Product --all
+9) ./bin/console plentyconnector:process Product --all
+10) ./bin/console plentyconnector:backlog:process (while true; do ./bin/console plentyconnector:backlog:process; done)
+11) Activate connector cronjobs
