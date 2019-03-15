@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+- files moved
+- change .gitignore
+
+### Fixed
+- fix install issue
+
+
+
 ## [2.2.1] - 2019-03-14
 ### Added
 - tool missing images has now a sync button
