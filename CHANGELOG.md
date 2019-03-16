@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- new buttons added
 
 ### Changed
 - files moved
