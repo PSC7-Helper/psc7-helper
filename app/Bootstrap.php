@@ -72,6 +72,13 @@ class Bootstrap implements Bootstrap_Interface
      * @var bool
      */
     protected $install = false;
+    
+    /**
+     * config.
+     *
+     * @var bool
+     */
+    protected $config = false;
 
     /**
      * theme.
@@ -93,6 +100,7 @@ class Bootstrap implements Bootstrap_Interface
              ->securityCheck()
              ->loginCheck()
              ->installCheck()
+             ->configCheck()
              ->checkRoute()
              ->setTheme();
     }
@@ -211,6 +219,20 @@ class Bootstrap implements Bootstrap_Interface
     }
 
     /**
+     * configCheck.
+     *
+     * @return $this
+     */
+    private function configCheck()
+    {
+        $file = ROOT_PATH . DS . 'config.php';
+        if (file_exists($file)) {
+            $this->config = true;
+        }
+        return $this;
+    }
+
+    /**
      * checkRoute.
      *
      * @return $this
@@ -221,12 +243,7 @@ class Bootstrap implements Bootstrap_Interface
             $this->controller = 'login';
             $this->action = 'index';
         }
-        if (! $this->login || ! $this->install) {
-            $this->controller = 'install';
-            $this->action = 'index';
-        }
-        if (!file_exists(ROOT_PATH . DS . 'config.php')) {
-            @unlink(ROOT_PATH . DS . 'var' . DS . 'install.lock');
+        if (! $this->install || ! $this->config) {
             $this->controller = 'install';
             $this->action = 'index';
         }
