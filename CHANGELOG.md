@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 ### Added
+- 
+
+### Changed
+- 
+
+### Fixed
+- 
+
+
+
+## [2.2.2] - 2019-03-17
+### Added
 - new buttons added
 
 ### Changed
