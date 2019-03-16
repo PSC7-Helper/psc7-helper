@@ -198,6 +198,12 @@ class CommandHandler
             case 'backlog_process':
                 $command = 'plentyconnector:backlog:process';
                 break;
+            case 'process_manufacturer':
+                $command = 'plentyconnector:process Manufacturer';
+                break;
+            case 'process_category':
+                $command = 'plentyconnector:process Category';
+                break;
             case 'process_product':
                 $command = 'plentyconnector:process Product';
                 break;
@@ -207,8 +213,11 @@ class CommandHandler
             case 'process_order':
                 $command = 'plentyconnector:process Order';
                 break;
-            case 'process_category':
-                $command = 'plentyconnector:process Category';
+            case 'process_order':
+                $command = 'plentyconnector:process Media';
+                break;
+            case 'cleanup':
+                $command = 'plentyconnector:cleanup';
                 break;
             case 'mapping':
                 $command = 'plentyconnector:mapping';
@@ -219,14 +228,20 @@ class CommandHandler
             case 'swthemecachegenerate':
                 $command = 'sw:theme:cache:generate';
                 break;
+            case 'swmediacleanup':
+                $command = 'sw:media:cleanup';
+                break;
+            case 'swrebuildseoindex':
+                $command = 'sw:rebuild:seo:index';
+                break;
+            case 'swrebuildsearchindex':
+                $command = 'sw:rebuild:search:index';
+                break;
             case 'swcronlist':
                 $command = 'sw:cron:list';
                 break;
             case 'swcronrun':
                 $command = 'sw:cron:run';
-                break;
-            case 'swmediacleanup':
-                $command = 'sw:media:cleanup';
                 break;
             case 'singlesync':
                 $command = 'plentyconnector:process Product';

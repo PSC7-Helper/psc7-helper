@@ -8,14 +8,19 @@
         "buttons_btn_backlog_info": "backlog:info",
         "buttons_btn_backlog_process": "backlog:process",
         "buttons_btn_process_product": "process Product",
-        "buttons_btn_process_stock": "process Stock",
         "buttons_btn_process_order": "process Order",
+        "buttons_btn_process_stock": "process Stock",
         "buttons_btn_process_category": "process Category",
+        "buttons_btn_process_manufacturer": "process Manufac",
+        "buttons_btn_process_media": "process Media",
+        "buttons_btn_cleanup": "cleanup",
         "buttons_btn_mapping": "mapping",
-        "buttons_btn_sw_cache_clear": "cache:clear",
-        "buttons_btn_sw_theme_cache_generate": "theme:cache:gen",
-        "buttons_btn_sw_cron_list": "cron:list",
-        "buttons_btn_sw_cron_run": "cron:run",
-        "buttons_btn_sw_media_cleanup": "media:cleanup"
+        "buttons_btn_swcacheclear": "cache:clear",
+        "buttons_btn_swthemecachegenerate": "theme:cache:gen",
+        "buttons_btn_swrebuildseoindex": "rebuild:seo:index",
+        "buttons_btn_swrebuildsearchindex": "rebuild:search:i",
+        "buttons_btn_swmediacleanup": "media:cleanup",
+        "buttons_btn_swcronlist": "cron:list",
+        "buttons_btn_swcronrun": "cron:run"
     }
 }
