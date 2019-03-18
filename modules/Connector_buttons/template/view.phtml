@@ -1,15 +1,5 @@
 <div class="card h-100">
     <div class="card-header">
-        <div class="float-right">
-            <span class="pl-1 d-none d-sm-inline">
-                {{backlogcount}}
-                <script>
-                    $(document).ready (function(){
-                        setInterval(backlogcount, 10000);
-                    });
-                </script>
-            </span>
-        </div>
         <h5>
             {{cardtitle}}
         </h5>
@@ -165,8 +155,7 @@
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swrebuildseoindex_title}}">{{btn_swrebuildseoindex}}</button>
                 </form>
             </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 mb-md-4 mb-lg-0 mb-xl-0">
                 <form action="{{formaction}}" method="post">
                     <input type="hidden" name="formname" value="clicommand">
                     <input type="hidden" name="formkey" value="{{formkey}}">
@@ -175,7 +164,7 @@
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swrebuildsearchindex_title}}">{{btn_swrebuildsearchindex}}</button>
                 </form>
             </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 mb-md-4 mb-lg-4 mb-xl-0">
                 <form action="{{formaction}}" method="post">
                     <input type="hidden" name="formname" value="clicommand">
                     <input type="hidden" name="formkey" value="{{formkey}}">
@@ -184,7 +173,7 @@
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swmediacleanup_title}}">{{btn_swmediacleanup}}</button>
                 </form>
             </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4 mb-sm-0 mb-lg-4 mb-xl-0">
                 <form action="{{formaction}}" method="post">
                     <input type="hidden" name="formname" value="clicommand">
                     <input type="hidden" name="formkey" value="{{formkey}}">
@@ -193,7 +182,7 @@
                     <button class="btn btn-psc7 w-100" type="submit" data-toggle="tooltip" data-placement="top" title="{{btn_swcronlist_title}}">{{btn_swcronlist}}</button>
                 </form>
             </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-0 mb-sm-0 mb-xl-0">
                 <form action="{{formaction}}" method="post">
                     <input type="hidden" name="formname" value="clicommand">
                     <input type="hidden" name="formkey" value="{{formkey}}">

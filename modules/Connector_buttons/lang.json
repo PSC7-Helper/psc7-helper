@@ -2,9 +2,6 @@
     "de":
     {
         "buttons_cardtitle": "Kurzwahl-Befehle",
-        "buttons_backlog_empty": "Der Backlog ist leer",
-        "buttons_backlog_text": "Objekte im Backlog",
-        "buttons_backlog_info": "Backlog:",
         "buttons_btn_backlog_info": "backlog:info",
         "buttons_btn_backlog_process": "backlog:process",
         "buttons_btn_process_product": "process Product",

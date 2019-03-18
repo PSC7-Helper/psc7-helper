@@ -11,18 +11,11 @@
 namespace psc7helper\Module\Connector_buttons;
 
 use psc7helper\App\Connector\CommandHandler;
-use psc7helper\App\Connector\ConnectorHelper;
 use psc7helper\App\Modules\Module_Abstract;
 use psc7helper\App\Modules\Module_Interface;
 
 class Module extends Module_Abstract implements Module_Interface
 {
-    /**
-     * helper.
-     *
-     * @var object
-     */
-    private $helper;
 
     /**
      * cli.
@@ -39,23 +32,8 @@ class Module extends Module_Abstract implements Module_Interface
     public function run()
     {
         $this->setPlaceholder('cardtitle', __('buttons_cardtitle'), false);
-        $this->helper = new ConnectorHelper();
         $this->cli = new CommandHandler();
-        $helper = $this->helper;
         $cli = $this->cli;
-        $backlogCount = $helper->getBacklogCount();
-        $this->setPlaceholder('backlogcount', ' ', false);
-        if (0 == $backlogCount) {
-            $this->setPlaceholder('backlogcount', '<span class="badge badge-success">' . __('buttons_backlog_empty') . '</span>', true);
-        } else {
-            if ($backlogCount > 0 && $backlogCount <= ConnectorHelper::BACKLOG_SUCCESS) {
-                $this->setPlaceholder('backlogcount', '<span class="badge badge-success">' . (string) $backlogCount . ' ' . __('buttons_backlog_text') . '</span>', true);
-            } elseif ($backlogCount > ConnectorHelper::BACKLOG_SUCCESS && $backlogCount <= ConnectorHelper::BACKLOG_WARNING) {
-                $this->setPlaceholder('backlogcount', '<span class="badge badge-warning">' . (string) $backlogCount . ' ' . __('buttons_backlog_text') . '</span>', true);
-            } elseif ($backlogCount > ConnectorHelper::BACKLOG_WARNING && $backlogCount <= ConnectorHelper::BACKLOG_DANGER) {
-                $this->setPlaceholder('backlogcount', '<span class="badge badge-danger">' . (string) $backlogCount . ' ' . __('buttons_backlog_text') . '</span>', true);
-            }
-        }
         $this->setPlaceholder('btn_backlog_info', __('buttons_btn_backlog_info'), false);
         $this->setPlaceholder('btn_backlog_info_title', $cli->getCommandAsString('backlog_info'), false);
         $this->setPlaceholder('btn_backlog_process', __('buttons_btn_backlog_process'), false);
