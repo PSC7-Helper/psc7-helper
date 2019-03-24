@@ -15,17 +15,17 @@ class ConnectorHelper
     /**
      * BACKLOG_SUCCSESS.
      */
-    const BACKLOG_SUCCESS = 625;
+    const BACKLOG_SUCCESS = 600;
 
     /**
      * BACKLOG_WARNING.
      */
-    const BACKLOG_WARNING = 1750;
+    const BACKLOG_WARNING = 1800;
 
     /**
      * BACKLOG_DANGER.
      */
-    const BACKLOG_DANGER = 3500;
+    const BACKLOG_DANGER = 3600;
 
     /**
      * LOG_PATH.

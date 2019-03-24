@@ -34,16 +34,16 @@ class Module extends Module_Abstract implements Module_Interface
         $helper = $this->helper;
         $backlogCount = $helper->getBacklogCount();
         $this->setPlaceholder('backlogcount', ' ', false);
-        if (0 == $backlogCount) {
-            $this->setPlaceholder('backlogcount', '<span class="btn btn-success w-100">' . __('backlog_backlog_empty') . '</span>', true);
+        if ($backlogCount > 0 && $backlogCount <= ConnectorHelper::BACKLOG_SUCCESS) {
+            $this->setPlaceholder('backlogcount', '<span id="backlogcount" class="badge badge-success badge-psc7big w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
+        } elseif ($backlogCount > ConnectorHelper::BACKLOG_SUCCESS && $backlogCount <= ConnectorHelper::BACKLOG_WARNING) {
+            $this->setPlaceholder('backlogcount', '<span id="backlogcount" class="badge badge-warning badge-psc7big w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
+        } elseif ($backlogCount > ConnectorHelper::BACKLOG_WARNING && $backlogCount <= ConnectorHelper::BACKLOG_DANGER) {
+            $this->setPlaceholder('backlogcount', '<span id="backlogcount" class="badge badge-danger badge-psc7big w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
+        } elseif ($backlogCount >= ConnectorHelper::BACKLOG_DANGER) {
+            $this->setPlaceholder('backlogcount', '<span id="backlogcount" class="badge badge-danger badge-psc7big w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
         } else {
-            if ($backlogCount > 0 && $backlogCount <= ConnectorHelper::BACKLOG_SUCCESS) {
-                $this->setPlaceholder('backlogcount', '<span class="btn btn-success w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
-            } elseif ($backlogCount > ConnectorHelper::BACKLOG_SUCCESS && $backlogCount <= ConnectorHelper::BACKLOG_WARNING) {
-                $this->setPlaceholder('backlogcount', '<span class="btn btn-warning w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
-            } elseif ($backlogCount > ConnectorHelper::BACKLOG_WARNING && $backlogCount <= ConnectorHelper::BACKLOG_DANGER) {
-                $this->setPlaceholder('backlogcount', '<span class="btn btn-danger w-100">' . (string) $backlogCount . ' ' . __('backlog_backlog_text') . '</span>', true);
-            }
+            $this->setPlaceholder('backlogcount', '<span id="backlogcount" class="badge badge-success badge-psc7big w-100">' . __('backlog_backlog_empty') . '</span>', true);
         }
         $this->setTemplate('view');
         $module = $this->renderModule();
