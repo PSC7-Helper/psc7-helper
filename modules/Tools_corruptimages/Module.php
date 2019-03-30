@@ -84,13 +84,13 @@ class Module extends Module_Abstract implements Module_Interface
         $table .= '    <tbody>' . PHP_EOL;
         foreach ($list as $value) {
             $table .= '        <tr>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['imageid'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left"><a href="' . $value['path'] . '" target="_new">' . $value['image'] . '</a></td>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['shopwareid'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left"><a title="" href="../search?sSearch=' . $value['ordernumber'] . '" target="_new">' . $value['ordernumber'] . '</a> ' . $value['active'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['plentyid'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . $value['imageid'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle"><a href="' . $value['path'] . '" target="_new">' . $value['image'] . '</a></td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . $value['shopwareid'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle"><a title="" href="../search?sSearch=' . $value['ordernumber'] . '" target="_new">' . $value['ordernumber'] . '</a> ' . $value['active'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . $value['plentyid'] . '</td>' . PHP_EOL;
             if ('not mapped' != $value['plentyid']) {
-                $table .= '            <td class="text-left">' . PHP_EOL;
+                $table .= '            <td class="text-left align-middle">' . PHP_EOL;
                 $table .= '                <form action="{{formaction}}" method="post">' . PHP_EOL;
                 $table .= '                    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
                 $table .= '                    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;
@@ -105,7 +105,7 @@ class Module extends Module_Abstract implements Module_Interface
                 $table .= '                </form>' . PHP_EOL;
                 $table .= '            </td>' . PHP_EOL;
             } else {
-                $table .= '            <td class="text-left">' . PHP_EOL;
+                $table .= '            <td class="text-left align-middle">' . PHP_EOL;
                 $table .= '                <form action="{{formaction}}" method="post">' . PHP_EOL;
                 $table .= '                    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
                 $table .= '                    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;

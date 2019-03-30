@@ -67,11 +67,11 @@ class Module extends Module_Abstract implements Module_Interface
         $table .= '    <tbody>' . PHP_EOL;
         foreach ($list as $value) {
             $table .= '        <tr>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['sordernumber'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left d-none d-lg-table-cell">' . $value['sordertime'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left d-none d-md-table-cell">' . $value['sorderinfo'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . $value['porderid'] . '</td>' . PHP_EOL;
-            $table .= '            <td class="text-left">' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . $value['sordernumber'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle d-none d-lg-table-cell">' . $value['sordertime'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle d-none d-md-table-cell">' . $value['sorderinfo'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . $value['porderid'] . '</td>' . PHP_EOL;
+            $table .= '            <td class="text-left align-middle">' . PHP_EOL;
             $table .= '                <form action="{{formaction}}" method="post">' . PHP_EOL;
             $table .= '                    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
             $table .= '                    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;
