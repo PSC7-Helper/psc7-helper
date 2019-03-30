@@ -6,6 +6,7 @@
 
 ### Changed
 - code style
+- table style
 
 ### Fixed
 - fix backlog info
