@@ -53,4 +53,18 @@ class Controller extends Controller_Abstract implements Controller_Interface
 
         return $page;
     }
+
+    /**
+     * articlestatus.
+     *
+     * @return string
+     */
+    public function articlestatus()
+    {
+        $this->setTemplate('articlestatus');
+        $page = $this->renderPage('index');
+
+        return $page;
+    }
+
 }

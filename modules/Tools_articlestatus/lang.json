@@ -1,0 +1,11 @@
+{
+    "de":
+    {
+        "articlestatus_cardtitle": "Artikelstatus prüfen",
+        "articlestatus_articleid": "ArtikelID",
+        "articlestatus_articlename": "Artikelname",
+        "articlestatus_ordernumber": "Artikelnummer",
+        "articlestatus_active": "Aktiv",
+        "articlestatus_sync": "Synchonisieren"
+    }
+}

@@ -6,6 +6,8 @@
         "meta_title_corruptimages": "Fehlende Artikel-Bilder suchen",
         "meta_description_corruptimages": "Fehlende Artikel-Bilder suchen",
         "meta_title_ordersync": "Bestellungen abgleichen",
-        "meta_description_ordersync": "Bestellungen abgleichen"
+        "meta_description_ordersync": "Bestellungen abgleichen",
+        "meta_title_articlestatus": "Artikelstatus prüfen",
+        "meta_description_articlestatus": "Artikelstatus prüfen"
     }
 }

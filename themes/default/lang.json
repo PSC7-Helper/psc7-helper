@@ -18,6 +18,7 @@
         "tools": "Tools",
         "missingimages": "Fehlende Artikel-Bilder",
         "ordersync": "Bestellungen abgleichen",
+        "articlestatus": "Artikelstatus prüfen",
         "logout": "Abmelden"
     }
 }
