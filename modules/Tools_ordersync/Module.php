@@ -53,8 +53,8 @@ class Module extends Module_Abstract implements Module_Interface
         $this->setProperties();
         $this->setPlaceholder('cardtitle', __('ordersync_cardtitle'), false);
         $cli = $this->cli;
-        $list = $this->getList(50);
-        $table = '<table class="table table-striped">' . PHP_EOL;
+        $list = $this->getList(250);
+        $table = '<table id="datatable" class="table table-striped">' . PHP_EOL;
         $table .= '    <thead>' . PHP_EOL;
         $table .= '        <tr>' . PHP_EOL;
         $table .= '            <th class="text-left" scope="col">' . __('ordersync_sordernumber') . '</th>' . PHP_EOL;

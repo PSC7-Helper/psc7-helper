@@ -4,6 +4,22 @@ $(document).ready (function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
 
+    $('#datatable').DataTable( {
+        "order": [[ 3, "desc" ]],
+        "lengthMenu": [[50, -1], [50, "All"]],
+        "paging":   true,
+        "ordering": true,
+        "info":     false
+    });
+
+    $('#datatable-wp').DataTable( {
+        "order": [[ 3, "desc" ]],
+        "lengthMenu": [[50, -1], [50, "All"]],
+        "paging":   false,
+        "ordering": true,
+        "info":     false
+    });
+
 });
 
 /**

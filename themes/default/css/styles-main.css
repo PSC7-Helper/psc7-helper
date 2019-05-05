@@ -297,9 +297,35 @@ nav li {
     border-top: 0;
 }
 
+.table.dataTable.no-footer {
+    border-bottom: none;
+}
+
+.table.dataTable thead th, table.dataTable thead td {
+    border-bottom: none;
+}
+
+.dataTables_filter {
+    width: 100%;
+}
+
+.dataTables_filter > label {
+    text-align: left;
+    width: 100%;
+    padding-right: 10px;
+}
+
 .input-autocomplete {
     position: relative;
     display: inline-block;
+}
+
+.dataTables_length {
+    display: none;
+}
+
+.dataTables_paginate.paging_simple_numbers {
+    margin-top: 20px;
 }
 
 .autocomplete-items {
