@@ -5,11 +5,20 @@
 - 
 
 ### Changed
-- code style
-- table style
+-
 
 ### Fixed
-- fix backlog info
+- 
+
+
+
+## [2.2.4] - 2019-05-06
+### Added
+- tool articlestatus added
+- tool ordersync datatable added
+
+### Fixed
+- tool articlestatus sync fix
 
 
 
