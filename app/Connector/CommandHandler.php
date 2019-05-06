@@ -130,7 +130,6 @@ class CommandHandler
         foreach ($list as $value) {
             $result .= $value;
         }
-
         return $result;
     }
 
@@ -177,7 +176,6 @@ class CommandHandler
                 $this->preparedCommands[] = $prepare;
             }
         }
-
         return $this;
     }
 

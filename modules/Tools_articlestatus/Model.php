@@ -83,7 +83,7 @@ class Model extends Model_Abstract implements Model_Interface
             WHERE
                 `adapterIdentifier`= ?
                 AND `adapterName` = ?
-                AND `objectType` = 'Order'
+                AND `objectType` = 'Product'
             LIMIT
                 1
             ",
@@ -117,7 +117,7 @@ class Model extends Model_Abstract implements Model_Interface
             WHERE
                 `objectIdentifier`= ?
                 AND `adapterName` = 'PlentymarketsAdapter'
-                AND `objectType` = 'Order'
+                AND `objectType` = 'Product'
             LIMIT
                 1
             ",

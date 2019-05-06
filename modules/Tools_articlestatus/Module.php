@@ -53,7 +53,7 @@ class Module extends Module_Abstract implements Module_Interface
         $this->setProperties();
         $this->setPlaceholder('cardtitle', __('articlestatus_cardtitle'), false);
         $cli = $this->cli;
-        $list = $this->getList(50);
+        $list = $this->getList(100);
         $table = '<table id="datatable-wp" class="table table-striped">' . PHP_EOL;
         $table .= '    <thead>' . PHP_EOL;
         $table .= '        <tr>' . PHP_EOL;
@@ -82,7 +82,7 @@ class Module extends Module_Abstract implements Module_Interface
             $table .= '                    <input type="hidden" name="option_backlog" value="1">' . PHP_EOL;
             $table .= '                    <input type="hidden" name="product" value="' . $value['objectIdentifier'] . '">' . PHP_EOL;
             $table .= '                    <input type="hidden" name="type" value="hide">' . PHP_EOL;
-            $table .= '                    <button class="btn btn-psc7" type="submit" data-toggle="tooltip" data-placement="top" title="' . $cli->getCommandAsString('singlesync', $value['objectIdentifier']) . '">' . __('articlestatus_sync') . '</button>' . PHP_EOL;
+            $table .= '                    <button class="btn btn-psc7" type="submit" data-toggle="tooltip" data-placement="top" title="' . $cli->getCommandAsString('singlesync', $value['ordernumber']) . '">' . __('articlestatus_sync') . '</button>' . PHP_EOL;
             $table .= '                </form>' . PHP_EOL;
             $table .= '            </td>' . PHP_EOL;
             $table .= '        </tr>' . PHP_EOL;

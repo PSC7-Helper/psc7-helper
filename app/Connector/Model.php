@@ -77,7 +77,7 @@ class Model extends Model_Abstract implements Model_Interface
             return false;
         }
         $articleID = $this->database->selectVar(
-            '
+            "
             SELECT
                 `articleID`
             FROM
@@ -86,7 +86,7 @@ class Model extends Model_Abstract implements Model_Interface
                 `ordernumber` = ?
             LIMIT
                 1
-            ',
+            ",
             [
                 $reference,
             ]
@@ -102,7 +102,7 @@ class Model extends Model_Abstract implements Model_Interface
                 `PREFIX_plenty_identity`
             WHERE
                 `adapterIdentifier` = ?
-                AND (`objectType` = 'Product' or `objectType` = 'Variation')
+                AND `objectType` = 'Product'
             LIMIT
                 1
             ",
