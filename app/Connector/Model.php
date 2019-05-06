@@ -102,7 +102,7 @@ class Model extends Model_Abstract implements Model_Interface
                 `PREFIX_plenty_identity`
             WHERE
                 `adapterIdentifier` = ?
-                AND `objectType` = 'Product'
+                AND (`objectType` = 'Product' or `objectType` = 'Variation')
             LIMIT
                 1
             ",
