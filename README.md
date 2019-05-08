@@ -5,9 +5,9 @@
 
 ### Über den PSC7-Helper
 
-Wir gehen mal davon aus, dass du plentymarkets und zusätzlich Shopware als externes Shop-System verwendest. Das Shopware-Plugin "[plentymarkets Shopware Connector](https://store.shopware.com/plenty00735f/plentymarkets-shopware-connector.html)" von [arvatis](https://www.arvatis.com/) hast du auch dann auch schon installiert.
+Wir gehen mal davon aus, dass du plentymarkets und zusätzlich Shopware als externes Shop-System verwendest. Das Shopware-Plugin "[plentymarkets Shopware Connector](https://store.shopware.com/plenty00735f/plentymarkets-shopware-connector.html)" von [arvatis](https://www.arvatis.com/) hast du auch schon installiert.
 
-Bei dieser Konstellation musst du dich leider auch mit Linux, der Secure Shell (SSH) und der Eingabe von SSH Commands beschäftigen. Hört sich spannend an? Nein? Dann nutze einfach unseren Helper.
+Bei dieser Konstellation musst du dich leider auch mit Linux, der Secure Shell (SSH) und der Eingabe von SSH Commands beschäftigen. Hört sich spannend an? Nein? Dann nutze einfach diesen Helper.
 
 In dem Helper kannst du viele Befehle einfach per Knopfdruck auslösen. Und weil wir richtig Langeweile hatten, gibt es auch eine Reihe weiterer netter Funktionen, die dir den Alltag mit dem Connector entspannter gestalten sollen.
 
@@ -15,15 +15,18 @@ In dem Helper kannst du viele Befehle einfach per Knopfdruck auslösen. Und weil
 
 ### Voraussetzung
 
-Wir setzen voraus, dass das Konstrukt aus plentymarkets, eigener Mandant für Shopware, Shopware und Connector bereits funktioniert.
+Wir setzen mal voraus, dass das dein Konstrukt aus plentymarkets, eigenem Mandanten für Shopware, Shopware und der Connector bereits funktionieren.
 
 Du hast einen FTP- und einen SSH-Zugang zu deinem Server.
 
 **Bei der Installation des Helpers muss du den Pfad zu php auf deinem Server angeben.**
 
-Der Pfad zu php über die Konsole muss korrekt angegeben werden, damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad `php`. Bei Web-Hosting-Paketen kann der Pfad abweichen. Typisch dort sind `/usr/bin/php`, `/usr/bin/php70` oder ähnlich. Folgender Befehl gibt eine Liste mit möglichen Pfaden zurück: `find /usr/bin -name php* -print`.
+Der Pfad zu php über die Konsole muss korrekt angegeben werden, damit die Connector-Befehle ausgeführt werden können. In der Regel ist der Pfad einfach nur `php`. Bei jedem Server oder Web-Hosting-Paket kann der Pfad abweichen. Typisch dort sind `/usr/bin/php`, `/usr/bin/php70`, `/opt/php-x.y.z/bin/php` oder ähnlich.
 
-Der Helper muss später zwingend in einem Unterordner deiner Shopware-Installation liegen. Der Helper muss also über `https://www.deincoolershop.de/psc7-helper/` erreichbar sein. Den Namen des Ordners kannst du später ändern.
+Der folgende Befehl gibt dir eine Liste mit möglichen Pfaden zurück:
+`find /usr/bin -name php* -print`.
+
+Der Helper muss später zwingend in einem Unterordner deiner Shopware-Installation liegen. Der Helper muss also über `https://www.deincoolershop.de/psc7-helper/` erreichbar sein. Den Namen des Ordners solltest du später ändern.
 
 ##
 
@@ -66,25 +69,23 @@ Prüfe ob der Ordner und alle Dateien darin korrekte Benutzerrechte besitzen. De
 ##
 
 ### Erste Schritte
+Sobald du die Installation abgeschlossen hast kannst du direkt loslegen. Öffne den Helper in deinem Browser und melde dich an.
 
-Sobald du die Installation abgeschlossen hast, kannst du direkt loslegen.
-
-Öffne den Helper in deinem Browser und melde dich an. **Für die Anmeldung verwendest du einfach die gleichen Zugangsdaten, wie auch für das Shopware-Backend selbst**.
-
-Solltest du Probleme haben, melde diese bitte direkt an uns.
+**Für die Anmeldung verwendest du einfach die gleichen Zugangsdaten, wie auch für das Shopware-Backend selbst**.
 
 ##
 
 ### Hilfe und Support
+Wir haben den PSC7-Helper in unserer kostbaren Freizeit mit viel Zeit- und Arbeitsaufwand entwickelt. Wir bitten um Verständnis, dass wir keinen 24/7 Support anbieten können. Dennoch sind wir bemüht, euch bestmöglich zu unterstützen und bei der weiteren Entwicklung auf eure Wünsche einzugehen.
 
-Wir haben den PSC7-Helper in unserer Freizeit mit viel Zeit- und Arbeitsaufwand entwickelt. Wir bitten um Verständnis, dass wir keinen 24/7 Support anbieten können. Dennoch sind wir bemüht, euch bestmöglich zu unterstützen und bei der weiteren Entwicklung auf eure Wünsche einzugehen.
-
-Für Support-Anfragen bitte das [Forum von plentymarkets](https://forum.plentymarkets.com/t/community-projekt-psc7-helper/) benutzen.
+Support-Anfragen: [Forum von plentymarkets](https://forum.plentymarkets.com/t/community-projekt-psc7-helper/)
 
 ##
 
 ### Probleme melden
-Melde bitte alle Fehler hier auf GitHub unter Issues. Nur so können wir den Helper verbessern. Du hast kein GitHub-Konto und gerade kein Bock dich anzumelden? Dann nutze bitte das [Forum von plentymarkets](https://forum.plentymarkets.com/t/community-projekt-psc7-helper/). 
+Melde alle Fehler hier auf GitHub unter Issues. Nur so können wir den Helper verbessern.
+
+Du hast kein GitHub-Konto und gerade kein Bock dich anzumelden? Dann nutze bitte das [Forum von plentymarkets](https://forum.plentymarkets.com/t/community-projekt-psc7-helper/). 
 
 ##
 
