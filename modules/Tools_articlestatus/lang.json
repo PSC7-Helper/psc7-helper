@@ -6,6 +6,7 @@
         "articlestatus_articlename": "Artikelname",
         "articlestatus_ordernumber": "Artikelnummer",
         "articlestatus_active": "Aktiv",
-        "articlestatus_sync": "Synchonisieren"
+        "articlestatus_sync": "Synchonisieren",
+        "articlestatus_syncthemall": "Sync them all"
     }
 }

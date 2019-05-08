@@ -297,8 +297,19 @@ class CommandHandler
 
             return false;
         }
+        $i = 0;
+        $productList = [];
         if ($product) {
-            $this->addCommand($command, $product)->prepareCommands();
+            $expl = explode(',', $product);
+            if (count($expl) == 1) {
+                $this->addCommand($command, $product)->prepareCommands();
+            } else {
+                foreach ($expl as $value) {
+                    $this->addCommand($command, $value);
+                    $productList[] = $value;
+                }
+                $this->prepareCommands();
+            }
         } else {
             $this->addCommand($command)->prepareCommands();
         }
@@ -309,14 +320,22 @@ class CommandHandler
             return false;
         } elseif (! $this->preparedCommands && 'singlesync' == $command) {
             $this->removeFromSession();
-            $this->output .= '<pre>objectIdentifier not found for ' . $product . '</pre>';
+            $this->output .= '<pre>objectIdentifier not found for ' . $productList[0] . '</pre>';
 
             return false;
         }
         if ($this->isEnabled('shell_exec')) {
             foreach ($this->preparedCommands as $cliCommand) {
+                if (count($productList) > 1 && $i > 0) {
+                    $this->output .= PHP_EOL . PHP_EOL;
+                }
                 if ($product) {
-                    $this->output .= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
+                    if (count($productList) > 0) {
+                        $this->output .= 'ObjectIdentifier found for ' . $productList[$i] . PHP_EOL . PHP_EOL;
+                    } else {
+                        $this->output .= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
+                    }
+                    $i++;
                 }
                 $this->output .= 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $output = shell_exec("$cliCommand");
