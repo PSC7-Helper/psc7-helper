@@ -12,6 +12,15 @@
 
 
 
+## [2.2.5] - 2019-05-08
+### Added
+- btn sync the all added in tool articlestatus
+
+### Fixed
+- sync fixed at tool articlestatus
+
+
+
 ## [2.2.4] - 2019-05-06
 ### Added
 - tool articlestatus added
