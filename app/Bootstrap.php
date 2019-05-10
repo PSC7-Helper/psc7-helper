@@ -72,7 +72,7 @@ class Bootstrap implements Bootstrap_Interface
      * @var bool
      */
     protected $install = false;
-    
+
     /**
      * config.
      *
@@ -229,6 +229,7 @@ class Bootstrap implements Bootstrap_Interface
         if (file_exists($file)) {
             $this->config = true;
         }
+
         return $this;
     }
 

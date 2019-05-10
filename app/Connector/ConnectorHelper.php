@@ -67,6 +67,7 @@ class ConnectorHelper
         } else {
             $return = '<span class="badge badge-success badge-psc7big w-100">' . __('backlogempty') . '</span>';
         }
+
         return $return;
     }
 

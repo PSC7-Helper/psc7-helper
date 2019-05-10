@@ -130,6 +130,7 @@ class CommandHandler
         foreach ($list as $value) {
             $result .= $value;
         }
+
         return $result;
     }
 
@@ -176,6 +177,7 @@ class CommandHandler
                 $this->preparedCommands[] = $prepare;
             }
         }
+
         return $this;
     }
 
@@ -301,7 +303,7 @@ class CommandHandler
         $productList = [];
         if ($product) {
             $expl = explode(',', $product);
-            if (count($expl) == 1) {
+            if (1 == count($expl)) {
                 $this->addCommand($command, $product)->prepareCommands();
             } else {
                 foreach ($expl as $value) {
@@ -335,7 +337,7 @@ class CommandHandler
                     } else {
                         $this->output .= 'ObjectIdentifier found for ' . $product . PHP_EOL . PHP_EOL;
                     }
-                    $i++;
+                    ++$i;
                 }
                 $this->output .= 'Execute: ' . $cliCommand . PHP_EOL . PHP_EOL;
                 $output = shell_exec("$cliCommand");

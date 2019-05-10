@@ -24,7 +24,8 @@ class Model extends Model_Abstract implements Model_Interface
      */
     public function getArticles($limit)
     {
-        $data = $this->database->selectAssoc("
+        $data = $this->database->selectAssoc(
+            '
             SELECT
                 a.`id`,
                 a.`name`,
@@ -43,7 +44,7 @@ class Model extends Model_Abstract implements Model_Interface
                 ad.`ordernumber` ASC
             LIMIT
                 ?
-            ",
+            ',
             [
                 (int) $limit,
             ]

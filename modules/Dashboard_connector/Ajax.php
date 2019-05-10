@@ -26,5 +26,4 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface
         $helper = new ConnectorHelper();
         echo $helper->getBacklogCount();
     }
-
 }

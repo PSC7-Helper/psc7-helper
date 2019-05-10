@@ -16,7 +16,6 @@ use psc7helper\App\Modules\Module_Interface;
 
 class Module extends Module_Abstract implements Module_Interface
 {
-
     /**
      * cli.
      *

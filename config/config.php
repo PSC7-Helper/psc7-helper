@@ -11,7 +11,7 @@ require_once ROOT_PATH . DS . 'app' . DS . 'functions.php';
 require_once ROOT_PATH . DS . 'config' . DS . 'defaults.php';
 require_once ROOT_PATH . DS . 'config' . DS . 'lang.php';
 
-/**
+/*
  * Config
  * This file overrides the default config.
  */

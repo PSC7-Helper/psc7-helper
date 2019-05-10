@@ -66,5 +66,4 @@ class Controller extends Controller_Abstract implements Controller_Interface
 
         return $page;
     }
-
 }

@@ -77,7 +77,7 @@ class Model extends Model_Abstract implements Model_Interface
             return false;
         }
         $articleID = $this->database->selectVar(
-            "
+            '
             SELECT
                 `articleID`
             FROM
@@ -86,7 +86,7 @@ class Model extends Model_Abstract implements Model_Interface
                 `ordernumber` = ?
             LIMIT
                 1
-            ",
+            ',
             [
                 $reference,
             ]

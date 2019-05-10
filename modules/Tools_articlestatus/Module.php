@@ -31,8 +31,9 @@ class Module extends Module_Abstract implements Module_Interface
     private $cli;
 
     /**
-     * productList
-     * @var array 
+     * productList.
+     *
+     * @var array
      */
     private $productList = [];
 
@@ -62,7 +63,7 @@ class Module extends Module_Abstract implements Module_Interface
         $this->setPlaceholder('table', $table, true);
         $btnSyncThemAll = '';
         if (count($this->productList) > 0) {
-            $btnSyncThemAll = $this->renderBtnSyncThemAll();            
+            $btnSyncThemAll = $this->renderBtnSyncThemAll();
         }
         $this->setPlaceholder('syncthemall', $btnSyncThemAll, true);
         $this->setTemplate('view');
@@ -96,6 +97,7 @@ class Module extends Module_Abstract implements Module_Interface
             ];
             $this->productList[] = $value['ordernumber'];
         }
+
         return $list;
     }
 
@@ -133,10 +135,12 @@ class Module extends Module_Abstract implements Module_Interface
     }
 
     /**
-     * renderTable
+     * renderTable.
+     *
      * @return string
      */
-    private function renderTable() {
+    private function renderTable()
+    {
         $cli = $this->cli;
         $list = $this->getList(100);
         $table = '<table id="datatable-wp" class="table table-striped">' . PHP_EOL;
@@ -174,14 +178,17 @@ class Module extends Module_Abstract implements Module_Interface
         }
         $table .= '    </tbody>' . PHP_EOL;
         $table .= '</table>' . PHP_EOL;
+
         return $table;
     }
 
     /**
-     * renderBtnSyncThemAll
+     * renderBtnSyncThemAll.
+     *
      * @return string
      */
-    private function renderBtnSyncThemAll() {
+    private function renderBtnSyncThemAll()
+    {
         $btn = '<form action="{{formaction}}" method="post">' . PHP_EOL;
         $btn .= '    <input type="hidden" name="formname" value="clicommand">' . PHP_EOL;
         $btn .= '    <input type="hidden" name="formkey" value="{{formkey}}">' . PHP_EOL;
@@ -194,7 +201,7 @@ class Module extends Module_Abstract implements Module_Interface
         $btn .= '    <input type="hidden" name="type" value="hide">' . PHP_EOL;
         $btn .= '    <button class="btn btn-psc7" type="submit" data-toggle="tooltip" data-placement="top" title="Das kann dauern....">' . __('articlestatus_syncthemall') . '</button>' . PHP_EOL;
         $btn .= '</form>' . PHP_EOL;
+
         return $btn;
     }
-
 }
