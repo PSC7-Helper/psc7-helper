@@ -2,9 +2,8 @@
     "de":
     {
         "connector_cardtitle": "Connector",
-        "connector_backlog_empty": "Der Backlog ist leer",
-        "connector_backlog_text": "Objekte im Backlog",
-        "connector_backlog_text2": "Objekte im Backlog",
+        "backlogtext": "Objekte im Backlog",
+        "backlogempty": "Der Backlog ist leer",
         "connector_order_text": "Bestellungen gemappt",
         "connector_category_text": "Kategorien gemappt",
         "connector_manufacturer_text": "Hersteller gemappt",

@@ -23,7 +23,7 @@ $(document).ready (function(){
 });
 
 /**
- * connectoroutput
+ * backlogcount
  */
 function backlogcount() {
     $.ajax({

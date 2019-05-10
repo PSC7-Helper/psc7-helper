@@ -17,13 +17,14 @@ use psc7helper\App\Connector\ConnectorHelper;
 class Ajax extends Ajax_Abstract implements Ajax_Interface
 {
     /**
-     * ajax.
+     * count.
      *
      * @return string
      */
     public function count()
     {
         $helper = new ConnectorHelper();
-        echo $helper->getBacklogCount() . ' ' . __('connector_backlog_text');
+        echo $helper->getBacklogCount();
     }
+
 }

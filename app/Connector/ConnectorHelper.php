@@ -54,7 +54,20 @@ class ConnectorHelper
      */
     public function getBacklogCount()
     {
-        return $this->model->getBacklogCount();
+        $return = '';
+        $backlog = $this->model->getBacklogCount();
+        if ($backlog > 0 && $backlog <= ConnectorHelper::BACKLOG_SUCCESS) {
+            $return = '<span class="badge badge-success badge-psc7big w-100">' . (string) $backlog . ' ' . __('backlogtext') . '</span>';
+        } elseif ($backlog > ConnectorHelper::BACKLOG_SUCCESS && $backlog <= ConnectorHelper::BACKLOG_WARNING) {
+            $return = '<span class="badge badge-warning badge-psc7big w-100">' . (string) $backlog . ' ' . __('backlogtext') . '</span>';
+        } elseif ($backlog > ConnectorHelper::BACKLOG_WARNING && $backlog <= ConnectorHelper::BACKLOG_DANGER) {
+            $return = '<span class="badge badge-danger badge-psc7big w-100">' . (string) $backlog . ' ' . __('backlogtext') . '</span>';
+        } elseif ($backlog >= ConnectorHelper::BACKLOG_DANGER) {
+            $return = '<span class="badge badge-danger badge-psc7big w-100">' . (string) $backlog . ' ' . __('backlogtext') . '</span>';
+        } else {
+            $return = '<span class="badge badge-success badge-psc7big w-100">' . __('backlogempty') . '</span>';
+        }
+        return $return;
     }
 
     /**
