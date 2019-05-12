@@ -42,6 +42,8 @@ class Module extends Module_Abstract implements Module_Interface
         $this->setPlaceholder('help_9_text', __('help_9_text'), false);
         $this->setPlaceholder('help_10_header', __('help_10_header'), false);
         $this->setPlaceholder('help_10_text', __('help_10_text'), false);
+        $this->setPlaceholder('help_11_header', __('help_11_header'), false);
+        $this->setPlaceholder('help_11_text', __('help_11_text'), false);
         $this->setTemplate('view');
         $module = $this->renderModule();
 

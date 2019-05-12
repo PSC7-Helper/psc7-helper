@@ -20,6 +20,8 @@
         "help_9_header": "Bestellungen abgleichen",
         "help_9_text": "Dieses Tool bietet eine Liste der letzten 50 Bestellungen an. In der tabellarischen Auflistung ist ersichtlich ob eine Bestellung mit plentymarkets synchronisiert ist. Sollte dies nicht Fall sein, kann mit einem Klick auf den danebenstehenden Button die Synchronisierung erneut versucht werden. Im Fehlerfall kann aus der Ausgabe die Fehler entnommen werden.",
         "help_10_header": "Fehlende Artikel-Bilder",
-        "help_10_text": "Das Tool listet Bilder auf, die zwar in der Datenbank einem Artikel zugeordnet sind, aber das Bild nicht auf dem Server zu finden ist. Das Bild kann mit dem danebenstehenden Button mit einem Klick erneut synchronisiert werden."
+        "help_10_text": "Dieses Tool listet Bilder auf, die zwar in der Datenbank einem Artikel zugeordnet sind, aber das Bild nicht auf dem Server zu finden ist. Das Bild kann mit dem danebenstehenden Button mit einem Klick erneut synchronisiert werden.",
+        "help_11_header": "Artikelstatus prüfen",
+        "help_11_text": "Gelegentlich kommt es vor, dass durch den Connector der Status eines Artikels nicht korrekt gesetzt wird und der Artikel daher nicht online ist. Mit diesem Tool kannst du sehen ob und welche Artikel das bei dir betrifft. In der Liste gibt es für jeden Artikel ein Button für den erneuten Abgleich."
     }
 }
