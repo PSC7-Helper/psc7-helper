@@ -8,7 +8,7 @@
         "help_3_header": "phpinfo()",
         "help_3_text": "Die PHP-Funktion phpinfo() wird aufgerufen und zeigt alle Informationen zu PHP an. Der Aufruf funktioniert nur nach dem Anmelden an den Helper. Ohne Anmeldung kann aus Sicherheitsgründen darauf nicht zugegriffen werden.",
         "help_4_header": "Connector-Befehle",
-        "help_4_text": "Das Herzstück des Helpers ist der Bereich Connector-Befehle. Die hier in einfache Buttons gepackte Kurzwahl-Befehle helfen dir ohne Verwendung der Konsole die Standard-Befehle des Connectors mit einem Klick auszuführen.<br><br>Mit den Artikel Sync kannst du einen einzelnen Artikel oder Variante synchonisieren.",
+        "help_4_text": "Das Herzstück des Helpers ist der Bereich Connector-Befehle. Die hier in einfache Buttons gepackte Kurzwahl-Befehle helfen dir ohne Verwendung der Konsole die Standard-Befehle des Connectors mit einem Klick auszuführen.<br><br>Mit den Artikel Sync kannst du einen einzelnen Artikel oder Variante synchronisieren.",
         "help_5_header": "Connector Identitys",
         "help_5_text": "In den Logfiles findet sich immer wieder der Begriff payload. In diesem Bereich kannst du danach suchen. Zusammen mit dem Filter objectIdentifier bekommst du eine Liste mit Informationen zu dem payload angezeigt.<br><br>Mit dem Filter adapterIdentifier kannst du z. B. nach ID´s zu Artikeln, Varianten, Bestellungen, usw. suchen.",
         "help_6_header": "Connector Logfiles",

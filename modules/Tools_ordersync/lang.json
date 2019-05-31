@@ -6,6 +6,6 @@
         "ordersync_sordertime": "Datum, Uhrzeit",
         "ordersync_sorderinfo": "Kunde",
         "ordersync_porderid": "plenty Auftrags-ID",
-        "ordersync_sync": "Synchonisieren"
+        "ordersync_sync": "Synchronisieren"
     }
 }

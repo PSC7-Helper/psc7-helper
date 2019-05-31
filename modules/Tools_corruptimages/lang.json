@@ -8,7 +8,7 @@
         "corruptimages_shopwareid": "Artikel-ID",
         "corruptimages_ordernumber": "Artikelnummer",
         "corruptimages_plentyid": "plenty Media-ID",
-        "ordersync_product": "Synchonisieren",
+        "ordersync_product": "Synchronisieren",
         "ordersync_swmediacleanup": "media:cleanup"
     }
 }
