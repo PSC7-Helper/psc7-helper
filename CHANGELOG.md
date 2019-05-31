@@ -12,6 +12,13 @@
 
 
 
+## [2.2.7] - 2019-05-30
+
+### Changed
+- change "synchonisieren" to "synchronisieren" (Muhmann)
+
+
+
 ## [2.2.6] - 2019-05-12
 ### Added
 - help for articlestatus tool added
