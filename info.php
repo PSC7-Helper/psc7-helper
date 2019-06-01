@@ -18,8 +18,6 @@ define('ROOT_PATH', __DIR__);
 define('CONTROLLERS_PATH', ROOT_PATH . DS . 'controllers');
 define('MODULES_PATH', ROOT_PATH . DS . 'modules');
 define('THEMES_PATH', ROOT_PATH . DS . 'themes');
-define('VAR_PATH', ROOT_PATH . DS . 'var');
-define('VENDOR_PATH', ROOT_PATH . DS . 'vendor');
 
 require ROOT_PATH . DS . 'vendor' . DS . 'autoload.php';
 require ROOT_PATH . DS . 'config' . DS . 'config.php';
