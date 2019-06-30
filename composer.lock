@@ -8,26 +8,26 @@
     "packages": [
         {
             "name": "components/font-awesome",
-            "version": "5.4.2",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/font-awesome.git",
-                "reference": "2273b93337e2296539665c40520308207b35ff6d"
+                "reference": "1be57c473b964c8130f2dbd9edc4f64db5394114"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/font-awesome/zipball/2273b93337e2296539665c40520308207b35ff6d",
-                "reference": "2273b93337e2296539665c40520308207b35ff6d",
+                "url": "https://api.github.com/repos/components/font-awesome/zipball/1be57c473b964c8130f2dbd9edc4f64db5394114",
+                "reference": "1be57c473b964c8130f2dbd9edc4f64db5394114",
                 "shasum": ""
             },
             "type": "component",
             "extra": {
                 "component": {
                     "styles": [
-                        "css/fontawesome-all.css"
+                        "css/all.css"
                     ],
                     "files": [
-                        "css/fontawesome-all.min.css",
+                        "css/all.min.css",
                         "webfonts/*"
                     ]
                 }
@@ -39,7 +39,7 @@
                 "OFL-1.1"
             ],
             "description": "Font Awesome, the iconic SVG, font, and CSS framework.",
-            "time": "2018-10-31T11:12:29+00:00"
+            "time": "2019-06-07T02:02:10+00:00"
         },
         {
             "name": "components/jquery",
