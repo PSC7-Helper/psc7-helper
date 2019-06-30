@@ -12,6 +12,16 @@
 
 
 
+## [2.2.8] - 2019-06-30
+### Changed
+- update ajax.php, index.php, info.php
+- update composer component font-awesome
+- cleanup update.json
+- update CHANGELOG.md
+- update VERSION
+
+
+
 ## [2.2.7] - 2019-05-30
 
 ### Changed
