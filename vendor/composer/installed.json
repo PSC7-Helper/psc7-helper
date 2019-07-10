@@ -1,28 +1,28 @@
 [
     {
         "name": "components/font-awesome",
-        "version": "5.4.2",
-        "version_normalized": "5.4.2.0",
+        "version": "5.9.0",
+        "version_normalized": "5.9.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/components/font-awesome.git",
-            "reference": "2273b93337e2296539665c40520308207b35ff6d"
+            "reference": "1be57c473b964c8130f2dbd9edc4f64db5394114"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/components/font-awesome/zipball/2273b93337e2296539665c40520308207b35ff6d",
-            "reference": "2273b93337e2296539665c40520308207b35ff6d",
+            "url": "https://api.github.com/repos/components/font-awesome/zipball/1be57c473b964c8130f2dbd9edc4f64db5394114",
+            "reference": "1be57c473b964c8130f2dbd9edc4f64db5394114",
             "shasum": ""
         },
-        "time": "2018-10-31T11:12:29+00:00",
+        "time": "2019-06-07T02:02:10+00:00",
         "type": "component",
         "extra": {
             "component": {
                 "styles": [
-                    "css/fontawesome-all.css"
+                    "css/all.css"
                 ],
                 "files": [
-                    "css/fontawesome-all.min.css",
+                    "css/all.min.css",
                     "webfonts/*"
                 ]
             }
