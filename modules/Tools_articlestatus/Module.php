@@ -84,6 +84,9 @@ class Module extends Module_Abstract implements Module_Interface
         $list = [];
         $model = $this->model;
         $orders = $model->getArticles((int) $number);
+        if (!$orders) {
+            return $this;
+        }
         foreach ($orders as $value) {
             $objectidentifier = $this->getObjectIdentifier($value['id'], 'Shopware');
             $list[] = [
