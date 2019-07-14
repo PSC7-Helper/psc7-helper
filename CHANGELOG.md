@@ -11,6 +11,14 @@
 - 
 
 
+## [2.3.0] - 2019-07-14
+### Added
+- add self-updater
+### Changed
+- update CHANGELOG.md
+- update VERSION
+
+
 
 ## [2.2.9] - 2019-07-14
 ### Changed
