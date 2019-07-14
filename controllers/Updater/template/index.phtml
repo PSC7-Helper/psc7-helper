@@ -1,0 +1,30 @@
+<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <main class="login-main">
+                        <div class="login-window">
+                            <div class="login-logo">
+                                <a href="https://github.com/psc7-helper/psc7-helper" title="{{meta_websitename}}">
+                                    <img src="{{theme_path}}/images/logo-login.png" alt="{{meta_websitename}}">
+                                </a>
+                            </div>
+                            <h1>{{index_h1}}</h1>
+                            <div id="updaterimg" class="pt-2">
+                                <img src="themes/default/images/loader.gif" alt="Bitte warten..." title="Bitte warten...">
+                            </div>
+                            <div id="updatermessage" class="pt-4">
+                                {{message}}
+                            </div>
+                            <div id="updaterbtn" class="pt-4">
+                                
+                            </div>                            
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <script>
+                $(document).ready (function(){
+                    updater();
+                });
+            </script>
+        </div>

@@ -67,6 +67,13 @@ class Ajax extends Bootstrap implements Bootstrap_Interface
     protected $param = false;
 
     /**
+     * stratic.
+     *
+     * @var bool
+     */
+    protected $static = false;
+
+    /**
      * __construct.
      *
      * @param array $requests
@@ -105,6 +112,9 @@ class Ajax extends Bootstrap implements Bootstrap_Interface
         }
         if (array_key_exists('p', $requests) && ! empty($requests['p'])) {
             $this->param = $requests['p'];
+        }
+        if (array_key_exists('s', $requests) && ! empty($requests['s'])) {
+            $this->static = true;
         }
 
         return $this;
@@ -153,13 +163,18 @@ class Ajax extends Bootstrap implements Bootstrap_Interface
             System::log('output: class not found in ' . __FILE__ . ' on line ' . __LINE__, false);
             exit('Request not found');
         }
+        $class = $this->classNamespace;
         $path = str_replace('/Ajax.php', '', $file);
         $action = $this->ajaxAction;
         $param = $this->param;
-        $class = $this->classNamespace;
-        $reflectionClass = new \ReflectionClass($class);
-        $args = [$path, $action, $param];
-        $instance = $reflectionClass->newInstanceArgs($args);
+        if (! $this->static) {
+            $args = [$path, $action, $param];
+            $reflectionClass = new \ReflectionClass($class);
+            $instance = $reflectionClass->newInstanceArgs($args);
+        } else {
+            $reflectionMethod = new \ReflectionMethod($class, $action);
+            $instance = $reflectionMethod->invoke(null);
+        }
 
         return $instance;
     }

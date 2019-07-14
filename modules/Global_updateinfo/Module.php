@@ -56,12 +56,15 @@ class Module extends Module_Abstract implements Module_Interface
     public function run()
     {
         $version = $this->versionCompare();
+        $this->setPlaceholder('info', ' ', false);
+        $this->setPlaceholder('link', ' ', false);
         if (1 == $version) {
-            $this->setPlaceholder('info', '<span class="badge badge-success">' . __('updateinfo_info') . ' (' . $this->githubVersion . ')</span>', true);
+            $this->setPlaceholder('info', __('updateinfo_info') . ' (' . $this->githubVersion . ')', false);
+            $this->setPlaceholder('link', 'index.php?controller=updater', false);
+            $this->setTemplate('view');
         } else {
-            $this->setPlaceholder('info', ' ', false);
+            $this->setTemplate('empty');
         }
-        $this->setTemplate('view');
         $module = $this->renderModule();
 
         return $module;

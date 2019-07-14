@@ -19,6 +19,8 @@ $(document).ready (function(){
         "ordering": true,
         "info":     false
     });
+    
+    $('#btn').hide();
 
 });
 
@@ -74,6 +76,86 @@ function connectoroutput() {
             $('#connector-output').html(result);
         }
     });
+}
+
+/**
+ * updater
+ */
+function updater() {
+    var search = function() {
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php?type=c&n=updater&a=search',
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+                if (response.update) {
+                    $('#updatermessage').html(response.message);
+                    update();
+                } else {
+                    $('#updatermessage').html(response.message);
+                    no();
+                }
+            }
+        });
+    };
+    var update = function() {
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php?type=c&n=updater&a=update',
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+                if (response.update) {
+                    $('#updatermessage').html(response.message);
+                    console.log(response.output);
+                    check();
+                } else {
+                    $('#updatermessage').html(response.message);
+                    console.log(response.output);
+                    error();
+                }
+            }
+        });
+    };
+    var check = function() {
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php?type=c&n=updater&a=check',
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+                if (response.update) {
+                    $('#updatermessage').html(response.message);
+                    end();
+                } else {
+                    $('#updatermessage').html(response.message);
+                    console.log(response.output);
+                    error();
+                }
+            }
+        });
+    };
+    
+    var no = function() {
+        $('#updaterimg').html('<i class="fas fa-check display-3"></i>');
+        $('#updaterbtn').html('<a class="btn btn-psc7" title="Fertig" href="index.php">Fertig</a>');
+        return;
+    };
+    
+    var error = function() {
+        $('#updaterimg').html('<i class="fas fa-exclamation-triangle display-3"></i>');
+        $('#updaterbtn').html('<a class="btn btn-psc7" title="Fertig" href="index.php">Abbrechen</a>');
+        return;
+    };
+    
+    var end = function() {
+        $('#updaterimg').html('<i class="fas fa-check display-3"></i>');
+        $('#updaterbtn').html('<a class="btn btn-psc7" title="Fertig" href="index.php">Fertig</a>');
+        return;
+    };
+    
+    search();
 }
 
 /*

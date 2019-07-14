@@ -105,6 +105,22 @@ input[type="color"]:focus,
     background-color: #bd1818 !important;
 }
 
+.btn-psc7-link-update {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    text-decoration: none !important;
+    padding: 1px 4px;
+    margin: 0 4px 0 4px;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.btn-psc7-link-update:hover {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    text-decoration: none !important;
+}
+
 .login-info,
 .error-info {
     color: #999;
