@@ -16,24 +16,27 @@ use psc7helper\App\Ajax\Ajax_Interface;
 class Ajax extends Ajax_Abstract implements Ajax_Interface
 {
     /**
-     * search
+     * search.
+     *
      * @return array
      */
     public function search()
     {
         sleep(1);
         $version = $this->versionCompare();
-        if ($version == 1) {
+        if (1 == $version) {
             echo json_encode([
                 'message' => 'Update gefunden...',
-                'update' => 1
+                'update'  => 1,
             ]);
+
             return;
         } else {
             echo json_encode([
                 'message' => 'Kein Update gefunden!',
-                'update' => 0
+                'update'  => 0,
             ]);
+
             return;
         }
     }
@@ -58,7 +61,8 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface
     }
 
     /**
-     * update
+     * update.
+     *
      * @return array
      */
     public function update()
@@ -66,21 +70,23 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface
         sleep(1);
         $output = '';
         if (function_exists('shell_exec')) {
-            $output= shell_exec('git pull origin/master');
+            $output = shell_exec('git pull origin/master');
         }
-        if ($output != '') {
+        if ('' != $output) {
             echo json_encode([
                 'message' => 'git pull...',
-                'output' => $output,
-                'update' => 1
+                'output'  => $output,
+                'update'  => 1,
             ]);
+
             return;
         } else {
             echo json_encode([
                 'message' => 'Ein Fehler ist aufgetreten!',
-                'output' => $output,
-                'update' => 0
+                'output'  => $output,
+                'update'  => 0,
             ]);
+
             return;
         }
     }
@@ -89,19 +95,20 @@ class Ajax extends Ajax_Abstract implements Ajax_Interface
     {
         sleep(1);
         $version = $this->versionCompare();
-        if ($version == 1) {
+        if (1 == $version) {
             echo json_encode([
                 'message' => 'Update installiert',
-                'update' => 1
+                'update'  => 1,
             ]);
+
             return;
         } else {
             echo json_encode([
                 'message' => 'Kein Update gefunden!',
-                'update' => 0
+                'update'  => 0,
             ]);
+
             return;
         }
     }
-    
 }
