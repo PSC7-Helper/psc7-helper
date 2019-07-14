@@ -12,6 +12,18 @@
 
 
 
+## [2.2.9] - 2019-07-14
+### Changed
+- update font-awesome
+- update CHANGELOG.md
+- update VERSION
+
+###Fixed
+- fix font-awesome 404 after update
+- fix articlestatus error while array ist empty
+
+
+
 ## [2.2.8] - 2019-06-30
 ### Changed
 - update ajax.php, index.php, info.php
@@ -23,7 +35,6 @@
 
 
 ## [2.2.7] - 2019-05-30
-
 ### Changed
 - change "synchonisieren" to "synchronisieren" (Muhmann)
 
@@ -32,7 +43,6 @@
 ## [2.2.6] - 2019-05-12
 ### Added
 - help for articlestatus tool added
-
 ### Changed
 - change backlog display
 
@@ -41,7 +51,6 @@
 ## [2.2.5] - 2019-05-08
 ### Added
 - btn sync the all added in tool articlestatus
-
 ### Fixed
 - sync fixed at tool articlestatus
 
@@ -51,7 +60,6 @@
 ### Added
 - tool articlestatus added
 - tool ordersync datatable added
-
 ### Fixed
 - tool articlestatus sync fix
 
@@ -66,11 +74,9 @@
 ## [2.2.2] - 2019-03-17
 ### Added
 - new buttons added
-
 ### Changed
 - files moved
 - change .gitignore
-
 ### Fixed
 - fix install issue
 
@@ -79,11 +85,9 @@
 ## [2.2.1] - 2019-03-14
 ### Added
 - tool missing images has now a sync button
-
 ### Changed
 - update help
 - limit for order sync list to 50 changed
-
 ### Fixed
 - fix nav dropdown-menue issue
 - code-style fix
@@ -97,7 +101,6 @@
 - cli commandlist added
 - plenty commandlist added
 - php_cs added
-
 ### Changed
 - optimization code-style via php-cs-fixer
 
@@ -106,7 +109,6 @@
 ## [2.1.0] - 2019-03-03
 ### Changed
 - counted backlog now loading via ajax
-
 ### Fixed
 - counted backlog over 3500 was not displayed
 - error while execute cli command with function popen
@@ -140,7 +142,6 @@
 ### Added
 - added an overlay while connector is executing an command
 - update info added
-
 ### Fixed
 - fix issue #6 (bvogel) singlesync isn't working
 - bugfix overlay
@@ -167,10 +168,8 @@
 - change article sync from article-id to variantennummer
 - update README.md extended with information about the folder name
 - change VERSION to 2.0.1
-
 ### Fixed
 - fix error: popen() has been disabled for security reasons
-
 ### Security
 - brute force check added
 
