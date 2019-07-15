@@ -252,4 +252,70 @@ class Date
 
         return $month;
     }
+
+    /**
+     * isWeekend.
+     *
+     * @param int $timestamp
+     *
+     * @return bool
+     */
+    public static function isWeekend($timestamp)
+    {
+        $numberOfDay = date('N', $timestamp);
+        if (6 == $numberOfDay || 7 == $numberOfDay) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * isHoliday.
+     *
+     * @param int $timestamp
+     *
+     * @return bool
+     */
+    public static function isHoliday($timestamp)
+    {
+        $year = date('Y', $timestamp);
+        $easterSunday = easter_date($year);
+        $easterMonday = $easterSunday + 86400;
+        $goodFriday = $easterSunday - (86400 * 2);
+        $ascensionOfChrist = $easterSunday + (86400 * 39);
+        $pentecostSunday = $easterSunday + (86400 * 49);
+        $pentecostMonday = $pentecostSunday + 86400;
+        $corpusChristi = $easterMonday + (86400 * 59);
+        $holidays = [
+            ['name' => 'Neujahr',                   'date' => '01.01.',                         'state' => 'alle'],
+            ['name' => 'Heilige Drei Könige',       'date' => '06.01.',                         'state' => 'BW, BE, ST'],
+            ['name' => 'Internationaler Frauentag', 'date' => '08.03.',                         'state' => 'BE'],
+            ['name' => 'Karfreitag (Ostern)',       'date' => date('d.m.', $goodFriday),        'state' => 'alle'],
+            ['name' => 'Ostersonntag (Ostern)',     'date' => date('d.m.', $easterSunday),      'state' => 'BB'],
+            ['name' => 'Ostermontag',               'date' => date('d.m.', $easterMonday),      'state' => 'alle'],
+            ['name' => 'Tag der Arbeit',            'date' => '01.05.',                         'state' => 'alle'],
+            ['name' => 'Christi Himmelfahrt',       'date' => date('d.m.', $ascensionOfChrist), 'state' => 'alle'],
+            ['name' => 'Pfingstsonntag',            'date' => date('d.m.', $pentecostSunday),   'state' => 'BB'],
+            ['name' => 'Pfingstmontag',             'date' => date('d.m.', $pentecostMonday),   'state' => 'alle'],
+            ['name' => 'Fronleichnam',              'date' => date('d.m.', $corpusChristi),     'state' => 'BW, BY, HE, NW, RP, SL'],
+            ['name' => 'Augsburger Friedensfest',   'date' => '08.08.',                         'state' => 'BY'],
+            ['name' => 'Mariä Himmelfahrt',         'date' => '15.08.',                         'state' => 'BY, SL'],
+            ['name' => 'Tag der Deutschen Einheit', 'date' => '03.10.',                         'state' => 'alle'],
+            ['name' => 'Reformationstag',           'date' => '31.10.',                         'state' => 'BB, HB, HH, MV, NI, SN, ST, SH, TH'],
+            ['name' => 'Allerheiligen',             'date' => '01.11.',                         'state' => 'BW, BE, NW, SL'],
+            ['name' => 'Buß- und Bettag',           'date' => '20.11.',                         'state' => 'SN'],
+            ['name' => '1. Weihnachtstag',          'date' => '25.12.',                         'state' => 'alle'],
+            ['name' => '2. Weihnachtstag',          'date' => '26.12.',                         'state' => 'alle'],
+        ];
+        $isHolyday = false;
+        foreach ($holidays as $value) {
+            $date = date('d.m.', $timestamp);
+            if ($date == $value['date'] && 'alle' == $value['state']) {
+                $isHolyday = true;
+            }
+        }
+
+        return $isHolyday;
+    }
 }
