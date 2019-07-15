@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Added
-- 
+- cache size display added
 
 ### Changed
 - 

@@ -79,6 +79,32 @@ function connectoroutput() {
 }
 
 /**
+ * cachesize_delay
+ */
+function cachesize_delay() {
+    $(this).delay(3000).queue(function() {
+        cachesize();
+        $(this).dequeue();
+    });
+}
+
+/**
+ * cachesize
+ */
+function cachesize() {
+    $.ajax({
+        type: 'POST',
+        url: 'ajax.php?type=c&n=connector&a=cachesize',
+        dataType: 'json',
+        cache: false,
+        success: function(response) {
+            //console.log(response.size);
+            $('#cachesize').html('<span class="btn ' + response.class + ' btn-sm">Cache ' + response.size + '</span>');
+        }
+    });
+}
+
+/**
  * updater
  */
 function updater() {
