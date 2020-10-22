@@ -205,7 +205,7 @@ class ConnectorHelper
     {
         $list = [];
         $path = self::LOG_PATH;
-        $glob = glob($path . 'plentyconnector_production-*.log');
+        $glob = glob($path . 'plenty_connector_production-*.log');
         if ($glob) {
             foreach ($glob as $value) {
                 $exp = explode('/', $value);
@@ -248,7 +248,7 @@ class ConnectorHelper
      */
     public function getLogfileByValue($logfile, $value)
     {
-        if (false === strpos($logfile, 'plentyconnector_production-')) {
+        if (false === strpos($logfile, 'plenty_connector_production-')) {
             return false;
         }
         $log = '';
